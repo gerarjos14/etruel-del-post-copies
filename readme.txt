@@ -118,4 +118,4 @@ This allows different filters for campaigns or even use the complement of deleti
 Just click for delete.	
 
 == Upgrade Notice ==
-1. Must upgrade. We are working on a new 5.0 version that will be a revolution. Stay alert ;)
+1. 5.2 version. Tested with Wordpress 5.1

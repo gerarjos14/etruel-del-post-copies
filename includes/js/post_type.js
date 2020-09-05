@@ -75,13 +75,17 @@ function run_all() {
 			campaign_ID: c_id ,
 			action: "wpedpc_run"
 		};
-		jQuery.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
-			if( msgdev.substring(0, 5) == 'ERROR' ){
-				jQuery(".subsubsub").before('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
+                var running = jQuery.post(ajaxurl, data);
+                running.done(function(msgdev){
+                    var $xml  = jQuery(msgdev);
+                    var response_data = $xml.find('response_data').text();
+                    var response_message = $xml.find('message').text();
+			if( response_data == 'ERROR' ){
+				jQuery(".subsubsub").before('<div id="fieldserror" class="error fade">'+response_message+'</div>');
 			}else{
-				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
-			}
-		});
+				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+response_message+'</div>');
+			} 
+                });
 	}).ajaxStop(function() {
 			jQuery('html').css('cursor','auto');
 			jQuery('.ajaxstop').remove().ajaxStop();

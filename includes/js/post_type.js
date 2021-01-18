@@ -84,6 +84,11 @@ function run_all() {
 				jQuery(".subsubsub").before('<div id="fieldserror" class="error fade">'+response_message+'</div>');
 			}else{
 				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+response_message+'</div>');
+				
+				 if(selectedItems[selectedItems.length - 1]){        
+                    			jQuery('html').css('cursor','auto');
+                    			jQuery('.ajaxstop').remove().ajaxStop();    
+                		}
 			} 
                 });
 	}).ajaxStop(function() {

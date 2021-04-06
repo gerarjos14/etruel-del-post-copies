@@ -143,33 +143,25 @@ jQuery(document).ready(function($){
 });
 
 function run(response) {
+	jQuery('#fieldserror').remove();
+	if(jQuery(response).find('response_data').text() == 'error'){
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade">'+jQuery(response).find('supplemental message').text()+'</div>');
+	} else {
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade">'+jQuery(response).find('supplemental message').text()+'</div>');
+	}
 
-	if ( !jQuery('#allcat').attr('checked') ){
-		var selectedItems = new Array();
-		jQuery("input[name='post_category[]']:checked").each(function() {selectedItems.push(jQuery(this).val());});
-		if (selectedItems.length == 0) {
-		  jQuery('html').css('cursor','auto');
-		  jQuery('#gosubmit').prop('disabled',false);
-		  jQuery('#fieldserror').remove();
-		  alert(wpedpc_object_meta_boxes.select_to_something_msg);  
-		  
-		}else{
-			jQuery('#fieldserror').remove();
-			jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade">'+jQuery(response).find('supplemental message').text()+'</div>');
-			jQuery('html').css('cursor','auto');
-			jQuery('#gosubmit').prop('disabled',false); 
-		}
-	}else{
-		jQuery('#fieldserror').remove();
-		if(jQuery(response).find('response_data').text() == 'error'){
-			jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade">'+jQuery(response).find('supplemental message').text()+'</div>');
-		} else {
-			jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade">'+jQuery(response).find('supplemental message').text()+'</div>');
-		}
-	
-		jQuery('html').css('cursor','auto');
-		jQuery('#gosubmit').prop('disabled',false); 
-	}	
+	jQuery('html').css('cursor','auto');
+	jQuery('#gosubmit').prop('disabled',false); 
+} 
+function erase_logs(response) {
+	jQuery('#fieldserror').remove();
+	if(jQuery(response).find('response_data').text() == 'error'){
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade">'+jQuery(response).find('supplemental message').text()+'</div>');
+	} else {
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade">'+jQuery(response).find('supplemental message').text()+'</div>');
+	}
+	jQuery('html').css('cursor','auto');
+	jQuery('#gosubmit').prop('disabled',false); 
 } 
 function show_tables(response) {
 	jQuery('#fieldserror').remove();

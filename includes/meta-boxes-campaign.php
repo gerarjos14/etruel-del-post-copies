@@ -158,7 +158,7 @@ class meta_boxes_campaign {
 		}
 		//********* end cron data
 		$fields['wpedpc_limit'] = (isset($postfields['wpedpc_limit']) && !empty($postfields['wpedpc_limit']) ) ? intval($postfields['wpedpc_limit']) : 100;
-		$fields['titledel']	  = (isset($postfields['titledel']) && !empty($postfields['titledel']) ) ? $postfields['titledel'] : true;
+		$fields['titledel']	  = (isset($postfields['titledel']) && !empty($postfields['titledel']) ) ? $postfields['titledel'] : false;
 		$fields['contentdel'] = (isset($postfields['contentdel']) && !empty($postfields['contentdel']) ) ? $postfields['contentdel'] : false;
 		$fields['allcat']	  = (isset($postfields['allcat']) && !empty($postfields['allcat'])) ? 1 : 0; 
 		if (isset($postfields['logs'])) {

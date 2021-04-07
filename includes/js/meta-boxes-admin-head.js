@@ -138,7 +138,16 @@ jQuery(document).ready(function ($) {
 	jQuery("#select_all_category").click(function (e) {
 		jQuery('.checkbox_cat li label input').attr('checked', this.checked);
 	});
-
+	$('#titledel').change(function(){
+            if( !this.checked){
+                $('#contentdel').prop( "checked", true );
+            }
+        });
+	$('#contentdel').change(function(){
+            if( !this.checked){
+                $('#titledel').prop( "checked", true );
+            }
+        }); 
 
 });
 

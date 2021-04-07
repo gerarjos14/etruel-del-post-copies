@@ -3,8 +3,8 @@ Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTNR4BH8XPDR6
 Tags: posts, copies, duplicated, duplicate posts, delete copies, delete, erase, cron, squedule, squedule delete
 Requires at least: 4.1
-Tested up to: 5.1
-Stable tag: 5.2
+Tested up to: 5.7
+Stable tag: 5.3
 
 This plugin searches duplicated posts by title or content, filtering by category and can permanently delete them with images or send them to the trash.
 
@@ -55,6 +55,10 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The logs are also in a new tab saving time to load the page. Click on title to refresh.
 
 == Changelog ==
+= 5.3 Apr XX, 2021 =
+* Ajax behaviors on run all campaigns. 
+* Updated plugin URI and author URI.
+
 = 5.2 Feb 20, 2019 =
 * Tested to work with WordPress 5.1
 * Updates Plugin updater class.
@@ -118,4 +122,4 @@ This allows different filters for campaigns or even use the complement of deleti
 Just click for delete.	
 
 == Upgrade Notice ==
-1. 5.2 version. Tested with Wordpress 5.1
+1. 5.3 version. Fixed and tested with Wordpress 5.7

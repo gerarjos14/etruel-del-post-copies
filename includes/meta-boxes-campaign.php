@@ -501,11 +501,12 @@ class meta_boxes_campaign {
 		echo $echoHtml;
 	}
 	static function render_whatsee_row( $post_id ) {
+		global $pagenow;
 		if(!current_user_can( 'manage_options')) {
 			return false;
 		}
 			
-		$titledel = get_post_meta( $post_id, 'titledel', true );
+		$titledel = ( in_array( $pagenow, array( 'post-new.php' ) ) ) ? '1' : get_post_meta( $post_id, 'titledel', true );
 		$contentdel = get_post_meta( $post_id, 'contentdel', true );
 		$display = is_null( $post_id ) ? ' display: none;' : '';
 		

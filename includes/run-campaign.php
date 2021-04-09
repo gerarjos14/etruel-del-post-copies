@@ -129,8 +129,8 @@ if (!class_exists('wpedpc_run_campaign')) :
 			if ($wpedpc_campaign->allcat) {
 
 				if ($wpedpc_campaign->titledel && $wpedpc_campaign->contentdel) {
-					$fields2compare = "AND (good_rows.post_title = bad_rows.post_title OR good_rows.post_content = bad_rows.post_content) ";
-					$groupby = " post_title, post_content ";
+					$fields2compare = "AND (good_rows.post_title = bad_rows.post_title AND good_rows.post_content = bad_rows.post_content) ";
+					$groupby = " post_title ";
 				} elseif ($wpedpc_campaign->contentdel) {
 					$fields2compare = "AND good_rows.post_content = bad_rows.post_content ";
 					$groupby = " post_content ";
@@ -158,8 +158,8 @@ if (!class_exists('wpedpc_run_campaign')) :
 				ORDER BY post_title " . $limite;
 			} else {  // with selected categories
 				if ($wpedpc_campaign->titledel && $wpedpc_campaign->contentdel) {
-					$fields2compare = "(good_rows.post_title = bad_rows.post_title OR good_rows.post_content = bad_rows.post_content) ";
-					$groupby = " post_title, post_content ";
+					$fields2compare = "(good_rows.post_title = bad_rows.post_title AND good_rows.post_content = bad_rows.post_content) ";
+					$groupby = " post_title ";
 				} elseif ($wpedpc_campaign->contentdel) {  //only content
 					$fields2compare = "good_rows.post_content = bad_rows.post_content ";
 					$groupby = " post_content ";

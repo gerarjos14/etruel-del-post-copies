@@ -159,10 +159,13 @@ if (!class_exists('wpedpc_run_campaign')) :
 			} else {  // with selected categories
 				if ($wpedpc_campaign->titledel && $wpedpc_campaign->contentdel) {
 					$fields2compare = "(good_rows.post_title = bad_rows.post_title OR good_rows.post_content = bad_rows.post_content) ";
+					$groupby = " post_title, post_content ";
 				} elseif ($wpedpc_campaign->contentdel) {  //only content
 					$fields2compare = "good_rows.post_content = bad_rows.post_content ";
+					$groupby = " post_content ";
 				} else { //only title
 					$fields2compare = "good_rows.post_title = bad_rows.post_title ";
+					$groupby = " post_title ";
 				}
 				$query = "SELECT bad_rows.post_title, bad_rows.post_content, bad_rows.id as ID, bad_rows.post_date, $wp_terms.term_id, ok_id, ok_date, okcateg_id
 				FROM $wp_terms 
@@ -179,7 +182,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 						AND $wp_posts.post_type IN ( $cpostypes ) 
 						AND post_status IN ($cposstatuses) 
 						 AND ($wp_terms.term_id IN ( $categories ))
-					GROUP BY post_title, $wp_terms.term_id 
+					GROUP BY $groupby, $wp_terms.term_id 
 					HAVING COUNT(*) > 1
 				) AS good_rows ON $fields2compare AND good_rows.ok_id <> bad_rows.id AND good_rows.okcateg_id = $wp_terms.term_id
 				WHERE taxonomy =  'category'

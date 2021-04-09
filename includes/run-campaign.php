@@ -130,10 +130,13 @@ if (!class_exists('wpedpc_run_campaign')) :
 
 				if ($wpedpc_campaign->titledel && $wpedpc_campaign->contentdel) {
 					$fields2compare = "AND (good_rows.post_title = bad_rows.post_title OR good_rows.post_content = bad_rows.post_content) ";
+					$groupby = " post_title, post_content ";
 				} elseif ($wpedpc_campaign->contentdel) {
 					$fields2compare = "AND good_rows.post_content = bad_rows.post_content ";
+					$groupby = " post_content ";
 				} else {
 					$fields2compare = "AND good_rows.post_title = bad_rows.post_title ";
+					$groupby = " post_title ";
 				}
 				$query = "SELECT bad_rows.*, ok_id, post_date, ok_date
 				FROM {$wp_posts} AS bad_rows
@@ -144,7 +147,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 						$wp_posts.post_status IN ($cposstatuses) 
 						AND $wp_posts.post_type IN (" . $cpostypes . ") 
 					)
-					GROUP BY post_title
+					GROUP BY $groupby
 					having count(*) > 1
 					) AS good_rows ON good_rows.ok_id <> bad_rows.id $fields2compare
 				WHERE (

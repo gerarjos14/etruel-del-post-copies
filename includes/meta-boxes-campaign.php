@@ -271,6 +271,7 @@ class meta_boxes_campaign {
 		return $quickoptions;
 	}
 	static function render_campaign_actions_row($post_id) {
+		global $pagenow;
 		if(!current_user_can('manage_options' )) {
 			return false;
 		}
@@ -284,8 +285,9 @@ class meta_boxes_campaign {
 		foreach($quickoptions as $key => $option) {
 			$echoHtml .= '<option value="'.$option["value"].'">'.$option["text"].'</option>';
 		}
+		$disabled = ( in_array( $pagenow, array( 'post-new.php' ) ) ) ? 'disabled' : '';
 		$echoHtml .= '</select>
-						<input type="button" name="gosubmit" id="gosubmit" title="'.__('Click to do the selected action.', 'etruel-del-post-copies' ).'" class="button" value="'.__('Go', 'etruel-del-post-copies' ).'" /> 
+						<input '.$disabled .' type="button" name="gosubmit" id="gosubmit" title="'.__('Click to do the selected action.', 'etruel-del-post-copies' ).'" class="button" value="'.__('Go', 'etruel-del-post-copies' ).'" /> 
 					</div>';
 		echo $echoHtml;
 			

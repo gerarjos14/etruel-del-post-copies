@@ -642,7 +642,13 @@ class meta_boxes_campaign {
 		echo $echoHtml;
 	}
 	static function meta_box_ignore_categories( $post_id ) {
-		$allcat = get_post_meta($post_id, 'allcat', true ); //allcat
+                global $pagenow;
+                
+		if( in_array( $pagenow, array( 'post-new.php' ) ) ){
+                    $allcat = true; // Default value when creating new compaing;
+                }else{
+                    $allcat = get_post_meta($post_id, 'allcat', true ); //allcat
+                }
 		$display = is_null($post_id) ? ' style="display: none;"' : '';
 		
 		$echoHtml = '<div id="ignore_categories" class=""'.$display.'>

@@ -24,8 +24,8 @@ class WPEDPC_Select2 {
      */
     public static function enqueue_select2_scripts() {
         wp_enqueue_style( 'wpedpc-select2-css' , 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' );
-        wp_enqueue_script( 'wpedpc-select2-js' , 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ) );
-        wp_enqueue_script( 'ajx-select2-js' , WPEDPC_PLUGIN_URL .'/includes/js/ajax-select2.js', array( 'jquery', 'wpedpc-select2-js' ) );
+        wp_enqueue_script( 'wpedpc-select2-js' , 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), '4', true );
+        wp_enqueue_script( 'ajx-select2-js' , WPEDPC_PLUGIN_URL .'includes/js/ajax-select2.js', array( 'jquery', 'wpedpc-select2-js' ,'wpedpc-meta-boxes-admin-head' ), '2', true);
     }
     
     public static function display_select2_menu( $excluded_posts ){
@@ -35,18 +35,20 @@ class WPEDPC_Select2 {
         $list_excluded_posts = explode( ',', $excluded_posts );
         
         $list_posts_saved = '';
-        
-        foreach ($list_excluded_posts as $id ) {
-            $title = get_the_title( $id );
-            
-            $title_to_display = ( mb_strlen( $title ) > 30 ) ? mb_substr( $title, 0, 29 ) . '...' : $title;
-            
-            $list_posts_saved .=  '<option value="' . $id . '" selected="selected">' . $title_to_display . '</option>';
-        }
-        
+
+        foreach ($list_excluded_posts as $excluded_post ) {
+            if( $excluded_post ){
+                $title = get_the_title( $excluded_post );
+                $title_to_display = ( mb_strlen( $title ) > 30 ) ? mb_substr( $title, 0, 29 ) . '...' : $title;
+                $list_posts_saved .=  '<option value="' . $excluded_post . '" selected="selected">' . $title_to_display . '</option>';                
+            }
+        }            
+        $html .= '<div class="">';
+        $html .= '<h3>'.__('Exclude Posts (type) by title:', 'etruel-del-post-copies').'</h3>';
         $html .= '<select id="excluded_posts" name="excluded_posts[]" multiple="multiple" style="width:99%;max-width:25em;">'; 
         $html .= $list_posts_saved;
         $html .= '</select>';
+        $html .= '</div>';
         
         return $html;
     }
@@ -54,8 +56,8 @@ class WPEDPC_Select2 {
 	$return = array();
 	$search_results = new WP_Query( array( 
 		's' => $_GET['q'],
-		'post_status' => 'publish',
-                'post_type' => 'post' ,
+		'post_status' => 'any',
+                'post_type' => 'any' ,
                 'orderby' => 'title', 
                 'order' => 'ASC'
 	) );

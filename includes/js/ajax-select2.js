@@ -5,7 +5,6 @@
 jQuery(function($){
         
 	// multiple select with AJAX search
-//        $('#excluded_article').select2({});
         
 	$('#excluded_posts').select2({
   		ajax: {

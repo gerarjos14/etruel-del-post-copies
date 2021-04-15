@@ -57,6 +57,7 @@ class WPEDPC_Campaign {
 	public $cposstatuses;
 	public $minmax;
 	public $excluded_ids = '';
+        public $excluded_posts = array();
 	public $schedule;
 	public $logs = array();
 

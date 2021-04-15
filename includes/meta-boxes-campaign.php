@@ -209,7 +209,13 @@ class meta_boxes_campaign {
 		} else {
 			$fields['excluded_ids'] = '';
 		}
-
+                
+		if(isset($postfields['excluded_posts']) && is_array($postfields['excluded_posts'])) {
+			$fields['excluded_posts'] = (array)$postfields['excluded_posts'];
+		}else{
+			$fields['excluded_posts'] = array();
+		}                
+                
 		$fields['schedule'] = edel_post_copies::wpedpc_cron_next($fields['period']); 
 
 
@@ -598,7 +604,8 @@ class meta_boxes_campaign {
 		$excluded_ids = get_post_meta( $post_id, 'excluded_ids', true );
 		$display = is_null( $post_id ) ? ' display: none;' : '';
 		
-		$echoHtml = '<div id="excludeposts_wrap"'.$display.'>
+                $echoHtml = WPEDPC_Select2::display_select2_menu( $post_id );
+		$echoHtml  .= '<div id="excludeposts_wrap"'.$display.'>
 			<h3>'.__('Exclude Posts (types) by ID separated by commas:', 'etruel-del-post-copies').'</h3> 
 			<input class="large-text" type="text" value="'.$excluded_ids.'" name="excluded_ids">
 			<p class="description">'.__('If you want some posts/pages never be deleted by plugin, you can type here its IDs, and will be excluded from delete queries.', 'etruel-del-post-copies' ).'<br>

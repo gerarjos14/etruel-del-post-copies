@@ -28,23 +28,24 @@ class WPEDPC_Select2 {
         wp_enqueue_script( 'ajx-select2-js' , WPEDPC_PLUGIN_URL .'includes/js/ajax-select2.js', array( 'jquery', 'wpedpc-select2-js' ,'wpedpc-meta-boxes-admin-head' ), '2', true);
     }
     
-    public static function display_select2_menu( $excluded_posts ){
+    public static function display_select2_menu( $post_id ){
         
         $html = '';
         
-        $list_excluded_posts = explode( ',', $excluded_posts );
+        $excluded_posts_by_title = get_post_meta($post_id, 'excluded_posts');
         
         $list_posts_saved = '';
-
-        foreach ($list_excluded_posts as $excluded_post ) {
-            if( $excluded_post ){
-                $title = get_the_title( $excluded_post );
-                $title_to_display = ( mb_strlen( $title ) > 30 ) ? mb_substr( $title, 0, 29 ) . '...' : $title;
-                $list_posts_saved .=  '<option value="' . $excluded_post . '" selected="selected">' . $title_to_display . '</option>';                
-            }
-        }            
+        if($excluded_posts_by_title){
+            foreach ($excluded_posts_by_title[0] as $excluded_post ) {
+                if( $excluded_post ){
+                    $title = get_the_title( $excluded_post );
+                    $title_to_display = ( mb_strlen( $title ) > 30 ) ? mb_substr( $title, 0, 29 ) . '...' : $title;
+                    $list_posts_saved .=  '<option value="' . $excluded_post . '" selected="selected">' . $title_to_display . '</option>';                
+                }
+            } 
+        }
         $html .= '<div class="">';
-        $html .= '<h3>'.__('Exclude Posts (type) by title:', 'etruel-del-post-copies').'</h3>';
+        $html .= '<h3>'.__('Exclude Posts (types) by title:', 'etruel-del-post-copies').'</h3>';
         $html .= '<select id="excluded_posts" name="excluded_posts[]" multiple="multiple" style="width:99%;max-width:25em;">'; 
         $html .= $list_posts_saved;
         $html .= '</select>';

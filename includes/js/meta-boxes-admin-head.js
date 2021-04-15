@@ -130,14 +130,39 @@ jQuery(document).ready(function ($) {
 
 	jQuery("#allcat").click(function (e) {
 		if (this.checked == 0) {
-			jQuery('#categories_wrap').fadeIn();
+                    jQuery('#categories_wrap').fadeIn();
 		} else {
-			jQuery('#categories_wrap').fadeOut();
+                    jQuery('#categories_wrap').find('input:checked').each(function (e) {
+                       $(this).prop('checked', false); 
+                    });
+                    setTimeout(function(){
+                         jQuery('#categories_wrap').fadeOut();
+                    },1000);
 		}
 	});
-	jQuery("#select_all_category").click(function (e) {
-		jQuery('.checkbox_cat li label input').attr('checked', this.checked);
-	});
+        jQuery(".checkbox_cat li label input").click(function (e) {
+            if( this.checked ){
+                jQuery('#allcat').prop('checked',false);
+            }else{
+                jQuery('.checkbox_cat li label input').each(function(c){
+                        if ( this.checked ){
+                            jQuery('#allcat').prop('checked',false);
+                            return false;
+                        }else{
+                        jQuery('#allcat').prop('checked',true);
+                    }
+                });     
+            }
+        });
+        jQuery("#select_all_category").change(function(){
+            if( this.checked){
+                jQuery('#allcat').prop('checked',false);
+                jQuery('.checkbox_cat li label input').prop('checked', true); 
+            }else{
+                jQuery('#allcat').prop('checked',true);
+                jQuery('.checkbox_cat li label input').prop('checked', false);                 
+            }
+        });
 	$('#titledel').change(function(){
             if( !this.checked){
                 $('#contentdel').prop( "checked", true );

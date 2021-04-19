@@ -56,6 +56,7 @@ if (!class_exists('edel_post_copies')) :
 
 		function __construct() {
 			$this->setup_globals();
+			$this->register_autoloader();
 			$this->includes();
 			$this->setup_actions();
 			$this->load_textdomain();
@@ -117,7 +118,7 @@ if (!class_exists('edel_post_copies')) :
 				require_once WPEDPC_PLUGIN_DIR . 'includes/admin-footer.php';
 				require_once WPEDPC_PLUGIN_DIR . 'includes/plugins.php';
 				require_once WPEDPC_PLUGIN_DIR . 'includes/meta-boxes-campaign.php';
-                                require_once WPEDPC_PLUGIN_DIR . 'includes/class-wpedpc-select2.php';
+				require_once WPEDPC_PLUGIN_DIR . 'includes/class-wpedpc-select2.php';
 				$wpedpc_options = wpedpc_get_settings();
 				require_once WPEDPC_PLUGIN_DIR . 'includes/settings/wpedpc_settings.php';
 				require_once WPEDPC_PLUGIN_DIR . 'includes/settings/licenses-settings.php';
@@ -383,7 +384,6 @@ function WPEDPC() {
 	//if( !apply_filters('wpedpc_env_checks', true) ) {
 	//return false;
 	//}
-        edel_post_copies::register_autoloader();
 	return edel_post_copies::get_instance();
 }
 

@@ -1,5 +1,5 @@
 === WP Delete Post Copies ===
-Contributors: etruel
+Contributors: etruel, vanbom
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTNR4BH8XPDR6
 Tags: posts, copies, duplicated, duplicate posts, delete copies, delete, erase, cron, squedule, squedule delete
 Requires at least: 4.1
@@ -55,9 +55,16 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The logs are also in a new tab saving time to load the page. Click on title to refresh.
 
 == Changelog ==
-= 5.3 Apr XX, 2021 =
-* Ajax behaviors on run all campaigns. 
+= 5.3 Apr 19, 2021 =
+* Fixes some queries according with the selected options.
+* Allows search duplicates by title AND content or one of both.
+* Added many JS conditions to avoid wrong behaviors on running campaigns.
+* Initially disabled GO button before save a campaign.
+* Added Select2 field to allow select excluded post(types) by name.
+* Fixed some behaviors on run all campaigns. 
+* We've welcomed a new contributor to the etruel/netmdp team: @vanbom started helping us with development ;-D
 * Updated plugin URI and author URI.
+* Updated License library to support auto-updates.
 
 = 5.2 Feb 20, 2019 =
 * Tested to work with WordPress 5.1

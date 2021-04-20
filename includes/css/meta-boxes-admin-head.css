@@ -1,5 +1,5 @@
 .updated a, #edit-slug-box, #minor-publishing-actions, #misc-publishing-actions { display:none; }
-.edel-box{display: inline-block;vertical-align: top;text-align: initial;padding: 0 5px;}
+.edel-box{display: inline-block;vertical-align: top;text-align: initial;padding: 5px 10px 10px;}
 #categories.checkbox_cat li {margin-bottom: 0;}
 .widefat tr:nth-child(odd) {background-color: #eee;}
 .postdel{font-size: 12px;font-weight: bold;float: left;padding: 0 5px 0px;background: rgb(255, 116, 116);margin: 0 5px;border-radius: 8px;}
@@ -8,7 +8,9 @@
 .description{font-size: 11px !important;}
 #edpc-table td {vertical-align: top;padding: 0 12px;}
 #edpc-table th {padding: 10px 10px 0;}
-input#gosubmit {background: greenyellow;z-index: 20;position: absolute;border: 0;border-radius: 20px;padding: 1px 10px;margin: 0 15px;font-weight: bold;}
+#wpedpc_campaign_runactions #wpedpc_limit_wrap{ display: flex; }
+#wpedpc_campaign_runactions #wpedpc_limit_wrap select{ width: 100%;	}
+input#gosubmit {background: greenyellow;z-index: 20; border: 1px solid greenyellow;border-radius: 20px;padding: 1px 10px;margin-left: 10px;font-weight: bold;}
 img#goman {position: absolute;left: 167px;height: 75px;z-index: 10;}
 @media screen and (max-width: 782px){
 /*	img#goman {left: 300px}

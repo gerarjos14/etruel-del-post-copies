@@ -518,7 +518,7 @@ class meta_boxes_campaign {
 		$contentdel = get_post_meta( $post_id, 'contentdel', true );
 		$display = is_null( $post_id ) ? ' display: none;' : '';
 		
-		$echoHtml = '<div id="whatsee_wrap" style="border:1px #aaa solid;padding: 3px;'.$display.'">
+		$echoHtml = '<div id="whatsee_wrap" style="border:1px #aaa solid;padding: 5px 8px;'.$display.'">
 			<label class="checkbox"><input type="checkbox" value="1" '.checked($titledel, 1, false).' name="titledel" id="titledel" /> '.__('Look at on Title.', 'etruel-del-post-copies' ).'</label><br/>
 			<label class="checkbox"><input type="checkbox" value="1" '.checked($contentdel, 1, false).' name="contentdel" id="contentdel" /> '. __('Look at on Content.', 'etruel-del-post-copies' ).'</label>
 		</div>';

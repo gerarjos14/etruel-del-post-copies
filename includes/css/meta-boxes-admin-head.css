@@ -2,9 +2,10 @@
 .edel-box{display: inline-block;vertical-align: top;text-align: initial;padding: 5px 10px 10px;}
 #categories.checkbox_cat li {margin-bottom: 0;}
 .widefat tr:nth-child(odd) {background-color: #eee;}
-.postdel{font-size: 12px;font-weight: bold;float: left;padding: 0 5px 0px;background: rgb(255, 116, 116);margin: 0 5px;border-radius: 8px;}
-.postdel a {color: white;}
-.postdel:hover {background: red;cursor: pointer;}
+.postdel a{ display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; font-size: 12px;font-weight: bold;float: left;background: rgb(255, 116, 116);margin: 0 5px;border-radius: 50%;}
+.postdel svg { height: 12px; width: 12px; }
+.postdel svg path {fill: #fff;}
+.postdel a:hover {background: red;cursor: pointer;}
 .description{font-size: 11px !important;}
 #edpc-table td {vertical-align: top;padding: 0 12px;}
 #edpc-table th {padding: 10px 10px 0;}
@@ -18,3 +19,19 @@ img#goman {position: absolute;left: 167px;height: 75px;z-index: 10;}
 */}
 select#quickdo {cursor: pointer;cursor: hand;}
 .postbox.edel-box {display: inline-table; margin-right: 10px;}
+.cron_box{ background-color: #f0f0f1; width: 100%;display: flex; margin-top: 10px; padding: 0 5px; box-sizing: border-box; max-width: 800px; }
+.cron_box div{ padding: 5px; height: 200px; width: 100%; }
+.cron_box div select{ height: 89% !important; width: 100%; }
+@media screen and (max-width: 565px){
+	.cron_box{ display: block; }
+	.cron_box div{ box-sizing: border-box; }
+}
+#wpedpc_results_tab .widefat thead tr{ background-color: #2c3338; }
+#wpedpc_results_tab .widefat thead th{ color: #fff; }
+#wpedpc_results_tab .extension-message { background: #fff; border: 1px solid #dba617; border-left-width: 4px; box-shadow: 0 1px 1px rgba(0,0,0,.04); margin: 5px 0 2px; padding: 1px 12px; }
+#wpedpc_results_tab .extension-message p { margin: .5em 0; padding: 2px; }
+#wpedpc_logs_tab h2 {font-size: 23px; font-weight: 400; margin: 0; padding: 9px 0 4px 0; line-height: 1.3;}
+.widefat tr:nth-child(2n+1){ background-color: initial; }
+.widefat tbody tr:nth-child(2n+1){ background-color: #eee; }
+.widefat tfoot{ border-top: 1px solid #c3c4c7; }
+.widefat tfoot td{ border: 0; }

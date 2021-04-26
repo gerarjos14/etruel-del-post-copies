@@ -43,13 +43,13 @@ class wpedpc_ajax_actions {
 			return false;
 		}		
 		$wpedpc_logs = get_post_meta($post_id, 'logs', true);
-		$echoHtml = '<h2>'.__('Delete Post Copies Logs', 'etruel-del-post-copies').'</h2><br />
-				<div id="poststuff" class="metabox-holder has-right-sidebar">
+		$echoHtml = '<h2>'.__('Delete Post Copies Logs', 'etruel-del-post-copies').'</h2>
+				<div id="poststuff" class="metabox-holder">
 				<div id="side-info-column" class="inner-sidebar">
 				</div>
 				<div id="post-body-content">
 				<div class="postbox">
-				<div class="inside">
+				<div class="inside" style="padding-top: 6px;">
 					<table class="widefat" style="overflow-y: scroll; overflow-x: hidden; max-height: 310px;">
 						<tr>
 							<th scope="col">#</th>

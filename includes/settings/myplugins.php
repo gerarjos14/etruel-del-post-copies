@@ -1,6 +1,10 @@
 						<div id="side-sortables" class="meta-box-sortables ui-sortable">
 							<div class="postbox">
-								<h3 class="handle"><?php _e( 'Donate', 'etruel-del-post-copies'  );?></h3>
+								<button type="button" class="handlediv button-link" aria-expanded="true">
+									<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+									<span class="toggle-indicator" aria-hidden="true"></span>
+								</button>
+								<h3 class="hndle ui-sortable-handle"> <span><?php _e('Donate', 'etruel-del-post-copies'); ?></span></h3>
 								<div class="inside">
 									<p><strong><?php echo '► WP Delete Post Copies '. WPEDPC_VERSION . ' ◄' ; ?></strong></p>
 									<p><?php _e( 'Thanks for test, use and enjoy this plugin.', 'etruel-del-post-copies'  );?></p>
@@ -15,7 +19,11 @@
 								</div>
 							</div>
 							<div class="postbox">
-								<h3 class="handle"><?php _e( 'Know my plugins', 'etruel-del-post-copies'  );?></h3>
+								<button type="button" class="handlediv button-link" aria-expanded="true">
+									<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+									<span class="toggle-indicator" aria-hidden="true"></span>
+								</button>
+								<h3 class="hndle ui-sortable-handle"> <span><?php _e('Know my plugins', 'etruel-del-post-copies'); ?></span></h3>
 								<div class="inside">
 									<div class="wpeplugname" id="WPeDOP"><a href="http://etruel.com/downloads/wp-edel-oldest-post/" target="_Blank" class="wpelinks">WP Delete Oldest Posts Add-on</a>
 									<div id="WPeDOPdesc" class="small-text">Adds to WP Delete Post Copies plugin a feature to use it as a remover of posts published before a date.  And/Or you can establish a period with a cron job to continuously deleting old posts and just remains that period on database..</div></div>

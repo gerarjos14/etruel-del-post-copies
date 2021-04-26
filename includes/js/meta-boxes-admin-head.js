@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
 			'<li><a href="#wpedpc_logs_tab">' + wpedpc_object_meta_boxes.msg_logs + '</a></li>' +
 			'</ul>';
 	wpedpc_campaign_tab = $('#wpbody-content .wrap').prop('outerHTML');
-	wpedpc_results_tab = '<div id="wpedpc_results_tab">Here will be displayed the campaigns results if click the button Run Now</div>';
+	wpedpc_results_tab = '<div id="wpedpc_results_tab"><div class="msg extension-message"><p>Here will be displayed the campaigns results if click the button Run Now</p></div></div>';
 	wpedpc_logs_tab = '<div id="wpedpc_logs_tab">' + wpedpc_object_meta_boxes.msg_click_to_load_campaigns + '</div>	</div>';
 
 	$('#wpbody-content .wrap').html(wpedpc_tabs + wpedpc_campaign_tab + wpedpc_results_tab + wpedpc_logs_tab);

@@ -395,14 +395,15 @@ class meta_boxes_campaign {
 						
 		$echoHtml = '<div id="jobschedule"'.$display.'>
 			<p><strong>'.__('Schedule','etruel-del-post-copies' ).'</strong></p>
-			<div class="inside">
+			<div class="inside" style="padding: 0;">
 				<b>'.__('Active:', 'etruel-del-post-copies' ).'</b> 
 				<input type="checkbox" id="active_schedule" name="active" value="1" '.($active ? 'checked="checked"' : '').' /><br />
 				
 				<div id="timetable" style="display:'.($active ? 'block' : 'none').'">
-				<div style="width:130px; float: left;">
+				<div class="cron_box">
+				<div>
 					<b>'.__('Weekday:','etruel-del-post-copies').'</b><br />
-					<select name="cronwday[]" id="cronwday" style="height:135px;" multiple="multiple">
+					<select name="cronwday[]" id="cronwday" multiple="multiple">
 						<option value="*"'.selected(in_array('*',$wday,true),true,false).'>'.__('Any (*)','etruel-del-post-copies' ).'</option>
 						<option value="0"'.selected(in_array('0',$wday,true),true,false).'>'.__('Sunday').'</option>
 						<option value="1"'.selected(in_array('1',$wday,true),true,false).'>'.__('Monday').'</option>
@@ -413,10 +414,10 @@ class meta_boxes_campaign {
 						<option value="6"'.selected(in_array('6',$wday,true),true,false).'>'.__('Saturday').'</option>
 						</select>
 					</div>
-					<div style="width:85px; float: left;">
+					<div>
 					<b>'.__('Days:','etruel-del-post-copies' ).'</b><br />
 						
-					<select name="cronmday[]" id="cronmday" style="height:135px;" multiple="multiple">
+					<select name="cronmday[]" id="cronmday" multiple="multiple">
 						<option value="*"'.selected(in_array('*',$mday,true),true,false).'>'.__('Any (*)','etruel-del-post-copies').'</option>
 					';
 
@@ -427,11 +428,11 @@ class meta_boxes_campaign {
 			$echoHtml .= '
 				</select>
 				</div>					
-				<div style="width:130px; float: left;">
+				<div>
 					<b>'.__('Months:','etruel-del-post-copies' ).'</b><br />
 					
 					
-					<select name="cronmon[]" id="cronmon" style="height:135px;" multiple="multiple">
+					<select name="cronmon[]" id="cronmon" multiple="multiple">
 					<option value="*"'.selected(in_array('*',$mon,true),true,false).'>'.__('Any (*)','etruel-del-post-copies' ).'</option>
 					<option value="1"'.selected(in_array('1',$mon,true),true,false).'>'.__('January').'</option>
 					<option value="2"'.selected(in_array('2',$mon,true),true,false).'>'.__('February').'</option>
@@ -447,10 +448,10 @@ class meta_boxes_campaign {
 					<option value="12"'.selected(in_array('12',$mon,true),true,false).'>'.__('December').'</option>
 					</select>
 				</div>
-				<div style="width:85px; float: left;">
+				<div>
 					<b>'.__('Hours:','etruel-del-post-copies' ).'</b><br />
 					
-					<select name="cronhours[]" id="cronhours" style="height:135px;" multiple="multiple">
+					<select name="cronhours[]" id="cronhours" multiple="multiple">
 					<option value="*"'.selected(in_array('*',$hours,true),true,false).'>'.__('Any (*)','etruel-del-post-copies').'</option>';
 					
 					
@@ -461,10 +462,10 @@ class meta_boxes_campaign {
 					
 				$echoHtml .= '</select>
 				</div>					
-				<div style="width:85px; float: left;">
+				<div>
 					<b>'.__('Minutes: ','etruel-del-post-copies' ).'</b><br />
 					
-					<select name="cronminutes[]" id="cronminutes" style="height:135px;" multiple="multiple">
+					<select name="cronminutes[]" id="cronminutes" multiple="multiple">
 					<option value="*"'.selected(in_array('*',$minutes,true),true,false).'>'.__('Any (*)','etruel-del-post-copies' ).'</option>';
 					
 					for ($i=0;$i<60;$i=$i+5) {
@@ -472,6 +473,7 @@ class meta_boxes_campaign {
 					}
 					
 				$echoHtml .= '</select>
+				</div>
 				</div>
 				<br class="clear" />
 				'.__('Working as <a href="http://wikipedia.org/wiki/Cron" target="_blank">Cron</a> job schedule:','etruel-del-post-copies' ).'<i>'.$period.'</i><br />

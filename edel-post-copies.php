@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: WP Delete Post Copies
  * Plugin URI: https://etruel.com/downloads/wp-delete-post-copies/
@@ -7,7 +6,7 @@
  *  and can permanently delete them with images or send them to the trash in manual mode or automatic squeduled with Wordpress cron.
  * Author: etruel
  * Author URI: https://etruel.com
- * Version: 5.3
+ * Version: 5.3.1
  * Text Domain: etruel-del-post-copies
  * Domain Path: languages
  *
@@ -33,7 +32,7 @@ if (!defined('ABSPATH'))
 	exit;
 // Plugin version
 if (!defined('WPEDPC_VERSION'))
-	define('WPEDPC_VERSION', '5.3');
+	define('WPEDPC_VERSION', '5.3.1');
 
 //require_once 'includes/cron-functions.php';
 
@@ -126,28 +125,28 @@ if (!class_exists('edel_post_copies')) :
 			}
 			require_once WPEDPC_PLUGIN_DIR . 'includes/install.php';
 		}
-                /**
-                 * Register the built-in autoloader
-                 * 
-                 * @codeCoverageIgnore
-                 */
-                public static function register_autoloader ( ){
-                    spl_autoload_register( array ( 'edel_post_copies' , 'autoloader' ) );
-                }
 
-                /**
-                 * Register autoloader.
-                 * 
-                 * @param String $class_name Class to load
-                 */
-                public static function autoloader ( $class_name ){
+		/**
+		 * Register the built-in autoloader
+		 * 
+		 * @codeCoverageIgnore
+		 */
+		public static function register_autoloader() {
+			spl_autoload_register(array('edel_post_copies', 'autoloader'));
+		}
 
-                    $class = strtolower ( str_replace( '_', '-' , $class_name ) );
-                    $file  = plugin_dir_path ( __FILE__ ) . '/includes/class-' . $class . '.php'; 
-                    if ( file_exists( $file ) ){
-                        require_once $file;
-                    }
-                }                
+		/**
+		 * Register autoloader.
+		 * 
+		 * @param String $class_name Class to load
+		 */
+		public static function autoloader($class_name) {
+			$class = strtolower(str_replace('_', '-', $class_name));
+			$file = plugin_dir_path(__FILE__) . '/includes/class-' . $class . '.php';
+			if (file_exists($file)) {
+				require_once $file;
+			}
+		}
 
 		public function load_textdomain() {
 			// Set filter for plugin's languages directory

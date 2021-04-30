@@ -98,25 +98,24 @@ if (!class_exists('wpedpc_run_campaign')) :
 				$categories = '-1';
 			}
 
-                        if(is_array($wpedpc_campaign->excluded_posts)){
-                            $excluded_posts = implode(",",$wpedpc_campaign->excluded_posts);
-                        }
-                        
-                        
+			if (is_array($wpedpc_campaign->excluded_posts)) {
+				$excluded_posts = implode(",", $wpedpc_campaign->excluded_posts);
+			}
+
+
 			$excluded_ids = $wpedpc_campaign->excluded_ids . ',' . $wpedpc_options['excluded_ids'];
-			if (empty($wpedpc_campaign->excluded_ids) && empty($excluded_posts) ) {
+			if (empty($wpedpc_campaign->excluded_ids) && empty($excluded_posts)) {
 				$excluded_ids = '-1';
-			} elseif( !empty($wpedpc_campaign->excluded_ids) && !empty($excluded_posts)) {
+			} elseif (!empty($wpedpc_campaign->excluded_ids) && !empty($excluded_posts)) {
 				$arrayExcludeIds = explode(',', $excluded_ids);
 				$arrayExcludeIds = array_filter($arrayExcludeIds);
-                                
-				$excluded_ids = implode(',', $arrayExcludeIds) . ','.$excluded_posts;
-			}elseif(  empty($wpedpc_campaign->excluded_ids) && !empty($excluded_posts)){
-                                $excluded_ids = $excluded_posts;
-                        }
 
+				$excluded_ids = implode(',', $arrayExcludeIds) . ',' . $excluded_posts;
+			} elseif (empty($wpedpc_campaign->excluded_ids) && !empty($excluded_posts)) {
+				$excluded_ids = $excluded_posts;
+			}
 
-
+			
 			$timenow = time();
 			$mtime = explode(' ', microtime());
 			$time_start = $mtime[1] + $mtime[0];

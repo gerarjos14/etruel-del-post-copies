@@ -235,7 +235,6 @@ if (!class_exists('wpedpc_run_campaign')) :
 				ORDER BY post_title ASC " . $limite;
 			}
 			$query = apply_filters('wpedpc_after_query', $query, $wpedpc_campaign);
-                        update_option('sql', $query);
 
 			if ($mode == 'show') {
 				$dupes = $wpdb->get_results($query);

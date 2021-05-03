@@ -103,19 +103,55 @@ if (!class_exists('wpedpc_run_campaign')) :
 			}
 
 
-			$excluded_ids = $wpedpc_campaign->excluded_ids . ',' . $wpedpc_options['excluded_ids'];
-			if (empty($wpedpc_campaign->excluded_ids) && empty($excluded_posts)) {
-				$excluded_ids = '-1';
-			} elseif (!empty($wpedpc_campaign->excluded_ids) && !empty($excluded_posts)) {
-				$arrayExcludeIds = explode(',', $excluded_ids);
-				$arrayExcludeIds = array_filter($arrayExcludeIds);
+			//$excluded_ids = $wpedpc_campaign->excluded_ids . ',' . $wpedpc_options['excluded_ids'];
+                        
+                        $allids = array();
+                        if(empty($wpedpc_campaign->excluded_ids) && empty($excluded_posts) && empty( $wpedpc_options['excluded_ids'])){
+                            $excluded_ids = '-1';
+                        }else{
+                            if( isset($wpedpc_campaign->excluded_ids) and !empty($wpedpc_campaign->excluded_ids)){
 
-				$excluded_ids = implode(',', $arrayExcludeIds) . ',' . $excluded_posts;
-			} elseif (empty($wpedpc_campaign->excluded_ids) && !empty($excluded_posts)) {
-				$excluded_ids = $excluded_posts;
-			}
+                                array_push($allids, maybe_serialize($wpedpc_campaign->excluded_ids));
+                              
+                            }
+                            if( isset($excluded_posts) && !empty($excluded_posts)){
 
-			
+                                array_push($allids, maybe_serialize($excluded_posts));
+                                
+                            }
+                            if( isset($wpedpc_options['excluded_ids']) && !empty($wpedpc_options['excluded_ids'])){
+
+                                array_push($allids, maybe_serialize ($wpedpc_options['excluded_ids']));
+                               
+                            } 
+                            $ids = implode(',',$allids );
+                            $k = 0;
+                            $len = count($allids);
+                            foreach ($allids as $id) {
+                             if( $k < $len - 1){
+                                 $excluded_ids .= $id .',';
+                             }else{
+                                 $excluded_ids .= $id;
+                             }
+                            $k++;
+
+                            }
+                                                        
+                        }
+//			if (empty($wpedpc_campaign->excluded_ids) && empty($excluded_posts) && empty( $wpedpc_options['excluded_ids'])) {
+//				$excluded_ids = '-1';
+//                        
+//			} elseif (!empty($wpedpc_campaign->excluded_ids) && !empty($excluded_posts)) {
+//				$arrayExcludeIds = explode(',', $excluded_ids);
+//				$arrayExcludeIds = array_filter($arrayExcludeIds);
+//
+//				$excluded_ids = implode(',', $arrayExcludeIds) . ',' . $excluded_posts;
+//			} elseif (empty($wpedpc_campaign->excluded_ids) && !empty($excluded_posts)) {
+//				$excluded_ids = $excluded_posts;
+//			}
+
+	
+                        
 			$timenow = time();
 			$mtime = explode(' ', microtime());
 			$time_start = $mtime[1] + $mtime[0];
@@ -199,6 +235,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 				ORDER BY post_title ASC " . $limite;
 			}
 			$query = apply_filters('wpedpc_after_query', $query, $wpedpc_campaign);
+                        update_option('sql', $query);
 
 			if ($mode == 'show') {
 				$dupes = $wpdb->get_results($query);

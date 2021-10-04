@@ -68,6 +68,7 @@ if (!class_exists('edel_post_copies')) :
 			add_action('init', array(&$this, 'wpedpc_custom_cron'));
 			add_filter('wpedpc_env_checks', array(&$this, 'wpedpc_env_checks'));
 			do_action('wpedpc_setup_actions');
+			add_action('admin_head', array(__CLASS__, 'admin_icon_style')) ;
 		}
 
 		public function __clone() {
@@ -171,6 +172,14 @@ if (!class_exists('edel_post_copies')) :
 				// Load the default language files
 				load_plugin_textdomain('etruel-del-post-copies', false, $lang_dir);
 			}
+		}
+		
+		static function admin_icon_style() {
+			?><style type="text/css">
+			#adminmenu .menu-icon-wpedpcampaign .wp-menu-image img {
+			    padding-top: 3px;
+			}
+			</style><?php
 		}
 
 		public function add_submenu_page() {

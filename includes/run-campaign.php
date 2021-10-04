@@ -313,7 +313,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 							if (isset($custom_field_keys)) { // (is_array($custom_field_keys))
 								foreach ($custom_field_keys as $key => $value) {
 									$valuet = trim($value);
-									if ('_' == $valuet{0})
+									if ('_' == $valuet[0])
 										continue;
 									$claves .= "<b>Meta key</b>: '$key', value: '$value'<br>";
 								}

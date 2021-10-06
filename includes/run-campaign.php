@@ -44,7 +44,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 			return $response;
 		}
 
-		function run($mode = 'auto', $post_id, $response = array()) {
+		function run($mode = 'auto', $post_id = 0, $response = array()) {
 			global $wpdb, $wp_locale, $current_blog, $wpedpc_options;
 
 			$wpedpc_campaign = new WPEDPC_Campaign($post_id);

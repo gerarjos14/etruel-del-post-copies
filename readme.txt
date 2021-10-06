@@ -2,9 +2,11 @@
 Contributors: etruel, vanbom, manuelge
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTNR4BH8XPDR6
 Tags: posts, copies, duplicated, duplicate posts, delete copies, delete, erase, cron, squedule, squedule delete
-Requires at least: 4.1
+Requires at least: 3.1.0
 Tested up to: 5.8.1
 Stable tag: 5.3.3
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin searches duplicated posts by title or content, filtering by category and can permanently delete them with images or send them to the trash.
 
@@ -55,8 +57,9 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The logs are also in a new tab saving time to load the page. Click on title to refresh.
 
 == Changelog ==
-= 5.3.3 Oct 4, 2021 =
-* Fixes a PHP 7.4 notice.
+= 5.3.3 Oct 6, 2021 =
+* lot of tweaks for PHP notices and warnings.
+* Added language catalog file.
 * Updated icons and banners. :D
 * Bump to WP 5.8.1
 

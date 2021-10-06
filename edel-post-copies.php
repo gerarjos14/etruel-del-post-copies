@@ -367,14 +367,14 @@ if (!class_exists('edel_post_copies')) :
 				$message .= __('- WordPress 3.9 or higher needed!', 'etruel-del-post-copies') . '<br />';
 				$checks = false;
 			}
-			if (version_compare(phpversion(), '5.2.0', '<')) { // check PHP Version
+			if (version_compare(phpversion(), '5.3.0', '<')) { // check PHP Version
 				$message .= __('- PHP 5.2.0 or higher needed!', 'etruel-del-post-copies') . '<br />';
 				$checks = false;
 			}
 			//put massage if one
 			if (!empty($message)) {
 				$wpedpc_admin_message = '<div id="message" class="error fade"><strong>WP Deletes Post Copies:</strong><br />' . $message . '</div>';
-				add_action('admin_notices', array(&$this, 'wpedpc_env_checks_notice'));
+				add_action('admin_notices', array( __CLASS__, 'wpedpc_env_checks_notice'));
 			}
 			return $checks;
 		}

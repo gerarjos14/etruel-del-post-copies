@@ -1,0 +1,838 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Delete Post Copies\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-06 05:11+0000\n"
+"PO-Revision-Date: 2021-10-06 05:25+0000\n"
+"Last-Translator: \n"
+"Language-Team: Spanish (Spain)\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.3; wp-5.8.1\n"
+"X-Domain: etruel-del-post-copies"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:233
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:394
+#, php-format
+msgid "!! Problem deleting post %s - %s !!"
+msgstr "!!Problemas al eliminar post %s - %s !!"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:129
+#, php-format
+msgid "%1$s %2$s moved to the Trash."
+msgid_plural "%1$s %3$s moved to the Trash."
+msgstr[0] "%1$s %2$s movido a la Papelera."
+msgstr[1] "%1$s %3$s movido a la Papelera."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:127
+#, php-format
+msgid "%1$s %2$s not updated, somebody is editing it."
+msgid_plural "%1$s %3$s not updated, somebody is editing them."
+msgstr[0] "%1$s %2$s no actualizado, alguien lo está editando."
+msgstr[1] "%1$s %3$s no se actualiza, alguien tiene la edición de los mismos."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:128
+#, php-format
+msgid "%1$s %2$s permanently deleted."
+msgid_plural "%1$s %3$s permanently deleted."
+msgstr[0] "%1$s %2$s eliminado de forma permanente."
+msgstr[1] "%1$s %3$s elimina de forma permanente."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:130
+#, php-format
+msgid "%1$s %2$s restored from the Trash."
+msgid_plural "%1$s %3$s restored from the Trash."
+msgstr[0] "%1$s %2$s restaurado de la Papelera de reciclaje."
+msgstr[1] "%1$s %3$s restaurado de la Papelera de reciclaje."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:126
+#, php-format
+msgid "%1$s %2$s updated."
+msgid_plural "%1$s %3$s updated."
+msgstr[0] "%1$s %2$s actualizado."
+msgstr[1] "%1$s %3$s actualizado."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:115
+#, php-format
+msgid "%1$s published."
+msgstr "%1$s publicado."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:116
+#, php-format
+msgid "%1$s saved."
+msgstr "%1$s guardado."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:49
+#, php-format
+msgid "%1$s Settings"
+msgstr "%1$s Configuración"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:117
+#, php-format
+msgid "%1$s submitted."
+msgstr "%1$s envíado."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:113
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:114
+#, php-format
+msgid "%1$s updated."
+msgstr "%1$s actualizado."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:72
+#, php-format
+msgid "%s errors"
+msgstr "%s errores"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:74
+#, php-format
+msgid "%s posts"
+msgstr "%s entradas"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:236
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:397
+#, php-format
+msgid "'%s' (ID #%s) Deleted!"
+msgstr "'%s' (ID #%s) Eliminado!"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:187
+msgid "(Copy)"
+msgstr "(Copia)"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/edel-post-copies.php:371
+msgid "- PHP 5.2.0 or higher needed!"
+msgstr "- PHP 5.2.0 o más necesario!"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/edel-post-copies.php:367
+msgid "- WordPress 3.9 or higher needed!"
+msgstr "- WordPress 3.9 o superior necesario!"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:378
+#, php-format
+msgid "-- img file:'%s' Deleted! "
+msgstr "-- archivo img:'%s' Eliminado! "
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:363
+#, php-format
+msgid "-- Post image id:'%s' Deleted! "
+msgstr "-- Post imagen id:'%s' Eliminado! "
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:390
+#, php-format
+msgid "-- Post META key:'%s', value: '%s'. Deleted! "
+msgstr "-- Post META clave:'%s', value: '%s'. Eliminado! "
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:51
+msgid "Actions to do"
+msgstr "Acciones para hacer"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:364
+msgid "Activate"
+msgstr "Activar"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:363
+msgid "Activate schedule"
+msgstr "Activar horario"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:399
+msgid "Active:"
+msgstr "Activo:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:39
+msgid "Add New"
+msgstr "Añadir Nuevo"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:40
+#, php-format
+msgid "Add New %1$s"
+msgstr "Agregar Nuevo %1$s"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:21
+msgid ""
+"Adds to WP Delete Post Copies plugin a feature to use it as a remover of "
+"posts to delete entries by date instead of searching duplicates."
+msgstr ""
+"Añade al plugin WP Delete Post Copies una función para usarlo como un "
+"eliminado de entradas, para eliminar las entradas por fecha en lugar de "
+"buscar duplicados."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:43
+msgid "All Campaigns"
+msgstr "Todas Las Campañas"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:171
+#, php-format
+msgid ""
+"All Settings and %s campaigns were deleted and the plugin was deactivated."
+msgstr ""
+"Todos los Ajustes y %s campañas se han eliminado y el plugin se ha "
+"desactivado."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:339
+msgid "Also delete media attachments:"
+msgstr "Eliminar también los archivos adjuntos:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:345
+msgid "Also search and delete images in content:"
+msgstr "También buscar y borrar imágenes en el contenido:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:88
+msgid "An error has occurred while attempting to execute this action"
+msgstr "Se ha producido un error al intentar ejecutar esta acción"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:407
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:421
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:436
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:455
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:469
+msgid "Any (*)"
+msgstr "Ninguna (*)"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:91
+msgid "Are you sure you want to delete the post with ID:"
+msgstr "Está usted seguro de que quiere borrar el post con ID:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:71
+msgid "Auto"
+msgstr "Auto"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:87
+msgid ""
+"By checking this option you will delete all data and campaigns of this "
+"plugin and deactivate it when save changes."
+msgstr ""
+"Marcando esta opción borrará todos los datos y las campañas de este plugin y "
+"lo desactivará cuando guarde los cambios."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:508
+msgid "By default always remains first post added and others are deleted."
+msgstr ""
+"Por defecto mantener siempre el primer post agregado y eliminar los otros."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:80
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:79
+msgid "Campaign"
+msgstr "Campaña"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:302
+msgid "Campaign cleared"
+msgstr "Campaña borrada"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:97
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:140
+msgid "Campaign ID must exist."
+msgstr "Debe existir el ID de Campaña."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:81
+msgid "Campaign Results"
+msgstr "Resultados De La Campaña"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:262
+msgid "Campaign schedule activated"
+msgstr "Programación de campaña activada"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:262
+msgid "Campaign schedule Deactivated"
+msgstr "Campaña de programación Desactivado"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:80
+msgid "Campaigns of Deletes"
+msgstr "Campañas de Elimina"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:264
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:280
+msgid ""
+"Can't change campaign status.  You can try to refresh the page or inside "
+"campaign's edit."
+msgstr ""
+"No se puede cambiar el estado de la campaña. Usted puede tratar de "
+"actualizar la página o dentro de la campaña de editar."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/class-wpedpc-campaign.php:226
+#, php-format
+msgid "Can't get property %s"
+msgstr "No se puede obtener la propiedad de %s"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:643
+msgid "Categories"
+msgstr "Categorías"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:249
+msgid "Category"
+msgstr "Categoría"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:88
+msgid "CAUTION: "
+msgstr "PRECAUCIÓN: "
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/edel-post-copies.php:76
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/edel-post-copies.php:81
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:83
+msgid "Click here to load Logs"
+msgstr "Haga clic aquí para cargar Registros"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:13
+msgid "Click here to make a Donation"
+msgstr "Haga clic aquí para hacer una Donación"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:296
+msgid "Click to do the selected action."
+msgstr "Haga clic para hacer la acción seleccionada."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:250
+msgid "Copy campaign failed, could not find original:"
+msgstr "Copia de la campaña falló, no pudo encontrar el original:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:253
+msgid "Correct Post Date"
+msgstr "Corregir La Fecha De Publicación"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:252
+msgid "Correct Post ID"
+msgstr "La correcta IDENTIFICACIÓN de la entrada"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:56
+msgid "Date"
+msgstr "Fecha"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:418
+msgid "Days:"
+msgstr "Días:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:364
+msgid "Deactivate"
+msgstr "Desactivar"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:363
+msgid "Deactivate this campaign"
+msgstr "Desactivar esta campaña"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:85
+msgid "Delete all options and also delete all campaigns of this plugin."
+msgstr ""
+"Eliminar todas las opciones y eliminar también todas las campañas de este "
+"plugin."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:272
+msgid "Delete Copies Right Now"
+msgstr "Eliminar Copias Ahora Mismo"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:53
+msgid "Delete only in Categories"
+msgstr "Eliminar sólo en las Categorías de"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:46
+msgid "Delete Post Copies Logs"
+msgstr "Borrar Post Copias De Los Registros De"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:302
+msgid "Don't Exist: "
+msgstr "No Existen: "
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:7
+msgid "Donate"
+msgstr "Donar"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:52
+msgid "Duplicated Posts"
+msgstr "Duplicar Posts"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:41
+#, php-format
+msgid "Edit %1$s"
+msgstr "Edición de %1$s"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:103
+#, php-format
+msgid "Enter %s name here"
+msgstr "Introduce %s nombre aquí"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:273
+msgid "Erase Logs"
+msgstr "Borrar Registros"
+
+#. Author of the plugin
+msgid "etruel"
+msgstr "etruel"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/plugins.php:54
+msgid "etruel's Store"
+msgstr "etruel de la Tienda"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:611
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:62
+msgid "Exclude Posts (types) by ID separated by commas:"
+msgstr "Excluir a los Postes (tipos) por ID separados por comas:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/class-wpedpc-select2.php:48
+msgid "Exclude Posts (types) by title:"
+msgstr "Excluir a los Postes (tipos) por título:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:60
+msgid "Exclude Posts Settings"
+msgstr "Excluir A Los Puestos De Configuración"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:300
+msgid "Exist: "
+msgstr "Existen: "
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:59
+msgid "Finished In"
+msgstr "Terminado En"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/plugins.php:25
+msgid "General Settings"
+msgstr "Configuración General"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:133
+msgid "Get this extension"
+msgstr "Obtener esta extensión"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:45
+msgid "Global Settings"
+msgstr "Configuración Global"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:296
+msgid "Go"
+msgstr "Ir"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:179
+msgid "Go To Plugins Page to uninstall now."
+msgstr "Ir A la Página de Plugins para desinstalar ahora."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:452
+msgid "Hours:"
+msgstr "Horario:"
+
+#. Author URI of the plugin
+msgid "https://etruel.com"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://etruel.com/downloads/wp-delete-post-copies/"
+msgstr ""
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:346
+msgid ""
+"If checked, all images into the post content will be deleted before delete "
+"post. CAUTION: this haven't trash."
+msgstr ""
+"Si está marcada, todas las imágenes en el contenido de la entrada será "
+"eliminado antes de eliminar el post. PRECAUCIÓN: este no basura."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:340
+msgid ""
+"If checked, the images and all media attached to the post will be deleted or "
+"moved to trash."
+msgstr ""
+"Si está marcada, las imágenes y todos los medios de comunicación ligados a "
+"la post será borrado o movido a la papelera."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:326
+msgid ""
+"If checked, the posts are moved to trash, if not, the posts will be deleted "
+"permanently."
+msgstr ""
+"Si está activado, los mensajes se mueven a la papelera, si no, los mensajes "
+"serán eliminados de forma permanente."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:11
+msgid "If you like it, I really appreciate a donation."
+msgstr "Si te gusta, realmente aprecio una donación."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:64
+msgid ""
+"If you want some posts/pages never be deleted by any campaign of this plugin,"
+" you can type here its IDs, and will be excluded from ALL delete queries."
+msgstr ""
+"Si usted quiere algunos posts/páginas nunca será borrado por cualquier "
+"campaña de este plugin, puede escribir aquí su Id, y serán excluidos de "
+"TODAS las consultas de eliminación."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:613
+msgid ""
+"If you want some posts/pages never be deleted by plugin, you can type here "
+"its IDs, and will be excluded from delete queries."
+msgstr ""
+"Si usted quiere algunos posts/páginas nunca será borrado por el plugin, "
+"puede escribir aquí su Id, y serán excluidos de las consultas de eliminación."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:509
+msgid "If you want to get the lastone check 2nd option."
+msgstr "Si usted desea conseguir el lastón comprobar la 2ª opción."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:666
+msgid "Ignore Categories"
+msgstr "Ignorar Categorías"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:667
+msgid ""
+"Ignore post categories in delete queries. Recommended as better performance."
+msgstr ""
+"Ignorar post categorías en las consultas de eliminación. Se recomienda como "
+"un mejor rendimiento."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:50
+msgid "Include/Exclude Posts"
+msgstr "Incluir/Excluir De Los Puestos De"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:26
+msgid "Know my plugins"
+msgstr "Sé que mi plugins"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:112
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/display-settings.php:23
+msgid "Licenses"
+msgstr "Licencias"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:313
+msgid "Limit per time:"
+msgstr "Límite de tiempo:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:86
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:82
+msgid "Logs"
+msgstr "Los registros de"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:119
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:27
+msgid "Logs of campaign deleted"
+msgstr "Los registros de la campaña eliminada"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:525
+msgid "Look at on Content."
+msgstr "Mira en el Contenido."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:524
+msgid "Look at on Title."
+msgstr "Mira en el Título."
+
+#. Description of the plugin
+msgid ""
+"Maker of Campaigns of deletes. With every campaign can search and delete "
+"duplicated posts (types) by title or content on different categories."
+msgstr ""
+"Fabricante de Campañas de eliminaciones. Con cada campaña puede buscar y "
+"eliminar duplicados puestos (tipos) por el título o el contenido en las "
+"distintas categorías."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:71
+msgid "Manual"
+msgstr "Manual"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:466
+msgid "Minutes: "
+msgstr "Minutos: "
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:57
+msgid "Mode"
+msgstr "Modo de"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:432
+msgid "Months:"
+msgstr "Meses:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:325
+msgid "Move to Trash:"
+msgstr "Mover a la Papelera:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:42
+#, php-format
+msgid "New %1$s"
+msgstr "Nueva %1$s"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/class-wpedpc-campaign.php:247
+msgid "New Campaign of Deletes"
+msgstr "Nueva Campaña de Elimina"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:46
+#, php-format
+msgid "No %2$s found"
+msgstr "No %2$s encontrado"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:47
+#, php-format
+msgid "No %2$s found in Trash"
+msgstr "No %2$s encontrado en la Basura"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:228
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:255
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:273
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:288
+msgid "No campaign ID has been supplied!"
+msgstr "No hay ID de campaña ha sido suministrado!"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:177
+msgid "Now you can uninstall WP Delete Post Copies from plugins Page."
+msgstr ""
+"Ahora usted puede desinstalar WP Eliminar Post Copias de la Página de "
+"plugins."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:72
+msgid "OK"
+msgstr "OK"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:323
+msgid "Open post in new tab."
+msgstr "Abrir post en una nueva pestaña."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:17
+msgid "Or you can"
+msgstr "O usted puede"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:178
+msgid "Please select campaign(s) to Run."
+msgstr "Por favor, seleccione de la campaña(s) para su Ejecución."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:250
+msgid "Post Date"
+msgstr "Fecha De Publicación"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:247
+msgid "Post ID"
+msgstr "ID del Post"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:111
+msgid "Premium Extensions"
+msgstr "Premium Extensiones"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:506
+msgid "Remain First Post ID."
+msgstr "Siendo Primer Post ID."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:507
+msgid "Remain Last Post ID."
+msgstr "Siendo el Último ID del Post."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:60
+msgid "Removed"
+msgstr "Eliminado"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:367
+msgid "Reset"
+msgstr "Reset"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:278
+msgid "Reset Campaign"
+msgstr "Restablecimiento De La Campaña"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:367
+msgid "Reset post count"
+msgstr "Restablecer puesto de contar"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:368
+msgid "Run Now"
+msgstr "Ejecutar Ahora"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:368
+msgid "Run Now this campaign"
+msgstr "Ejecutar Ahora esta campaña"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:167
+msgid "Run Selected Campaigns"
+msgstr "Ejecutar Campañas Seleccionadas"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:89
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:177
+msgid "Running Campaign..."
+msgstr "Ejecución De La Campaña..."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:97
+msgid "Save Changes"
+msgstr "Guardar Los Cambios"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:397
+msgid "Schedule"
+msgstr "Horario"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:45
+#, php-format
+msgid "Search %2$s"
+msgstr "Búsqueda de %2$s"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:73
+msgid "seconds"
+msgstr "segundos"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:159
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:173
+msgid "Security check."
+msgstr "Comprobación de seguridad."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:641
+msgid "Select all"
+msgstr "Seleccione todos los"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:578
+msgid "Select Post Status to include in deleted."
+msgstr "Seleccione contabilizar Estado para incluir en eliminarse."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:541
+msgid "Select Post types to include in deleted."
+msgstr "Seleccione tipos de mensaje para incluir en eliminarse."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/edel-post-copies.php:189
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/edel-post-copies.php:190
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/display-settings.php:22
+msgid "Settings"
+msgstr "Configuración"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:133
+msgid "Settings saved."
+msgstr "Guarda la configuración."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:271
+msgid "Show table of post copies"
+msgstr "Mostrar tabla de post copias"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:243
+msgid "Showing posts to delete"
+msgstr "Mostrando puestos a eliminar"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:38
+#, php-format
+msgctxt "singular wpedpcampaign post type name"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:126
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:29
+msgid "Something goes wrong.  The log was not deleted."
+msgstr "Algo va mal. El registro no se ha eliminado."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:58
+msgid "Status"
+msgstr "Estado"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/admin-footer.php:27
+#, php-format
+msgid ""
+"Thank you for using <a href=\"%1$s\" target=\"_blank\">WP Delete Post "
+"Copies</a>! Please <a href=\"%2$s\" target=\"_blank\">rate us</a> on <a "
+"href=\"%2$s\" target=\"_blank\">WordPress.org</a>"
+msgstr ""
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:10
+msgid "Thanks for test, use and enjoy this plugin."
+msgstr "Gracias por la prueba, el uso y disfrute de este plugin."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:314
+msgid ""
+"The amount of posts queried every time. 0 delete ALL copies at once.(Not "
+"Recommended)"
+msgstr ""
+"La cantidad de mensajes de consulta cada vez. 0 eliminar TODAS las copias a "
+"la vez.(No Se Recomienda)"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:615
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:66
+msgid "The number, in this case 1280, is the post ID."
+msgstr "El número, en este caso 1280, es el ID del post."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:174
+#, php-format
+msgid "There was %s errors when the campaigns were being deleted."
+msgstr "Hay %s errores cuando las campañas fueron eliminados."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:88
+msgid "This action can't be undo."
+msgstr "Esta acción no se puede deshacer."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:152
+msgid ""
+"This is where you would enter the license keys for one of our premium "
+"plugins, should you activate one."
+msgstr ""
+"Esto es donde puede introducir las claves de licencia para uno de nuestros "
+"plugins premium, debe activar uno."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:248
+msgid "Title"
+msgstr "Título"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:614
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:65
+msgid ""
+"To get Post IDs Go to Posts in your WordPress admin, and click the post you "
+"need the ID of. Then, if you look in the address bar of your browser, you'll "
+"see something like this:"
+msgstr ""
+"Para obtener el Post de los Identificadores de Ir a los Posts en tu panel de "
+"administración de WordPress y haga clic en el post necesitas el ID de. "
+"Entonces, si nos fijamos en la barra de direcciones de tu navegador, verás "
+"algo como esto:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:336
+msgid "Total"
+msgstr "Total"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:113
+msgid "Try again"
+msgstr "Inténtelo de nuevo"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:81
+msgid "Uninstalling Options"
+msgstr "Desinstalación De Opciones"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:83
+msgid "Uninstalling Plugin Delete Post Copies."
+msgstr "Desinstalar El Plugin De Eliminar Post Copias."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:44
+#, php-format
+msgid "View %1$s"
+msgstr "Vista de %1$s"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:324
+msgid "View Details."
+msgstr "Ver Los Detalles."
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/plugins.php:54
+msgid "View more plugins by etruel"
+msgstr "Ver más complementos por etruel"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:405
+msgid "Weekday:"
+msgstr "Día de la semana:"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:479
+msgid ""
+"Working as <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">"
+"Cron</a> job schedule:"
+msgstr ""
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:20
+msgid "WP Delete Oldest Posts"
+msgstr "WP Eliminar entradas más antiguas"
+
+#. Name of the plugin
+msgid "WP Delete Post Copies"
+msgstr "WP Eliminar Post Copias"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:108
+msgid "WP Delete Post Copies Extensions"
+msgstr "WP Eliminar Post Copias Extensiones"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:49
+msgctxt "wpedpcampaign post type menu name"
+msgid "Del Campaigns"
+msgstr "Del Campañas"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:37
+#, php-format
+msgctxt "wpedpcampaign post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:90
+msgid "You must Save Changes below before \"Go\""
+msgstr "Usted debe Guardar los Cambios a continuación antes de \"Ir\""

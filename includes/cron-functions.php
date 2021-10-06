@@ -13,7 +13,7 @@
 if (!defined('ABSPATH'))
 	exit;
 
-function run_campaign_cron($mode = 'auto', $post_id, $response, $obj) {
+function run_campaign_cron($mode = 'auto', $post_id = 0, $response=array(), $obj=array()) {
 	global $wpdb, $wp_locale, $current_blog, $wpedpc_options;
 
 	error_log("Executed run_campaign_cron()");

@@ -113,9 +113,9 @@ function wpedpc_settings_save() {
 		wp_die( __('Try again', 'etruel-del-post-copies' ) );
 	}
 	if ( 'POST' === $_SERVER[ 'REQUEST_METHOD' ] ) {
-		if ( get_magic_quotes_gpc() ) {
-			$_POST = array_map( 'stripslashes_deep', $_POST );
-		}
+//		if ( get_magic_quotes_gpc() ) {
+//			$_POST = array_map( 'stripslashes_deep', $_POST );
+//		}
 		//delete all Options and campaigns and redirect to plugins page to deactivate
 		if( isset($_POST['wpedpc_uninstall_plugin']) && ($_POST['wpedpc_uninstall_plugin']) ) {
 			//deactivate_plugins( plugin_basename( WPEDPC_PLUGIN_FILE ) );

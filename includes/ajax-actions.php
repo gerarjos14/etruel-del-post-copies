@@ -212,7 +212,7 @@ class wpedpc_ajax_actions {
 					$img_new_url = array();
 					foreach($images as $imagen_src) {
 						$imagen_src_real = apply_filters('wpedpc_getRelativeUrl', $itemUrl, $imagen_src);
-						if($this->wpedpc_get_domain($imagen_src) == $this->wpedpc_get_domain(home_url())){
+						if(self::wpedpc_get_domain($imagen_src) == self::wpedpc_get_domain(home_url())){
 							$file = $_SERVER['DOCUMENT_ROOT'] .str_replace( home_url(), "",$imagen_src_real );
 							if (file_exists( $file )) {
 								unlink($file);

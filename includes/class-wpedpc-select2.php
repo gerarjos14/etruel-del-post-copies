@@ -39,7 +39,8 @@ class WPEDPC_Select2 {
             foreach ($excluded_posts_by_title[0] as $excluded_post ) {
                 if( $excluded_post ){
                     $title = get_the_title( $excluded_post );
-                    $title_to_display = ( mb_strlen( $title ) > 30 ) ? mb_substr( $title, 0, 29 ) . '...' : $title;
+					$chrset = get_option('blog_charset');
+                    $title_to_display = ( mb_strlen( $title, $chrset ) > 30 ) ? mb_substr( $title, 0, 29, $chrset ) . '...' : $title;
                     $list_posts_saved .=  '<option value="' . $excluded_post . '" selected="selected">' . $title_to_display . '</option>';                
                 }
             } 

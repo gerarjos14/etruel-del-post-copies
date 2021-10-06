@@ -10,11 +10,11 @@ if (!class_exists('wpedpc_run_campaign')) :
 
 		function __construct() {
 
-			add_filter('wpedpc_run_campaign', array(&$this, 'options_quickdo'), 10, 3);
-			add_filter('wpedpc_parseImages', array(&$this, 'wpedpc_parseImages'), 10, 2);
-			add_filter('wpedpc_getRelativeUrl', array(&$this, 'wpedpc_getRelativeUrl'), 10, 2);
-			add_filter('wpedpc_getReadUrl', array(&$this, 'wpedpc_getReadUrl'), 10, 1);
-			add_filter('wpedpc_get_domain', array(&$this, 'wpedpc_get_domain'), 10, 1);
+			add_filter('wpedpc_run_campaign', array($this, 'options_quickdo'), 10, 3);
+			add_filter('wpedpc_parseImages', array($this, 'wpedpc_parseImages'), 10, 2);
+			add_filter('wpedpc_getRelativeUrl', array($this, 'wpedpc_getRelativeUrl'), 10, 2);
+			add_filter('wpedpc_getReadUrl', array($this, 'wpedpc_getReadUrl'), 10, 1);
+			add_filter('wpedpc_get_domain', array($this, 'wpedpc_get_domain'), 10, 1);
 		}
 
 		function options_quickdo($post_id, $quickdo = 'WPdpc_auto', $response = array()) {
@@ -104,40 +104,35 @@ if (!class_exists('wpedpc_run_campaign')) :
 
 
 			//$excluded_ids = $wpedpc_campaign->excluded_ids . ',' . $wpedpc_options['excluded_ids'];
-                        
-                        $allids = array();
-                        if(empty($wpedpc_campaign->excluded_ids) && empty($excluded_posts) && empty( $wpedpc_options['excluded_ids'])){
-                            $excluded_ids = '-1';
-                        }else{
-                            if( isset($wpedpc_campaign->excluded_ids) and !empty($wpedpc_campaign->excluded_ids)){
 
-                                array_push($allids, maybe_serialize($wpedpc_campaign->excluded_ids));
-                              
-                            }
-                            if( isset($excluded_posts) && !empty($excluded_posts)){
+			$allids = array();
+			if (empty($wpedpc_campaign->excluded_ids) && empty($excluded_posts) && empty($wpedpc_options['excluded_ids'])) {
+				$excluded_ids = '-1';
+			} else {
 
-                                array_push($allids, maybe_serialize($excluded_posts));
-                                
-                            }
-                            if( isset($wpedpc_options['excluded_ids']) && !empty($wpedpc_options['excluded_ids'])){
+				if (isset($wpedpc_campaign->excluded_ids) and!empty($wpedpc_campaign->excluded_ids)) {
+					array_push($allids, maybe_serialize($wpedpc_campaign->excluded_ids));
+				}
 
-                                array_push($allids, maybe_serialize ($wpedpc_options['excluded_ids']));
-                               
-                            } 
-                            $ids = implode(',',$allids );
-                            $k = 0;
-                            $len = count($allids);
-                            foreach ($allids as $id) {
-                             if( $k < $len - 1){
-                                 $excluded_ids .= $id .',';
-                             }else{
-                                 $excluded_ids .= $id;
-                             }
-                            $k++;
+				if (isset($excluded_posts) && !empty($excluded_posts)) {
+					array_push($allids, maybe_serialize($excluded_posts));
+				}
 
-                            }
-                                                        
-                        }
+				if (isset($wpedpc_options['excluded_ids']) && !empty($wpedpc_options['excluded_ids'])) {
+					array_push($allids, maybe_serialize($wpedpc_options['excluded_ids']));
+				}
+				$ids = implode(',', $allids);
+				$k = 0;
+				$len = count($allids);
+				foreach ($allids as $id) {
+					if ($k < $len - 1) {
+						$excluded_ids .= $id . ',';
+					} else {
+						$excluded_ids .= $id;
+					}
+					$k++;
+				}
+			}
 //			if (empty($wpedpc_campaign->excluded_ids) && empty($excluded_posts) && empty( $wpedpc_options['excluded_ids'])) {
 //				$excluded_ids = '-1';
 //                        
@@ -150,8 +145,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 //				$excluded_ids = $excluded_posts;
 //			}
 
-	
-                        
+
 			$timenow = time();
 			$mtime = explode(' ', microtime());
 			$time_start = $mtime[1] + $mtime[0];

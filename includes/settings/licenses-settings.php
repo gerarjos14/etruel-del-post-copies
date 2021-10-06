@@ -3,33 +3,41 @@
  * @package WordPress_Plugins
  * @subpackage WP-eDel post copies
  * @a file just to load external extensions
-*/
+ */
 //error_reporting(0);
-if(!defined('WP_ADMIN')) {
-	header( 'Status: 403 Forbidden' );
-	header( 'HTTP/1.1 403 Forbidden' );
+if (!defined('WP_ADMIN')) {
+	header('Status: 403 Forbidden');
+	header('HTTP/1.1 403 Forbidden');
 	exit();
 }
 
-add_action( 'wpedpc_settings_tab_licenses', 'wpedpc_licenses' );
-function wpedpc_licenses(){
-
+function wpedpc_extensions() {
 	$extensions = array(
 		'wpedpc-oldest-posts' => (object) array(
-			'url'       => 'http://etruel.com/downloads/wp-edel-oldest-post/',
-			'title'     => __( 'WP Delete Oldest Posts', 'etruel-del-post-copies' ),
-			'desc'      => __( 'Adds to WP Delete Post Copies plugin a feature to use it as a remover of posts to delete entries by date instead of searching duplicates.', 'etruel-del-post-copies' ),
+			'url' => 'https://etruel.com/downloads/wp-edel-oldest-post/',
+			'buynowURI' => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id=34&edd_options[price_id]=2',
+			'title' => 'WP Delete Oldest Posts',
+			'banner' => WPEDPC_PLUGIN_URL .'includes/images/Delete-Older-Post-500x250.jpg',
+			'desc' => __('Add-On to enabled WP-Delete Post Copies plugin to delete posts by dates instead of duplicates. As prior certain date or prior to certains months ago.', 'etruel-del-post-copies'),
 			'installed' => false,
 		)
 	);
 
-	if ( class_exists( 'DPCOldestPosts' ) ) {
+	if (class_exists('DPCOldestPosts')) {
 		$extensions['wpedpc-oldest-posts']->installed = true;
 	}
+	return apply_filters('wpedpc_extensions', $extensions);
+}
+
+
+add_action('wpedpc_settings_tab_licenses', 'wpedpc_licenses');
+
+function wpedpc_licenses() {
+	$extensions = wpedpc_extensions()
 	//echo ('<pre>'.print_r($cfg,1).'</pre>'); 
 	?>
 	<script type="text/javascript" charset="utf8" >
-		jQuery(document).ready(function($) {
+		jQuery(document).ready(function ($) {
 			$("#licensestabs").tabs();
 		});
 	</script>
@@ -105,41 +113,45 @@ function wpedpc_licenses(){
 		<div id="post-body-content">
 			<div class="metabox-holder">
 				<div class="wrap wpedpc_table_page">
-					<h2 id="wpedpc-title"><?php _e( 'WP Delete Post Copies Extensions', 'etruel-del-post-copies' ); ?></h2>
+					<h2 id="wpedpc-title"><?php _e('WP Delete Post Copies Extensions', 'etruel-del-post-copies'); ?></h2>
 					<div id="licensestabs">
 						<ul class="tabNavigation">
-							<li><a href="#premium"><?php _e( 'Premium Extensions', 'etruel-del-post-copies' ); ?></a></li>
-							<li><a href="#licenses"><?php _e( 'Licenses', 'etruel-del-post-copies' ); ?></a></li>
+							<li><a href="#premium"><?php _e('Premium Extensions', 'etruel-del-post-copies'); ?></a></li>
+							<li><a href="#licenses"><?php _e('Licenses', 'etruel-del-post-copies'); ?></a></li>
 						</ul>
 						<div id="premium">
 							<?php
-							foreach ( $extensions as $id => $extension ) {
+							foreach ($extensions as $id => $extension) {
 								$utm = '#utm_source=etruel-del-post-copies-config&utm_medium=banner&utm_campaign=extension-page-banners';
 								?>
-								<div class="postbox">
+								<div class="postbox" style="width:33%;max-width:500px;">
+									<img loading="lazy" class="aligncenter" style="width: 100%;" src="<?php echo $extension->banner; ?>" alt="Banner Delete Oldest Posts">
 									<div class="inside">
-										<div class="extension <?php echo esc_attr( $id ); ?>">
-											<h4 class="extension-title"><a target="_blank" href="<?php echo esc_url( $extension->url . $utm ); ?>">
-												<?php echo esc_html( $extension->title ); ?>
-											</a></h4>
+										<div class="extension <?php echo esc_attr($id); ?>">
+											<h4 class="extension-title"><a target="_blank" href="<?php echo esc_url($extension->url . $utm); ?>">
+													<?php echo esc_html($extension->title); ?>
+												</a></h4>
 
-											<p><?php echo esc_html( $extension->desc ); ?></p>
+											<p><?php echo esc_html($extension->desc); ?></p>
 
 											<p>
-												<?php if ( $extension->installed ) : ?>
+												<?php if ($extension->installed) : ?>
 													<button class="button">Installed</button>
 												<?php else : ?>
-													<a target="_blank" href="<?php echo esc_url( $extension->url . $utm ); ?>" class="button button-primary">
-														<?php _e( 'Get this extension', 'etruel-del-post-copies' ); ?>
+													<a target="_blank" href="<?php echo esc_url($extension->url . $utm); ?>" class="button button-secondary">
+														<?php _e('See More', 'etruel-del-post-copies'); ?>
+													</a>
+													<a target="_blank" href="<?php echo esc_url($extension->buynowURI . $utm); ?>" class="button button-primary">
+														<?php _e('Get this extension', 'etruel-del-post-copies'); ?>
 													</a>
 												<?php endif; ?>
 											</p>
 										</div>
 									</div>
 								</div>
-							<?php
+								<?php
 							}
-							unset( $extensions, $id, $extension, $utm );
+							unset($extensions, $id, $extension, $utm);
 							?>
 						</div>
 						<div id="licenses">
@@ -148,11 +160,10 @@ function wpedpc_licenses(){
 							 * Display license page
 							 */
 							settings_errors();
-							if ( ! has_action( 'wpedpc_licenses_forms' ) ) {
-								echo '<div class="msg extension-message"><p>', __( 'This is where you would enter the license keys for one of our premium plugins, should you activate one.', 'etruel-del-post-copies' ), '</p></div>';
-							}
-							else {
-								do_action( 'wpedpc_licenses_forms' );
+							if (!has_action('wpedpc_licenses_forms')) {
+								echo '<div class="msg extension-message"><p>', __('This is where you would enter the license keys for one of our premium plugins, should you activate one.', 'etruel-del-post-copies'), '</p></div>';
+							} else {
+								do_action('wpedpc_licenses_forms');
 							}
 							?>
 						</div>
@@ -161,6 +172,6 @@ function wpedpc_licenses(){
 			</div>
 		</div>
 	</div>
-<?php 
+	<?php
 }
 ?>

@@ -14,6 +14,8 @@ if(!defined('WP_ADMIN')) {
 add_action( 'wpedpc_settings_tab_settings', 'wpedpc_settings' );
 function wpedpc_settings(){
 	global $wpedpc_options;
+	$extensions = wpedpc_extensions()
+
 	?>
 <style>
 	.postbox .handlediv{

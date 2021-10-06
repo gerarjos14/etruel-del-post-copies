@@ -20,12 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @since 5.0
  * @return void
 */
-function wpedpc_get_actions() {
-	if ( isset( $_GET['wpedpc_action'] ) ) {
-		do_action( 'wpedpc_' . $_GET['wpedpc_action'], $_GET );
-	}
-}
-add_action( 'admin_init', 'wpedpc_get_actions' );
+//function wpedpc_get_actions() {
+//	if ( isset( $_GET['wpedpc_action'] ) ) {
+//		do_action( 'wpedpc_' . $_GET['wpedpc_action'], $_GET );
+//	}
+//}
+//add_action( 'admin_init', 'wpedpc_get_actions' );
 
 /**
  * Hooks WPEDPC actions, when present in the $_POST superglobal. Every wpedpc_action
@@ -37,7 +37,8 @@ add_action( 'admin_init', 'wpedpc_get_actions' );
 */
 function wpedpc_post_actions() {
 	if ( isset( $_POST['wpedpc_action'] ) ) {
-		do_action( 'wpedpc_' . $_POST['wpedpc_action'], $_POST );
+		$action = esc_html($_POST['wpedpc_action']);
+		do_action( 'wpedpc_' . $action, $_POST );
 	}
 }
 add_action( 'admin_init', 'wpedpc_post_actions' );

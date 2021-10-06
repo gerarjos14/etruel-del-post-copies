@@ -4,8 +4,8 @@
  * Plugin URI: https://etruel.com/downloads/wp-delete-post-copies/
  * Description: Maker of Campaigns of deletes. With every campaign can search and delete duplicated posts (types) by title or content on different categories.
  *  and can permanently delete them with images or send them to the trash in manual mode or automatic squeduled with Wordpress cron.
- * Author: etruel
- * Author URI: https://etruel.com
+ * Author: Etruel Developments LLC
+ * Author URI: https://etruel.com 
  * Version: 5.3.3
  * Text Domain: etruel-del-post-copies
  * Domain Path: languages
@@ -63,12 +63,12 @@ if (!class_exists('edel_post_copies')) :
 
 		private function setup_actions() {
 			add_action('admin_menu', array($this, 'add_submenu_page'), 10);
-			add_action('wpedpc_func_event', array(&$this, 'wpedpc_cron_callback'));
-			add_filter('cron_schedules', array(&$this, 'wpedpc_cron_recurrence'));
-			add_action('init', array(&$this, 'wpedpc_custom_cron'));
-			add_filter('wpedpc_env_checks', array(&$this, 'wpedpc_env_checks'));
+			add_action('wpedpc_func_event', array($this, 'wpedpc_cron_callback'));
+			add_filter('cron_schedules', array($this, 'wpedpc_cron_recurrence'));
+			add_action('init', array($this, 'wpedpc_custom_cron'));
+			add_filter('wpedpc_env_checks', array($this, 'wpedpc_env_checks'));
 			do_action('wpedpc_setup_actions');
-			add_action('admin_head', array(__CLASS__, 'admin_icon_style')) ;
+			add_action('admin_head', array(__CLASS__, 'admin_icon_style'));
 		}
 
 		public function __clone() {
@@ -173,12 +173,12 @@ if (!class_exists('edel_post_copies')) :
 				load_plugin_textdomain('etruel-del-post-copies', false, $lang_dir);
 			}
 		}
-		
+
 		static function admin_icon_style() {
 			?><style type="text/css">
-			#adminmenu .menu-icon-wpedpcampaign .wp-menu-image img {
-			    padding-top: 3px;
-			}
+				#adminmenu .menu-icon-wpedpcampaign .wp-menu-image img {
+					padding-top: 3px;
+				}
 			</style><?php
 		}
 
@@ -363,18 +363,18 @@ if (!class_exists('edel_post_copies')) :
 			if (!is_admin()) {
 				return false;
 			}
-			if (version_compare($wp_version, '3.9', '<')) { // check WP Version
-				$message .= __('- WordPress 3.9 or higher needed!', 'etruel-del-post-copies') . '<br />';
+			if (version_compare($wp_version, '3.1', '<')) { // check WP Version
+				$message .= __('- WordPress 3.1 or higher needed!', 'etruel-del-post-copies') . '<br />';
 				$checks = false;
 			}
-			if (version_compare(phpversion(), '5.3.0', '<')) { // check PHP Version
-				$message .= __('- PHP 5.2.0 or higher needed!', 'etruel-del-post-copies') . '<br />';
+			if (version_compare(phpversion(), '5.4.0', '<')) { // check PHP Version
+				$message .= __('- PHP 5.4.0 or higher needed!', 'etruel-del-post-copies') . '<br />';
 				$checks = false;
 			}
 			//put massage if one
 			if (!empty($message)) {
 				$wpedpc_admin_message = '<div id="message" class="error fade"><strong>WP Deletes Post Copies:</strong><br />' . $message . '</div>';
-				add_action('admin_notices', array( __CLASS__, 'wpedpc_env_checks_notice'));
+				add_action('admin_notices', array(__CLASS__, 'wpedpc_env_checks_notice'));
 			}
 			return $checks;
 		}

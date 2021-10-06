@@ -23,8 +23,8 @@ class WPEDPC_Select2 {
      * Enqueue the select2 library
      */
     public static function enqueue_select2_scripts() {
-        wp_enqueue_style( 'wpedpc-select2-css' , 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' );
-        wp_enqueue_script( 'wpedpc-select2-js' , 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), '4', true );
+        wp_enqueue_style( 'wpedpc-select2-css' , WPEDPC_PLUGIN_URL .'includes/css/select2.min.css' );
+        wp_enqueue_script( 'wpedpc-select2-js' , WPEDPC_PLUGIN_URL .'includes/js/select2.min.js', array( 'jquery' ), '4', true );
         wp_enqueue_script( 'ajx-select2-js' , WPEDPC_PLUGIN_URL .'includes/js/ajax-select2.js', array( 'jquery', 'wpedpc-select2-js' ,'wpedpc-meta-boxes-admin-head' ), '2', true);
     }
     

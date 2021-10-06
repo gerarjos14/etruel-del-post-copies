@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: posts, copies, duplicated, duplicate posts, delete copies, delete, erase, cron, squedule, squedule delete
 Requires at least: 3.1.0
 Tested up to: 5.8.1
-Stable tag: 5.3.3
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,9 +58,12 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 == Changelog ==
 = 5.3.3 Oct 6, 2021 =
-* lot of tweaks for PHP notices and warnings.
-* Added language catalog file.
+* Lot of tweaks for PHP notices and warnings.
+* Added Select2 js and css files in local directory.
+* Added language catalog file and Spanish translation.
 * Updated icons and banners. :D
+* Removed calls to external files.
+* Improved security.
 * Bump to WP 5.8.1
 
 = 5.3.2 May 3, 2021 =

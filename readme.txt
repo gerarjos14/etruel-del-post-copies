@@ -57,10 +57,10 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The logs are also in a new tab saving time to load the page. Click on title to refresh.
 
 == Changelog ==
-= 5.3.3 Oct 6, 2021 =
+= 5.4 Oct 7, 2021 =
 * Lot of tweaks for PHP notices and warnings.
 * Added Select2 js and css files in local directory.
-* Added language catalog file and Spanish translation.
+* Added pot catalog and Spanish translation files.
 * Updated icons and banners. :D
 * Removed calls to external files.
 * Improved security.
@@ -147,4 +147,4 @@ This allows different filters for campaigns or even use the complement of deleti
 Just click for delete.	
 
 == Upgrade Notice ==
-1. 5.3.3 version. Fixed and tested with Wordpress 5.8.1
+1. 5.4 version. Many fixes and tested with Wordpress 5.8.1

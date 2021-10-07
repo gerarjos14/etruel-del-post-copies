@@ -3,21 +3,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Delete Post Copies\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-06 05:11+0000\n"
+"POT-Creation-Date: 2021-10-07 03:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
-"Language: \n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.5.3; wp-5.8.1\n"
-"X-Domain: etruel-del-post-copies"
+"X-Domain: etruel-del-post-copies\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"Language: "
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:233
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:394
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:388
 #, php-format
 msgid "!! Problem deleting post %s - %s !!"
 msgstr ""
@@ -94,7 +96,7 @@ msgid "%s posts"
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/ajax-actions.php:236
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:397
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:391
 #, php-format
 msgid "'%s' (ID #%s) Deleted!"
 msgstr ""
@@ -104,26 +106,30 @@ msgid "(Copy)"
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/edel-post-copies.php:371
-msgid "- PHP 5.2.0 or higher needed!"
+msgid "- PHP 5.4.0 or higher needed!"
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/edel-post-copies.php:367
-msgid "- WordPress 3.9 or higher needed!"
+msgid "- WordPress 3.1 or higher needed!"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:378
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:372
 #, php-format
 msgid "-- img file:'%s' Deleted! "
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:363
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:357
 #, php-format
 msgid "-- Post image id:'%s' Deleted! "
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:390
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:384
 #, php-format
 msgid "-- Post META key:'%s', value: '%s'. Deleted! "
+msgstr ""
+
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:7
+msgid "About"
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:51
@@ -153,15 +159,15 @@ msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:21
 msgid ""
-"Adds to WP Delete Post Copies plugin a feature to use it as a remover of "
-"posts to delete entries by date instead of searching duplicates."
+"Add-On to enabled WP-Delete Post Copies plugin to delete posts by dates "
+"instead of duplicates. As prior certain date or prior to certains months ago."
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:43
 msgid "All Campaigns"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:171
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:173
 #, php-format
 msgid ""
 "All Settings and %s campaigns were deleted and the plugin was deactivated."
@@ -195,7 +201,7 @@ msgstr ""
 msgid "Auto"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:87
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:89
 msgid ""
 "By checking this option you will delete all data and campaigns of this "
 "plugin and deactivate it when save changes."
@@ -251,11 +257,11 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:249
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:243
 msgid "Category"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:88
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:90
 msgid "CAUTION: "
 msgstr ""
 
@@ -280,11 +286,11 @@ msgstr ""
 msgid "Copy campaign failed, could not find original:"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:253
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:247
 msgid "Correct Post Date"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:252
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:246
 msgid "Correct Post ID"
 msgstr ""
 
@@ -304,7 +310,7 @@ msgstr ""
 msgid "Deactivate this campaign"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:85
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:87
 msgid "Delete all options and also delete all campaigns of this plugin."
 msgstr ""
 
@@ -320,12 +326,8 @@ msgstr ""
 msgid "Delete Post Copies Logs"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:302
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:296
 msgid "Don't Exist: "
-msgstr ""
-
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:7
-msgid "Donate"
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:52
@@ -347,7 +349,7 @@ msgid "Erase Logs"
 msgstr ""
 
 #. Author of the plugin
-msgid "etruel"
+msgid "Etruel Developments LLC"
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/plugins.php:54
@@ -355,19 +357,19 @@ msgid "etruel's Store"
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:611
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:62
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:64
 msgid "Exclude Posts (types) by ID separated by commas:"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/class-wpedpc-select2.php:48
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/class-wpedpc-select2.php:49
 msgid "Exclude Posts (types) by title:"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:60
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:62
 msgid "Exclude Posts Settings"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:300
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:294
 msgid "Exist: "
 msgstr ""
 
@@ -379,11 +381,12 @@ msgstr ""
 msgid "General Settings"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:133
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:145
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:51
 msgid "Get this extension"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:45
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:47
 msgid "Global Settings"
 msgstr ""
 
@@ -391,7 +394,7 @@ msgstr ""
 msgid "Go"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:179
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:181
 msgid "Go To Plugins Page to uninstall now."
 msgstr ""
 
@@ -429,7 +432,7 @@ msgstr ""
 msgid "If you like it, I really appreciate a donation."
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:64
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:66
 msgid ""
 "If you want some posts/pages never be deleted by any campaign of this plugin,"
 " you can type here its IDs, and will be excluded from ALL delete queries."
@@ -458,11 +461,7 @@ msgstr ""
 msgid "Include/Exclude Posts"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:26
-msgid "Know my plugins"
-msgstr ""
-
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:112
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:120
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/display-settings.php:23
 msgid "Licenses"
 msgstr ""
@@ -544,7 +543,7 @@ msgstr ""
 msgid "No campaign ID has been supplied!"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:177
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:179
 msgid "Now you can uninstall WP Delete Post Copies from plugins Page."
 msgstr ""
 
@@ -552,7 +551,7 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:323
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:317
 msgid "Open post in new tab."
 msgstr ""
 
@@ -560,19 +559,23 @@ msgstr ""
 msgid "Or you can"
 msgstr ""
 
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:26
+msgid "Other extensions and plugins"
+msgstr ""
+
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:178
 msgid "Please select campaign(s) to Run."
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:250
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:244
 msgid "Post Date"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:247
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:241
 msgid "Post ID"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:111
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:119
 msgid "Premium Extensions"
 msgstr ""
 
@@ -617,7 +620,7 @@ msgstr ""
 msgid "Running Campaign..."
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:97
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:99
 msgid "Save Changes"
 msgstr ""
 
@@ -639,6 +642,11 @@ msgstr ""
 msgid "Security check."
 msgstr ""
 
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:142
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/myplugins.php:48
+msgid "See More"
+msgstr ""
+
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:641
 msgid "Select all"
 msgstr ""
@@ -657,7 +665,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:133
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:135
 msgid "Settings saved."
 msgstr ""
 
@@ -665,7 +673,7 @@ msgstr ""
 msgid "Show table of post copies"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:243
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:237
 msgid "Showing posts to delete"
 msgstr ""
 
@@ -703,50 +711,50 @@ msgid ""
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:615
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:66
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:68
 msgid "The number, in this case 1280, is the post ID."
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:174
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:176
 #, php-format
 msgid "There was %s errors when the campaigns were being deleted."
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:88
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:90
 msgid "This action can't be undo."
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:152
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:164
 msgid ""
 "This is where you would enter the license keys for one of our premium "
 "plugins, should you activate one."
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:248
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:242
 msgid "Title"
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/meta-boxes-campaign.php:614
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:65
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:67
 msgid ""
 "To get Post IDs Go to Posts in your WordPress admin, and click the post you "
 "need the ID of. Then, if you look in the address bar of your browser, you'll "
 "see something like this:"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:336
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:330
 msgid "Total"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:113
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:115
 msgid "Try again"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:81
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:83
 msgid "Uninstalling Options"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:83
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/wpedpc_settings.php:85
 msgid "Uninstalling Plugin Delete Post Copies."
 msgstr ""
 
@@ -755,7 +763,7 @@ msgstr ""
 msgid "View %1$s"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:324
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/run-campaign.php:318
 msgid "View Details."
 msgstr ""
 
@@ -773,21 +781,17 @@ msgid ""
 "Cron</a> job schedule:"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:20
-msgid "WP Delete Oldest Posts"
-msgstr ""
-
 #. Name of the plugin
 msgid "WP Delete Post Copies"
 msgstr ""
 
-#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:108
+#: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/settings/licenses-settings.php:116
 msgid "WP Delete Post Copies Extensions"
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:49
 msgctxt "wpedpcampaign post type menu name"
-msgid "Del Campaigns"
+msgid "Deletes"
 msgstr ""
 
 #: ../../../../../../Wordpress/GIT/etruel-del-post-copies/includes/post-types.php:37

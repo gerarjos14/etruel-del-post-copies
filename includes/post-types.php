@@ -46,7 +46,7 @@ class post_type_campaign {
 			'not_found'          => __( 'No %2$s found', 'etruel-del-post-copies' ),
 			'not_found_in_trash' => __( 'No %2$s found in Trash', 'etruel-del-post-copies' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => _x( 'Del Campaigns', 'wpedpcampaign post type menu name', 'etruel-del-post-copies' )
+			'menu_name'          => _x( 'Deletes', 'wpedpcampaign post type menu name', 'etruel-del-post-copies' )
 		) );
 
 		foreach ( $wpedpcampaign_labels as $key => $value ) {

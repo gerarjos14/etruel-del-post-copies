@@ -3,7 +3,7 @@ Contributors: etruel, vanbom, manuelge
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTNR4BH8XPDR6
 Tags: posts, copies, duplicated, duplicate posts, delete copies, delete, erase, cron, squedule, squedule delete
 Requires at least: 3.1.0
-Tested up to: 5.8.1
+Tested up to: 6.2.0
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,10 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The logs are also in a new tab saving time to load the page. Click on title to refresh.
 
 == Changelog ==
+= 5.5 Mar 20, 2023 =
+* Bug fix for compatibility in php 8.
+* Bump to WP 6.2.0
+
 = 5.4 Oct 7, 2021 =
 * Lot of tweaks for PHP notices and warnings.
 * Added Select2 js and css files in local directory.

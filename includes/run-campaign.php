@@ -104,7 +104,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 
 
 			//$excluded_ids = $wpedpc_campaign->excluded_ids . ',' . $wpedpc_options['excluded_ids'];
-
+			$excluded_ids='';
 			$allids = array();
 			if (empty($wpedpc_campaign->excluded_ids) && empty($excluded_posts) && empty($wpedpc_options['excluded_ids'])) {
 				$excluded_ids = '-1';

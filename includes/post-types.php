@@ -304,9 +304,10 @@ class post_type_campaign {
 		// Redirect to the post list screen
 		wp_redirect( admin_url( 'edit.php?post_type=wpedpcampaign') );
 	}
-	static function wpedpc_action_link( $id = 0, $context = 'display', $actionslug ) {
+	static function wpedpc_action_link( $id, $context = 'display', $actionslug = '' ) {
 		global $post;
 		if ( !$post == get_post( $id ) ) return;
+		if ( $actionslug == '' ) return;
 		switch ($actionslug){ 
 		case 'copy':
 			$action_name = 'wpedpc_copy_campaign';

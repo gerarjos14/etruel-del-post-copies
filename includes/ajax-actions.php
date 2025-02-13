@@ -64,14 +64,18 @@ class wpedpc_ajax_actions {
 			foreach(array_reverse($wpedpc_logs) as $log) {
 				$i++;
 				$rk = $i;
-							
+						
 				$echoHtml .= '<tr>
 								<td>'.$rk.'</td>
 								<td>'.date('Y-m-d H:i:s', $log['started']).'</td>
 								<td>'.((intval($log['mode']) == 1) ? __('Manual', 'etruel-del-post-copies') : __('Auto', 'etruel-del-post-copies')).'</td>
-								<td>'.((intval($log['status']) == 0) ? __('OK', 'etruel-del-post-copies') : sprintf(__('%s errors', 'etruel-del-post-copies'), intval($log['status']))).'</td>
+								<td>'.((intval($log['status']) == 0) ? __('OK', 'etruel-del-post-copies') : sprintf(
+									// translators: %s represents the number of errors found.	
+									__('%s errors', 'etruel-del-post-copies'), intval($log['status']))).'</td>
 								<td>'.round($log['took'], 3).' '.__('seconds', 'etruel-del-post-copies').'</td>
-								<td>'.sprintf(__('%s posts', 'etruel-del-post-copies'), intval($log['removed'])).'</td>
+								<td>'.sprintf(
+									// translators: %s represents the number of errors found.	
+									__('%s posts', 'etruel-del-post-copies'), intval($log['removed'])).'</td>
 							</tr>'; 
 				if($i >= 40) {
 					break;
@@ -80,7 +84,7 @@ class wpedpc_ajax_actions {
 		}
 
 		$echoHtml .= '</table></div></div></div></div>';
-		wp_die($echoHtml);
+		wp_die(esc_html($echoHtml));
 
 	}
 	static function run_campaign() {
@@ -110,25 +114,81 @@ class wpedpc_ajax_actions {
 		$response->send();
 			
 	}
-	static function erase_logs() {
-		$response = new WP_Ajax_Response;
-		$id = (isset($_GET['campaign_ID']) ? $_GET['campaign_ID'] : $_POST['campaign_ID']);
-		if(update_post_meta($id, 'logs', array())) {
-			$response->add(array('data' => 'success',
-									'supplemental' => array(
-										'message' => __('Logs of campaign deleted', 'etruel-del-post-copies')
-									)
-								)); 
-			$response->send();
-		} else {
-			$response->add(array('data' => 'error',
-									'supplemental' => array(
-										'message' => __('Something goes wrong.  The log was not deleted.', 'etruel-del-post-copies')
-									)
-								)); 
-			$response->send();
-		}
-	}
+	public static function erase_logs() {
+        // Create response object
+        $response = new WP_Ajax_Response();
+        
+        // 1. Verify nonce for CSRF protection
+        if (!isset($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce'], 'wpdpc_erase_logs')) {
+            $response->add(array(
+                'data' => 'error',
+                'supplemental' => array(
+                    'message' => __('Security check failed', 'etruel-del-post-copies')
+                )
+            ));
+            $response->send();
+            exit;
+        }
+
+        // 2. Check if user has proper capabilities
+        if (!current_user_can('manage_options')) {
+            $response->add(array(
+                'data' => 'error',
+                'supplemental' => array(
+                    'message' => __('Insufficient permissions', 'etruel-del-post-copies')
+                )
+            ));
+            $response->send();
+            exit;
+        }
+
+        // 3. Validate and sanitize campaign ID
+        $campaign_id = isset($_REQUEST['campaign_ID']) ? absint($_REQUEST['campaign_ID']) : 0;
+        if (!$campaign_id) {
+            $response->add(array(
+                'data' => 'error',
+                'supplemental' => array(
+                    'message' => __('Invalid campaign ID', 'etruel-del-post-copies')
+                )
+            ));
+            $response->send();
+            exit;
+        }
+
+        // 4. Verify campaign exists and user has permission to modify it
+        $campaign = get_post($campaign_id);
+        if (!$campaign || !current_user_can('edit_post', $campaign_id)) {
+            $response->add(array(
+                'data' => 'error',
+                'supplemental' => array(
+                    'message' => __('Campaign not found or permission denied', 'etruel-del-post-copies')
+                )
+            ));
+            $response->send();
+            exit;
+        }
+
+        // 5. Perform the log erasure
+        if (update_post_meta($campaign_id, 'logs', array())) {
+            $response->add(array(
+                'data' => 'success',
+                'supplemental' => array(
+                    'message' => __('Logs of campaign deleted', 'etruel-del-post-copies')
+                )
+            ));
+        } else {
+            $response->add(array(
+                'data' => 'error',
+                'supplemental' => array(
+                    'message' => __('Something went wrong. The log was not deleted.', 'etruel-del-post-copies')
+                )
+            ));
+        }
+
+        $response->send();
+        exit;
+    }
+
 	static function show() {
 		$response_run = array();
 		$response_run['message'] = '';
@@ -137,11 +197,11 @@ class wpedpc_ajax_actions {
 			
 		$response = new WP_Ajax_Response;
 		if(!isset($_POST['campaign_ID'])) {
-			wp_die(__('Campaign ID must exist.', 'etruel-del-post-copies'));
+			wp_die(esc_html__('Campaign ID must exist.', 'etruel-del-post-copies'));
 		}
 		$post_id = $_POST['campaign_ID'];
 		$response_run = apply_filters('wpedpc_run_campaign', $post_id, $quickdo, $response_run );
-		wp_die($response_run['results']);
+		wp_die(esc_html($response_run['results']));
 	}
 	static function del_post() {
 		global $wpdb, $wpedpc_options;
@@ -195,8 +255,13 @@ class wpedpc_ajax_actions {
 		if ($postid != ''){
 			if($deletemedia) {
 
-				$sql = "SELECT ID FROM $wp_posts WHERE post_parent = $postid AND post_type = 'attachment'";
-				$ids = $wpdb->get_col($sql);
+				$attachments = get_children([
+					'post_parent' => $postid,
+					'post_type'   => 'attachment',
+					'fields'      => 'ids',
+				]);
+				
+				$ids = $attachments ? array_values($attachments) : [];
 				foreach ( $ids as $id ) {		
 					wp_delete_attachment($id, $force_delete);
 					if($force_delete) {
@@ -230,10 +295,13 @@ class wpedpc_ajax_actions {
 			}
 			$result = wp_delete_post($postid, $force_delete);
 			if (!$result) {  
-				$response['message'] = sprintf(__('!! Problem deleting post %s - %s !!', 'etruel-del-post-copies'),$postid,$perma);
+				// translators: %1$s is the post ID, %2$s is the permalink of the post.
+$response['message'] = sprintf(__('!! Problem deleting post %1$s - %2$s !!', 'etruel-del-post-copies'), $postid, $perma);
+
 				$response['success'] = false;
 			} else {  
-				$response['message'] = sprintf(__("'%s' (ID #%s) Deleted!", 'etruel-del-post-copies'),$title,$postid);
+				// translators: %1$s is the post title, %2$s is the post ID.
+$response['message'] = sprintf(__("'%1$s' (ID #%2$s) Deleted!", 'etruel-del-post-copies'), $title, $postid);
 				$response['success'] = true;
 			}
 		}

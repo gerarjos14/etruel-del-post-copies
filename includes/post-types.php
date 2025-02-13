@@ -225,7 +225,7 @@ class post_type_campaign {
 	}
 	static function wpedpc_copy_campaign($status = '') {
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpedpc_copy_campaign' == $_REQUEST['action'] ) ) ) {
-			wp_die(__('No campaign ID has been supplied!',  'etruel-del-post-copies' ));
+			wp_die(esc_html__('No campaign ID has been supplied!',  'etruel-del-post-copies' ));
 		}
 
 		// Get the original post
@@ -252,7 +252,7 @@ class post_type_campaign {
 	}
 	static function wpedpc_toggle_campaign($status = ''){
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpedpc_toggle_campaign' == $_REQUEST['action'] ) ) ) {
-			wp_die(__('No campaign ID has been supplied!',  'etruel-del-post-copies' ));
+			wp_die(esc_html__('No campaign ID has been supplied!',  'etruel-del-post-copies' ));
 		}
 		// Get the original post
 		$id = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
@@ -270,7 +270,7 @@ class post_type_campaign {
 	}
 	static function wpedpc_reset_campaign($status = ''){
 		if (!(isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpedpc_reset_campaign' == $_REQUEST['action'] ) ) ) {
-			wp_die(__('No campaign ID has been supplied!',  'etruel-del-post-copies' ));
+			wp_die(esc_html__('No campaign ID has been supplied!',  'etruel-del-post-copies' ));
 		}
 		// Get the original post
 		$id = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
@@ -285,7 +285,7 @@ class post_type_campaign {
 	}
 	static function wpedpc_clear_campaign(){
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpedpc_clear_campaign' == $_REQUEST['action'] ) ) ) {
-			wp_die(__('No campaign ID has been supplied!',  'etruel-del-post-copies' ));
+			wp_die(esc_html__('No campaign ID has been supplied!',  'etruel-del-post-copies' ));
 		}
 
 		// Get the original post

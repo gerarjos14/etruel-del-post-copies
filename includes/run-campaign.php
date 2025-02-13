@@ -162,7 +162,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 			}
 
 			$fields2compare = " ";
-			if ($wpedpc_campaign->allcat) {
+			/*if ($wpedpc_campaign->allcat) {
 
 				if ($wpedpc_campaign->titledel && $wpedpc_campaign->contentdel) {
 					$fields2compare = "AND (good_rows.post_title = bad_rows.post_title AND good_rows.post_content = bad_rows.post_content) ";
@@ -228,10 +228,126 @@ if (!class_exists('wpedpc_run_campaign')) :
 					AND ($wp_terms.term_id IN ( $categories ))
 				ORDER BY post_title ASC " . $limite;
 			}
-			$query = apply_filters('wpedpc_after_query', $query, $wpedpc_campaign);
+			$query = apply_filters('wpedpc_after_query', $query, $wpedpc_campaign);*/
+			if ($wpedpc_campaign->allcat) {
+				$args = array(
+					'post_type' => explode(',', str_replace("'", "", $cpostypes)),
+					'post_status' => explode(',', str_replace("'", "", $cposstatuses)),
+					'posts_per_page' => -1,
+					'post__not_in' => explode(',', $excluded_ids),
+					'orderby' => 'title',
+					'order' => 'ASC'
+				);
+			
+				$posts = get_posts($args);
+				$dupes = array();
+				
+				foreach ($posts as $post) {
+					$compare_key = '';
+					if ($wpedpc_campaign->titledel && $wpedpc_campaign->contentdel) {
+						$compare_key = $post->post_title . '|' . $post->post_content;
+					} elseif ($wpedpc_campaign->contentdel) {
+						$compare_key = $post->post_content;
+					} else {
+						$compare_key = $post->post_title;
+					}
+					
+					if (!isset($temp_array[$compare_key])) {
+						$temp_array[$compare_key] = array(
+							'ok_id' => $post->ID,
+							'ok_date' => $post->post_date,
+							'posts' => array()
+						);
+					} else {
+						$temp_array[$compare_key]['posts'][] = $post;
+					}
+				}
+				
+				// Convert to format similar to original query results
+				foreach ($temp_array as $key => $data) {
+					if (!empty($data['posts'])) {
+						foreach ($data['posts'] as $dupe_post) {
+							$dupes[] = (object) array(
+								'ID' => $dupe_post->ID,
+								'post_title' => $dupe_post->post_title,
+								'post_content' => $dupe_post->post_content,
+								'post_date' => $dupe_post->post_date,
+								'ok_id' => $data['ok_id'],
+								'ok_date' => $data['ok_date']
+							);
+						}
+					}
+				}
+			} else {
+				// Para posts en categorías específicas
+				$args = array(
+					'post_type' => explode(',', str_replace("'", "", $cpostypes)),
+					'post_status' => explode(',', str_replace("'", "", $cposstatuses)),
+					'posts_per_page' => -1,
+					'post__not_in' => explode(',', $excluded_ids),
+					'orderby' => 'title',
+					'order' => 'ASC',
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'category',
+							'field' => 'term_id',
+							'terms' => explode(',', $categories)
+						)
+					)
+				);
+			
+				$posts = get_posts($args);
+				$dupes = array();
+				$temp_array = array();
+			
+				foreach ($posts as $post) {
+					$post_categories = wp_get_post_categories($post->ID);
+					
+					foreach ($post_categories as $cat_id) {
+						$compare_key = '';
+						if ($wpedpc_campaign->titledel && $wpedpc_campaign->contentdel) {
+							$compare_key = $post->post_title . '|' . $post->post_content . '|' . $cat_id;
+						} elseif ($wpedpc_campaign->contentdel) {
+							$compare_key = $post->post_content . '|' . $cat_id;
+						} else {
+							$compare_key = $post->post_title . '|' . $cat_id;
+						}
+						
+						if (!isset($temp_array[$compare_key])) {
+							$temp_array[$compare_key] = array(
+								'ok_id' => $post->ID,
+								'ok_date' => $post->post_date,
+								'category_id' => $cat_id,
+								'posts' => array()
+							);
+						} else {
+							$temp_array[$compare_key]['posts'][] = $post;
+						}
+					}
+				}
+				
+				foreach ($temp_array as $key => $data) {
+					if (!empty($data['posts'])) {
+						foreach ($data['posts'] as $dupe_post) {
+							$dupes[] = (object) array(
+								'ID' => $dupe_post->ID,
+								'post_title' => $dupe_post->post_title,
+								'post_content' => $dupe_post->post_content,
+								'post_date' => $dupe_post->post_date,
+								'term_id' => $data['category_id'],
+								'ok_id' => $data['ok_id'],
+								'ok_date' => $data['ok_date'],
+								'okcateg_id' => $data['category_id']
+							);
+						}
+					}
+				}
+			}
+			
+			$dupes = apply_filters('wpedpc_after_query', $dupes, $wpedpc_campaign);
 
 			if ($mode == 'show') {
-				$dupes = $wpdb->get_results($query);
+				//$dupes = $wpdb->get_results($query);
 				$dispcount = 0;
 				$results .= '<div class="wrap">
 			<h2>' . __('Showing posts to delete', 'etruel-del-post-copies') . '</h2>';
@@ -333,9 +449,32 @@ if (!class_exists('wpedpc_run_campaign')) :
 			</div>';
 			} elseif ($mode == 'counter') {
 
-				$dispcount = $wpdb->get_col($wpdb->prepare("SELECT SUM(base.countr) AS mycounter FROM (SELECT SUM(1) AS countr, post_title FROM wp_posts WHERE (`post_status` = 'published') OR (`post_status` = 'publish' ) GROUP BY post_title HAVING COUNT(*) > 1) AS base"));
+				$args = array(
+					'post_status' => array('publish', 'published'),
+					'posts_per_page' => -1,
+					'fields' => 'all',
+				);
+				
+				$posts = get_posts($args);
+				$title_counts = array();
+				
+				
+				foreach ($posts as $post) {
+					if (!isset($title_counts[$post->post_title])) {
+						$title_counts[$post->post_title] = 0;
+					}
+					$title_counts[$post->post_title]++;
+				}
+				
+				
+				$dispcount = 0;
+				foreach ($title_counts as $count) {
+					if ($count > 1) {
+						$dispcount += $count;
+					}
+				}
 			} else {  //*************************************  mode = DELETE   *********************
-				$dupes = $wpdb->get_results($query);
+				//$dupes = $wpdb->get_results($query);
 				$dispcount = 0;
 				$statuserr = 0;
 				foreach ($dupes as $dupe) {
@@ -348,8 +487,14 @@ if (!class_exists('wpedpc_run_campaign')) :
 					if ($postid <> '') {
 						if ($deletemedia) {
 
-							$sql = "SELECT ID FROM $wp_posts WHERE post_parent = $postid AND post_type = 'attachment'";
-							$ids = $wpdb->get_col($sql);
+							$args = array(
+								'post_type' => 'attachment',
+								'post_parent' => $postid,
+								'posts_per_page' => -1,
+								'fields' => 'ids'
+							);
+							
+							$ids = get_posts($args);
 							foreach ($ids as $id) {
 								wp_delete_attachment($id, $force_delete);
 								if ($force_delete)

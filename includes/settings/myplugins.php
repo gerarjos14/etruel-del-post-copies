@@ -3,7 +3,7 @@
 					<button type="button" class="handlediv button-link" aria-expanded="true">
 						<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 						<span class="toggle-indicator" aria-hidden="true"></span>
-					</button>
+					</button> 
 					<h3 class="hndle ui-sortable-handle"> <span><?php _e('About', 'etruel-del-post-copies'); ?></span></h3>
 					<div class="inside">
 						<p><strong><?php echo '► WP Delete Post Copies ' . WPEDPC_VERSION . ' ◄'; ?></strong></p>

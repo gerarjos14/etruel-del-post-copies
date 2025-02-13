@@ -3,7 +3,7 @@
  * @package WordPress_Plugins
  * @subpackage WP-eDel post copies
  * @a file just to load external extensions
- */
+ */ 
 //error_reporting(0);
 if (!defined('WP_ADMIN')) {
 	header('Status: 403 Forbidden');

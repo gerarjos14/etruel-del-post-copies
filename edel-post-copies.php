@@ -80,7 +80,7 @@ if (!class_exists('edel_post_copies')) :
 			// Unserializing instances of the class is forbidden
 			_doing_it_wrong(__FUNCTION__, esc_html__('Cheatin&#8217; huh?', 'etruel-del-post-copies'), '1.6');
 		}
-
+ 
 		private function setup_globals() {
 
 			// Plugin Folder Path

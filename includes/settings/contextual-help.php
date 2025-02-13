@@ -1,7 +1,7 @@
 <?php
 /**
  * Contextual Help
- *
+ * 
  * @package     EDD
  * @subpackage  Admin/Settings
  * @copyright   Copyright (c) 2015, Pippin Williamson

@@ -3,7 +3,7 @@
  * Admin Options Page
  *
  * @package     WPEDPC
- * @subpackage  Admin/Settings
+ * @subpackage  Admin/Settings 
  * @copyright   Copyright (c) 2015, Esteban Truelsegaard
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       5.0

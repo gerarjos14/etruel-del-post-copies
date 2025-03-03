@@ -6,7 +6,7 @@
  * @subpackage  Functions
  * @copyright   Copyright (c) 2015, Esteban Truelsegaard
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       5.0
+ * @since       5.0 
  */
 
 // Exit if accessed directly
@@ -283,19 +283,25 @@ class meta_boxes_campaign {
 		}
 		//<img id="goman" src="'.esc_url(plugins_url( '/images/goman.png', __FILE__ ) ).'"/>
 		$display = is_null( $post_id ) ? ' style="display: none;"' : '';
-		$echoHtml = '<div id="wpedpc_limit_wrap"'.$display.'>
+		$echoHtml = '<div id="wpedpc_limit_wrap"'.esc_attr($display).'>
 						
 						<select id="quickdo" name="quickdo" style="display:inline;">
 						';
 		$quickoptions = self::quickoptions();
 		foreach($quickoptions as $key => $option) {
-			$echoHtml .= '<option value="'.$option["value"].'">'.$option["text"].'</option>';
+			$echoHtml .= '<option value="'.esc_attr($option["value"]).'">'.esc_html($option["text"]).'</option>';
 		}
 		$disabled = ( in_array( $pagenow, array( 'post-new.php' ) ) ) ? 'disabled' : '';
 		$echoHtml .= '</select>
-						<input '.$disabled .' type="button" name="gosubmit" id="gosubmit" title="'.__('Click to do the selected action.', 'etruel-del-post-copies' ).'" class="button" value="'.__('Go', 'etruel-del-post-copies' ).'" /> 
+						<input '.esc_attr($disabled) .' type="button" name="gosubmit" id="gosubmit" title="'.esc_attr(__('Click to do the selected action.', 'etruel-del-post-copies' )).'" class="button" value="'.esc_attr(__('Go', 'etruel-del-post-copies' )).'" /> 
 					</div>';
-		echo $echoHtml;
+					$allowed_html = array(
+						'div'    => array( 'id' => true ),
+						'select' => array( 'id' => true, 'name' => true, 'style' => true ),
+						'option' => array( 'value' => true ),
+						'input'  => array( 'type' => true, 'name' => true, 'id' => true, 'title' => true, 'class' => true, 'value' => true, 'disabled' => true ),
+					);
+					echo wp_kses( $echoHtml, $allowed_html );
 			
 	}
 	static function render_settings_meta_box() {
@@ -304,16 +310,21 @@ class meta_boxes_campaign {
 		do_action( 'wpedpc_meta_box_settings_fields', $post->ID );
 	}
 	static function render_campaign_limit_row($post_id) {
-		if(!current_user_can('manage_options')) {
+		if (!current_user_can('manage_options')) {
 			return false;
 		}
-		$wpedpc_limit = get_post_meta( $post_id, 'wpedpc_limit', true );
-		$display = is_null( $post_id ) ? ' style="display: none;"' : '';
-		$echoHtml = '<div id="wpedpc_limit_wrap"'.$display.'>
-			<label>'.__('Limit per time:', 'etruel-del-post-copies' ).' <input class="small-text" type="number" min="0" value="'.$wpedpc_limit.'" name="wpedpc_limit"></label> 
-			<p class="description">'.__('The amount of posts queried every time. 0 delete ALL copies at once.(Not Recommended)', 'etruel-del-post-copies' ).'</p>
-		</div>';
-		echo $echoHtml;
+		
+		$wpedpc_limit = get_post_meta($post_id, 'wpedpc_limit', true);
+		$display = is_null($post_id) ? ' style="display: none;"' : '';
+		
+		?>
+		<div id="wpedpc_limit_wrap"<?php echo esc_attr($display); ?>>
+			<label><?php esc_html_e('Limit per time:', 'etruel-del-post-copies'); ?> 
+				<input class="small-text" type="number" min="0" value="<?php echo esc_attr($wpedpc_limit); ?>" name="wpedpc_limit">
+			</label> 
+			<p class="description"><?php esc_html_e('The amount of posts queried every time. 0 delete ALL copies at once.(Not Recommended)', 'etruel-del-post-copies'); ?></p>
+		</div>
+		<?php
 	}
 	static function render_campaign_movetotrash_row($post_id) {
 		if(!current_user_can('manage_options')) {
@@ -325,7 +336,7 @@ class meta_boxes_campaign {
 			<label><input type="checkbox" name="movetotrash" value="1" '.checked($movetotrash, 1, false).' /> <b>'.__('Move to Trash:', 'etruel-del-post-copies' ).'</b><br /></label>
 			<p class="description">'.__('If checked, the posts are moved to trash, if not, the posts will be deleted permanently.', 'etruel-del-post-copies' ).'</p>
 		</div>';
-		echo $echoHtml;
+		echo wp_kses_post($echoHtml);
 	}
 	static function render_campaign_images_row($post_id) {
 		if(!current_user_can('manage_options')) {
@@ -346,7 +357,7 @@ class meta_boxes_campaign {
 			<p class="description">'.__('If checked, all images into the post content will be deleted before delete post. CAUTION: this haven\'t trash.', 'etruel-del-post-copies' ).'</p>
 		</div>';
 		
-		echo $echoHtml;
+		echo wp_kses_post($echoHtml);
 	}
 	static function render_jobschedule_row($post_id) {
     

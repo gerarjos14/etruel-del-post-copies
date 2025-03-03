@@ -3,7 +3,7 @@
  * @package WordPress_Plugins
  * @subpackage WP-eDel post copies
  * @a file just to load external extensions
- */
+ */ 
 //error_reporting(0);
 if (!defined('WP_ADMIN')) {
 	header('Status: 403 Forbidden');
@@ -161,7 +161,7 @@ function wpedpc_licenses() {
 							 */
 							settings_errors();
 							if (!has_action('wpedpc_licenses_forms')) {
-								echo '<div class="msg extension-message"><p>', __('This is where you would enter the license keys for one of our premium plugins, should you activate one.', 'etruel-del-post-copies'), '</p></div>';
+								echo '<div class="msg extension-message"><p>', esc_html__('This is where you would enter the license keys for one of our premium plugins, should you activate one.', 'etruel-del-post-copies'), '</p></div>';
 							} else {
 								do_action('wpedpc_licenses_forms');
 							}

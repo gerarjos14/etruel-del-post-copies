@@ -73,14 +73,14 @@ if (!class_exists('edel_post_copies')) :
 
 		public function __clone() {
 			// Cloning instances of the class is forbidden
-			_doing_it_wrong(__FUNCTION__, __('Cheatin&#8217; huh?', 'etruel-del-post-copies'), '1.6');
+			_doing_it_wrong(__FUNCTION__, esc_html__('Cheatin&#8217; huh?', 'etruel-del-post-copies'), '1.6');
 		}
 
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden
-			_doing_it_wrong(__FUNCTION__, __('Cheatin&#8217; huh?', 'etruel-del-post-copies'), '1.6');
+			_doing_it_wrong(__FUNCTION__, esc_html__('Cheatin&#8217; huh?', 'etruel-del-post-copies'), '1.6');
 		}
-
+ 
 		private function setup_globals() {
 
 			// Plugin Folder Path
@@ -381,7 +381,7 @@ if (!class_exists('edel_post_copies')) :
 
 		static function wpedpc_env_checks_notice() {
 			global $wpedpc_admin_message;
-			echo $wpedpc_admin_message;
+			echo esc_html($wpedpc_admin_message);
 		}
 
 	}

@@ -6,7 +6,7 @@
  * @subpackage  Classes/Campaign
  * @copyright   Copyright (c) 2015, Esteban Truelsegaard
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       5.0
+ * @since       5.0 
 */
 
 // Exit if accessed directly
@@ -322,9 +322,15 @@ class WPEDPC_Campaign {
 			$value_type = "'%s'";
 		}
 
-		$sql = $wpdb->prepare( "UPDATE $wpdb->postmeta SET meta_value = $value_type WHERE post_id = $this->ID AND meta_key = '%s'", $meta_value, $meta_key );
+		//$sql = $wpdb->prepare( "UPDATE $wpdb->postmeta SET meta_value = $value_type WHERE post_id = $this->ID AND meta_key = '%s'", $meta_value, $meta_key );
 
-		if ( $wpdb->query( $sql ) ) {
+		$updated = update_post_meta(
+			$this->ID,    // post ID
+			$meta_key,    // meta key
+			$meta_value   // meta value
+		);
+
+		if ( $updated ) {
 
 			clean_post_cache( $this->ID );
 			return true;

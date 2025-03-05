@@ -336,7 +336,7 @@ class meta_boxes_campaign {
 			<label><input type="checkbox" name="movetotrash" value="1" '.checked($movetotrash, 1, false).' /> <b>'.__('Move to Trash:', 'etruel-del-post-copies' ).'</b><br /></label>
 			<p class="description">'.__('If checked, the posts are moved to trash, if not, the posts will be deleted permanently.', 'etruel-del-post-copies' ).'</p>
 		</div>';
-		echo wp_kses_post($echoHtml);
+		echo $echoHtml;
 	}
 	static function render_campaign_images_row($post_id) {
 		if(!current_user_can('manage_options')) {
@@ -357,7 +357,7 @@ class meta_boxes_campaign {
 			<p class="description">'.__('If checked, all images into the post content will be deleted before delete post. CAUTION: this haven\'t trash.', 'etruel-del-post-copies' ).'</p>
 		</div>';
 		
-		echo wp_kses_post($echoHtml);
+		echo $echoHtml;
 	}
 	static function render_jobschedule_row($post_id) {
     

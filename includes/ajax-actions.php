@@ -201,7 +201,7 @@ class wpedpc_ajax_actions {
 		}
 		$post_id = $_POST['campaign_ID'];
 		$response_run = apply_filters('wpedpc_run_campaign', $post_id, $quickdo, $response_run );
-		wp_die(esc_html($response_run['results']));
+		wp_die($response_run['results']);
 	}
 	static function del_post() {
 		global $wpdb, $wpedpc_options;

@@ -307,6 +307,7 @@ class meta_boxes_campaign {
 	static function render_settings_meta_box() {
 		global $post;
 		wp_nonce_field( basename( __FILE__ ), 'wpedpc_meta_box_nonce' );
+		wp_nonce_field( 'wpdpc_erase_logs', 'wpdpc_erase_logs' );
 		do_action( 'wpedpc_meta_box_settings_fields', $post->ID );
 	}
 	static function render_campaign_limit_row($post_id) {

@@ -344,6 +344,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 				}
 			}
 			
+			$dupes = apply_filters('wpedpc_after_query', $dupes, $wpedpc_campaign);
 
 			if ($mode == 'show') {
 				//$dupes = $wpdb->get_results($query);
@@ -475,75 +476,76 @@ if (!class_exists('wpedpc_run_campaign')) :
 					}
 				}
 			} else {  //*************************************  mode = DELETE   *********************
-				$query = apply_filters('wpedpc_after_query', $dupes, $wpedpc_campaign);
-
-				$dupes = $wpdb->get_results($query);
+				
 				$dispcount = 0;
 				$statuserr = 0;
-				foreach ($dupes as $dupe) {
+				if(!empty($dupes)){
+					foreach ($dupes as $dupe) {
 
-					$postid = $dupe->ID;
-					$title = $dupe->post_title;
-					$wpcontent = $dupe->post_content;
-					$perma = get_permalink($postid);
-					$mensaje = "";
-					if ($postid <> '') {
-						if ($deletemedia) {
-
-							$args = array(
-								'post_type' => 'attachment',
-								'post_parent' => $postid,
-								'posts_per_page' => -1,
-								'fields' => 'ids'
-							);
-							
-							$ids = get_posts($args);
-							foreach ($ids as $id) {
-								wp_delete_attachment($id, $force_delete);
-								if ($force_delete)
-									unlink(get_attached_file($id));
-								$mensaje .= sprintf(__("-- Post image id:'%s' Deleted! ", "etruel-del-post-copies"), $id) . "<br>";
+						$postid = $dupe->ID;
+						$title = $dupe->post_title;
+						$wpcontent = $dupe->post_content;
+						$perma = get_permalink($postid);
+						$mensaje = "";
+						if ($postid <> '') {
+							if ($deletemedia) {
+	
+								$args = array(
+									'post_type' => 'attachment',
+									'post_parent' => $postid,
+									'posts_per_page' => -1,
+									'fields' => 'ids'
+								);
+								
+								$ids = get_posts($args);
+								foreach ($ids as $id) {
+									wp_delete_attachment($id, $force_delete);
+									if ($force_delete)
+										unlink(get_attached_file($id));
+									$mensaje .= sprintf(__("-- Post image id:'%s' Deleted! ", "etruel-del-post-copies"), $id) . "<br>";
+								}
 							}
-						}
-						if ($delimgcontent) {  //images in content					
-							$images = apply_filters('wpedpc_parseImages', array(), $wpcontent);
-							$itemUrl = $perma;  //self::getReadUrl($perma);
-							$images = array_values(array_unique($images));
-							if (sizeof($images)) { // Si hay alguna imagen en el contenido
-								$img_new_url = array();
-								foreach ($images as $imagen_src) {
-									$imagen_src_real = apply_filters('wpedpc_getRelativeUrl', $itemUrl, $imagen_src);
-									if ($this->wpedpc_get_domain($imagen_src) == $this->wpedpc_get_domain(home_url())) {
-										$file = $_SERVER['DOCUMENT_ROOT'] . str_replace(home_url(), "", $imagen_src_real);
-										if (file_exists($file)) {
-											unlink($file);
-											$mensaje .= sprintf(__("-- img file:'%s' Deleted! ", "etruel-del-post-copies"), $file) . "<br>";
+							if ($delimgcontent) {  //images in content					
+								$images = apply_filters('wpedpc_parseImages', array(), $wpcontent);
+								$itemUrl = $perma;  //self::getReadUrl($perma);
+								$images = array_values(array_unique($images));
+								if (sizeof($images)) { // Si hay alguna imagen en el contenido
+									$img_new_url = array();
+									foreach ($images as $imagen_src) {
+										$imagen_src_real = apply_filters('wpedpc_getRelativeUrl', $itemUrl, $imagen_src);
+										if ($this->wpedpc_get_domain($imagen_src) == $this->wpedpc_get_domain(home_url())) {
+											$file = $_SERVER['DOCUMENT_ROOT'] . str_replace(home_url(), "", $imagen_src_real);
+											if (file_exists($file)) {
+												unlink($file);
+												$mensaje .= sprintf(__("-- img file:'%s' Deleted! ", "etruel-del-post-copies"), $file) . "<br>";
+											}
+										} else {
+											// image are external. Different domain.";
 										}
-									} else {
-										// image are external. Different domain.";
 									}
 								}
 							}
-						}
-
-						$custom_field_keys = get_post_custom_keys($postid);
-						foreach ($custom_field_keys as $key => $value) {
-							delete_post_meta($postid, $key, '');
-							$mensaje .= sprintf(__("-- Post META key:'%s', value: '%s'. Deleted! ", "etruel-del-post-copies"), $key, $value) . "<br>";
-						}
-						$result = wp_delete_post($postid, $force_delete);
-						if (!$result) {
-							$mensaje = sprintf(__("!! Problem deleting post %s - %s !!", "etruel-del-post-copies"), $postid, $perma) . "<br>" . $mensaje;
-							$statuserr++;
-						} else {
-							$mensaje = sprintf(__("'%s' (ID #%s) Deleted!", "etruel-del-post-copies"), $title, $postid) . "<br>" . $mensaje;
-							$dispcount++;
-						}
-						if ($mode == 'now') {
-							$message .= $mensaje;
+	
+							$custom_field_keys = get_post_custom_keys($postid);
+							foreach ($custom_field_keys as $key => $value) {
+								delete_post_meta($postid, $key, '');
+								$mensaje .= sprintf(__("-- Post META key:'%s', value: '%s'. Deleted! ", "etruel-del-post-copies"), $key, $value) . "<br>";
+							}
+							$result = wp_delete_post($postid, $force_delete);
+							if (!$result) {
+								$mensaje = sprintf(__("!! Problem deleting post %s - %s !!", "etruel-del-post-copies"), $postid, $perma) . "<br>" . $mensaje;
+								$statuserr++;
+							} else {
+								$mensaje = sprintf(__("'%s' (ID #%s) Deleted!", "etruel-del-post-copies"), $title, $postid) . "<br>" . $mensaje;
+								$dispcount++;
+							}
+							if ($mode == 'now') {
+								$message .= $mensaje;
+							}
 						}
 					}
 				}
+				
 				$mtime = explode(' ', microtime());
 				$time_end = $mtime[1] + $mtime[0];
 				$time_total = $time_end - $time_start;

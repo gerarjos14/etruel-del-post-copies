@@ -30,7 +30,7 @@ jQuery(document).ready(function ($) {
 		$('#wpedpc_logs_tab').html('<p><img width="12" src="' + wpedpc_object_meta_boxes.img_loading + '" class="mt2">' + wpedpc_object_meta_boxes.msg_loading + '</p>');
 		$.post(ajaxurl, data, function (msgdev) {  //si todo ok devuelve LOG sino 0
 			if (msgdev == 'ERROR') {
-				$("#poststuff").prepend('<div id="fieldserror" class="error fade">' + wpedpc_object_meta_boxes.msg_error_has_occurred + '</div>');
+				$("#poststuff").prepend('<div id="fieldserror" class="error fade"><p>' + wpedpc_object_meta_boxes.msg_error_has_occurred + '</p></div>');
 			} else {
 				$('#wpedpc_logs_tab').html(msgdev);
 			}
@@ -44,10 +44,11 @@ jQuery(document).ready(function ($) {
 		$('#fieldserror').remove();
 		msgdev = '<p><img width="12" src="' + wpedpc_object_meta_boxes.img_loading + '" class="mt2">' + wpedpc_object_meta_boxes.msg_loading_campaign + '</p>';
 
-		$("#poststuff").prepend('<div id="fieldserror" class="updated fade ">' + msgdev + '</div>');
+		$("#poststuff").prepend('<div id="fieldserror" class="updated fade "><p>' + msgdev + '</p></div>');
 		var data = {
 			action: jQuery('#quickdo').val(),
-			campaign_ID: jQuery('#post_ID').val()
+			campaign_ID: jQuery('#post_ID').val(),
+			_wpnonce: jQuery('#wpdpc_erase_logs').val()
 		};
 
 
@@ -84,32 +85,50 @@ jQuery(document).ready(function ($) {
 		$(this).next().next('.rowdetail').fadeToggle();
 	});
 
-	$(document).on("click", ".postdel", function (e) {
-		if (confirm(wpedpc_object_meta_boxes.msg_before_del + $(this).attr('rel') + '?') == false) {
-			e.preventDefault();
+	jQuery(document).on("click", ".postdel", function (e) {
+		e.preventDefault(); // Prevent default action early
+	
+		let $this = jQuery(this);
+		let post_id = $this.attr('rel');
+		let campaign_ID = jQuery('#post_ID').val();
+		let url = $this.children('a').attr('href');
+	
+		// Validate necessary data before proceeding
+		if (!post_id || !campaign_ID || !url) {
+			alert(wpedpc_object_meta_boxes.msg_before_del);
 			return false;
 		}
-
-		jQuery('.' + $(this).attr('rel') + '_loading_td').html('<img width="12" src="' + wpedpc_object_meta_boxes.img_loading + '" class="mt2"/>')
-
-		var data = {
-			url: $(this).children('a').attr('href'),
-			post_id: $(this).attr('rel'),
-			campaign_ID: jQuery('#post_ID').val(),
-			action: 'wpedpc_delapost'
+	
+		// Confirm deletion
+		if (!confirm(wpedpc_object_meta_boxes.msg_before_del + post_id + '?')) {
+			return false;
 		}
-
-
-		$.post(ajaxurl, data, function (response) {
-			if (jQuery(response).find('response_data').text() == 'error') {
-				alert(jQuery(response).find('supplemental message').text());
+	
+		let $loading = jQuery('.' + post_id + '_loading_td');
+		$loading.html(`<img width="12" src="${wpedpc_object_meta_boxes.img_loading}" class="mt2"/>`);
+	
+		let data = {
+			url: url,
+			post_id: post_id,
+			campaign_ID: campaign_ID,
+			action: 'wpedpc_delapost'
+		};
+	
+		jQuery.post(ajaxurl, data, function (response) {
+			if (response.success) {
+				jQuery('.' + post_id).fadeOut(); // Remove the post row smoothly
 			} else {
-				jQuery('.' + data.post_id + '').fadeOut();
+				alert(response.data?.message || wpedpc_object_meta_boxes.msg_before_del);
 			}
+		})
+		.fail(function () {
+			alert(__('An error occurred. Please try again.', 'etruel-del-post-copies'));
+		})
+		.always(function () {
+			$loading.html(''); // Clear loading icon after response
 		});
-
-		e.preventDefault();
 	});
+	
 
 	// End Table list actions  ***********************
 
@@ -178,10 +197,10 @@ jQuery(document).ready(function ($) {
 
 function run(response) {
 	jQuery('#fieldserror').remove();
-	if (jQuery(response).find('response_data').text() == 'error') {
-		jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade">' + jQuery(response).find('supplemental message').text() + '</div>');
+	if (!response.success) {
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade"><p>' + response.data.message + '</p></div>');
 	} else {
-		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade">' + jQuery(response).find('supplemental message').text() + '</div>');
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade"><p>' + response.data.message + '</p></div>');
 	}
 
 	jQuery('html').css('cursor', 'auto');
@@ -189,10 +208,10 @@ function run(response) {
 }
 function erase_logs(response) {
 	jQuery('#fieldserror').remove();
-	if (jQuery(response).find('response_data').text() == 'error') {
-		jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade">' + jQuery(response).find('supplemental message').text() + '</div>');
+	if (!response.success) {
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade"><p>' + response.data.message + '</p></div>');
 	} else {
-		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade">' + jQuery(response).find('supplemental message').text() + '</div>');
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade"><p>' + response.data.message + '</p></div>');
 	}
 	jQuery('html').css('cursor', 'auto');
 	jQuery('#gosubmit').prop('disabled', false);
@@ -200,7 +219,7 @@ function erase_logs(response) {
 function show_tables(response) {
 	jQuery('#fieldserror').remove();
 	jQuery('a[href="#wpedpc_results_tab"]').trigger("click");
-	jQuery('#wpedpc_results_tab').html(response);
+	jQuery('#wpedpc_results_tab').html(response.data.results);
 	jQuery('html').css('cursor', 'auto');
 	jQuery('#gosubmit').prop('disabled', false);
 }

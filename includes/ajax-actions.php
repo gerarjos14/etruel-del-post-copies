@@ -84,238 +84,152 @@ class wpedpc_ajax_actions {
 		}
 
 		$echoHtml .= '</table></div></div></div></div>';
-		wp_die(esc_html($echoHtml));
+		wp_die($echoHtml);
 
 	}
-	static function run_campaign() {
-			
-		$response_run = array();
-		$response_run['message'] = '';
-		$response_run['success'] = false;	
-		$quickdo = 'WPdpc_now';
-			
-		$response = new WP_Ajax_Response;
-		if(!isset($_POST['campaign_ID'])) {
-			$response->add(array('data' => 'error',
-									'supplemental' => array(
-										'message' => __('Campaign ID must exist.', 'etruel-del-post-copies')
-									)
-								)); 
-			$response->send();
-		} else {
-			$post_id = $_POST['campaign_ID'];
+	public static function run_campaign() {
+		// Verify campaign_ID exists and sanitize input
+		if (!isset($_POST['campaign_ID'])) {
+			wp_send_json_error(array('message' => __('Campaign ID must exist.', 'etruel-del-post-copies')));
 		}
-		$response_run = apply_filters('wpedpc_run_campaign', $post_id, $quickdo, $response_run );
-		$response->add(array('data' => ($response_run['success']? 'success' : 'error'),
-									'supplemental' => array(
-										'message' => $response_run['message']
-									)
-								)); 
-		$response->send();
-			
+	
+		$post_id = absint($_POST['campaign_ID']); // Ensure it's a valid integer
+		$quickdo = 'WPdpc_now';
+	
+		// Apply the campaign filter
+		$response_run = apply_filters('wpedpc_run_campaign', $post_id, $quickdo, array(
+			'message' => '',
+			'success' => false
+		));
+	
+		// Send JSON response based on the filter result
+		if ($response_run['success']) {
+			wp_send_json_success(array('message' => $response_run['message']));
+		} else {
+			wp_send_json_error(array('message' => $response_run['message']));
+		}
 	}
 	public static function erase_logs() {
-        // Create response object
-        $response = new WP_Ajax_Response();
-        
-        // 1. Verify nonce for CSRF protection
-        if (!isset($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce'], 'wpdpc_erase_logs')) {
-            $response->add(array(
-                'data' => 'error',
-                'supplemental' => array(
-                    'message' => __('Security check failed', 'etruel-del-post-copies')
-                )
-            ));
-            $response->send();
-            exit;
-        }
-
-        // 2. Check if user has proper capabilities
-        if (!current_user_can('manage_options')) {
-            $response->add(array(
-                'data' => 'error',
-                'supplemental' => array(
-                    'message' => __('Insufficient permissions', 'etruel-del-post-copies')
-                )
-            ));
-            $response->send();
-            exit;
-        }
-
-        // 3. Validate and sanitize campaign ID
-        $campaign_id = isset($_REQUEST['campaign_ID']) ? absint($_REQUEST['campaign_ID']) : 0;
-        if (!$campaign_id) {
-            $response->add(array(
-                'data' => 'error',
-                'supplemental' => array(
-                    'message' => __('Invalid campaign ID', 'etruel-del-post-copies')
-                )
-            ));
-            $response->send();
-            exit;
-        }
-
-        // 4. Verify campaign exists and user has permission to modify it
-        $campaign = get_post($campaign_id);
-        if (!$campaign || !current_user_can('edit_post', $campaign_id)) {
-            $response->add(array(
-                'data' => 'error',
-                'supplemental' => array(
-                    'message' => __('Campaign not found or permission denied', 'etruel-del-post-copies')
-                )
-            ));
-            $response->send();
-            exit;
-        }
-
-        // 5. Perform the log erasure
-        if (update_post_meta($campaign_id, 'logs', array())) {
-            $response->add(array(
-                'data' => 'success',
-                'supplemental' => array(
-                    'message' => __('Logs of campaign deleted', 'etruel-del-post-copies')
-                )
-            ));
-        } else {
-            $response->add(array(
-                'data' => 'error',
-                'supplemental' => array(
-                    'message' => __('Something went wrong. The log was not deleted.', 'etruel-del-post-copies')
-                )
-            ));
-        }
-
-        $response->send();
-        exit;
-    }
-
-	static function show() {
-		$response_run = array();
-		$response_run['message'] = '';
-		$response_run['success'] = false;	
-		$quickdo = 'WPdpc_show';
-			
-		$response = new WP_Ajax_Response;
-		if(!isset($_POST['campaign_ID'])) {
-			wp_die(esc_html__('Campaign ID must exist.', 'etruel-del-post-copies'));
+		// 1. Verify nonce for CSRF protection
+		if (!isset($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce'], 'wpdpc_erase_logs')) {
+			wp_send_json_error(array('message' => __('Security check failed', 'etruel-del-post-copies')));
 		}
-		$post_id = $_POST['campaign_ID'];
-		$response_run = apply_filters('wpedpc_run_campaign', $post_id, $quickdo, $response_run );
-		wp_die(esc_html($response_run['results']));
-	}
-	static function del_post() {
-		global $wpdb, $wpedpc_options;
-		$url = parse_url($_POST['url']);
-		parse_str($url['query'], $path);
-		$nonce = $path['_wpnonce'];
-		$post_id = $_POST['post_id'];
-		$response['postid'] = $post_id;
-		
-		$response_ajax = new WP_Ajax_Response;
-		
-		if (!wp_verify_nonce( $nonce, 'delete-post_' . $post_id ) ) {
-			$response_ajax->add(array('data' => 'error',
-										'supplemental' => array(
-											'message' => __('Security check.', 'etruel-del-post-copies')
-										)
-								)); 
-			$response_ajax->send();
-			wp_die();
-		}
-
-		$response['success'] = false;
-		$response['message'] = '';
-		
-		$campaign = new WPEDPC_Campaign($_POST['campaign_ID']);
-		if (!$campaign) {
-			$response_ajax->add(array('data' => 'error',
-										'supplemental' => array(
-											'message' => __('Security check.', 'etruel-del-post-copies')
-										)
-								)); 
-			$response_ajax->send();
-			wp_die();
-		}
-		$deletemedia = $campaign->deletemedia ;
-		$delimgcontent = $campaign->delimgcontent ;
-		$movetotrash = $campaign->movetotrash ;
-		$force_delete = !$campaign;
-		
-		
-		$dupe = get_post($post_id);
-		$postid		= $dupe->ID;
-		$title		= $dupe->post_title;
-		$wpcontent	= $dupe->post_content;
-		$perma		= get_permalink($postid);
-		$wp_posts 				= $wpdb->prefix . "posts";
-		$wp_terms 				= $wpdb->prefix . "terms";
-		$wp_term_taxonomy 		= $wpdb->prefix . "term_taxonomy";
-		$wp_term_relationships 	= $wpdb->prefix . "term_relationships";
-		
-		if ($postid != ''){
-			if($deletemedia) {
-
-				$attachments = get_children([
-					'post_parent' => $postid,
-					'post_type'   => 'attachment',
-					'fields'      => 'ids',
-				]);
-				
-				$ids = $attachments ? array_values($attachments) : [];
-				foreach ( $ids as $id ) {		
-					wp_delete_attachment($id, $force_delete);
-					if($force_delete) {
-						unlink(get_attached_file($id));
-					}
-				}
-			}
-			if($delimgcontent) {  //images in content					
-				$images = apply_filters('wpedpc_parseImages', array(), $wpcontent );
-				$itemUrl = $perma;  //self::getReadUrl($perma);
-				$images = array_values(array_unique($images));
-				if(sizeof($images)) { // Si hay alguna imagen en el contenido
-					$img_new_url = array();
-					foreach($images as $imagen_src) {
-						$imagen_src_real = apply_filters('wpedpc_getRelativeUrl', $itemUrl, $imagen_src);
-						if(self::wpedpc_get_domain($imagen_src) == self::wpedpc_get_domain(home_url())){
-							$file = $_SERVER['DOCUMENT_ROOT'] .str_replace( home_url(), "",$imagen_src_real );
-							if (file_exists( $file )) {
-								unlink($file);
-							}
-						} else {
-							// image are external. Different domain.";
-						}
-					}
-				}
-			}
-
-			$custom_field_keys = get_post_custom_keys($postid);
-			foreach ( $custom_field_keys as $key => $value ) {
-				delete_post_meta($postid, $key, '');
-			}
-			$result = wp_delete_post($postid, $force_delete);
-			if (!$result) {  
-				// translators: %1$s is the post ID, %2$s is the permalink of the post.
-$response['message'] = sprintf(__('!! Problem deleting post %1$s - %2$s !!', 'etruel-del-post-copies'), $postid, $perma);
-
-				$response['success'] = false;
-			} else {  
-				// translators: %1$s is the post title, %2$s is the post ID.
-$response['message'] = sprintf(__("'%1$s' (ID #%2$s) Deleted!", 'etruel-del-post-copies'), $title, $postid);
-				$response['success'] = true;
-			}
-		}
-		$response_ajax->add(array('data' => ($response['success']? 'success' : 'error'),
-										'supplemental' => array(
-											'message' => $response['message']
-										)
-							)); 
-		$response_ajax->send();
-		wp_die();
-	}
-
-
 	
+		// 2. Check if user has proper capabilities
+		if (!current_user_can('manage_options')) {
+			wp_send_json_error(array('message' => __('Insufficient permissions', 'etruel-del-post-copies')));
+		}
+	
+		// 3. Validate and sanitize campaign ID
+		$campaign_id = isset($_REQUEST['campaign_ID']) ? absint($_REQUEST['campaign_ID']) : 0;
+		if (!$campaign_id || get_post_status($campaign_id) === false) {
+			wp_send_json_error(array('message' => __('Invalid campaign ID or campaign not found', 'etruel-del-post-copies')));
+		}
+	
+		// 4. Check if user can edit the campaign
+		if (!current_user_can('edit_post', $campaign_id)) {
+			wp_send_json_error(array('message' => __('Permission denied', 'etruel-del-post-copies')));
+		}
+	
+		// 5. Delete the logs meta key
+		if (delete_post_meta($campaign_id, 'logs')) {
+			wp_send_json_success(array('message' => __('Logs of campaign deleted', 'etruel-del-post-copies')));
+		} else {
+			wp_send_json_error(array('message' => __('Something went wrong. The log was not deleted.', 'etruel-del-post-copies')));
+		}
+	}
+
+	public static function show() {
+		// Verify and sanitize campaign_ID
+		if (!isset($_POST['campaign_ID'])) {
+			wp_send_json_error(array('message' => __('Campaign ID must exist.', 'etruel-del-post-copies')));
+		}
+	
+		$post_id = absint($_POST['campaign_ID']); // Ensure it's an integer
+		$quickdo = 'WPdpc_show';
+	
+		// Apply campaign filter
+		$response_run = apply_filters('wpedpc_run_campaign', $post_id, $quickdo, array());
+	
+		// Return the results
+		wp_send_json_success(array('results' => $response_run['results']));
+	}
+	
+	public static function del_post() {
+		// Verify nonce for security
+		if (!isset($_POST['url'], $_POST['post_id'], $_POST['campaign_ID'])) {
+			wp_send_json_error(array('message' => __('Missing required parameters.', 'etruel-del-post-copies')));
+		}
+	
+		// Extract nonce from URL
+		$url = esc_url_raw($_POST['url']);
+		parse_str(parse_url($url, PHP_URL_QUERY), $path);
+		$nonce = $path['_wpnonce'] ?? '';
+	
+		$post_id = absint($_POST['post_id']);
+		$campaign_id = absint($_POST['campaign_ID']);
+	
+		// Security check
+		if (!wp_verify_nonce($nonce, 'delete-post_' . $post_id)) {
+			wp_send_json_error(array('message' => __('Security check failed.', 'etruel-del-post-copies')));
+		}
+	
+		// Validate campaign exists
+		$campaign = get_post_meta($campaign_id, '_campaign_settings', true);
+		if (!$campaign) {
+			wp_send_json_error(array('message' => __('Campaign not found.', 'etruel-del-post-copies')));
+		}
+	
+		// Extract deletion settings
+		$deletemedia = $campaign['deletemedia'] ?? false;
+		$delimgcontent = $campaign['delimgcontent'] ?? false;
+		$force_delete = empty($campaign['movetotrash']);
+	
+		// Get post details
+		$post = get_post($post_id);
+		if (!$post) {
+			wp_send_json_error(array('message' => __('Post not found.', 'etruel-del-post-copies')));
+		}
+	
+		$post_title = $post->post_title;
+		$permalink = get_permalink($post_id);
+	
+		// Delete media attachments if required
+		if ($deletemedia) {
+			$attachments = get_children([
+				'post_parent' => $post_id,
+				'post_type'   => 'attachment',
+				'fields'      => 'ids',
+			]);
+	
+			foreach ($attachments as $attachment_id) {
+				wp_delete_attachment($attachment_id, $force_delete);
+			}
+		}
+	
+		// Delete images inside content
+		if ($delimgcontent) {
+			$images = apply_filters('wpedpc_parseImages', array(), $post->post_content);
+			foreach ($images as $image_src) {
+				$image_path = str_replace(home_url(), ABSPATH, $image_src);
+				if (file_exists($image_path)) {
+					@unlink($image_path);
+				}
+			}
+		}
+	
+		// Delete all custom fields in one go
+		delete_post_meta_by_key($post_id);
+	
+		// Delete the post
+		$result = wp_delete_post($post_id, $force_delete);
+	
+		if (!$result) {
+			wp_send_json_error(array('message' => sprintf(__('Error deleting post %1$s - %2$s', 'etruel-del-post-copies'), $post_id, $permalink)));
+		}
+	
+		wp_send_json_success(array('message' => sprintf(__("'%1$s' (ID #%2$s) Deleted!", 'etruel-del-post-copies'), $post_title, $post_id)));
+	}
 }
 
 $wpedpc_ajax_actions = new wpedpc_ajax_actions();

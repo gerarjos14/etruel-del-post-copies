@@ -29,7 +29,7 @@ jQuery(document).ready(function ($) {
 		jQuery("div[id=fieldserror]").remove();
 		var msgdev = '<p><img width="16" src="' + wpedpc_object_post_type.img_loading + '"/> <span style="vertical-align: top;margin: 10px;">' + wpedpc_object_post_type.msg_loading_campaign + '</span></p>';
 
-		jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">' + msgdev + '</div>');
+		jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade"><p>' + msgdev + '</p></div>');
 		var data = {
 			campaign_ID: jQuery(this).data("id"),
 			action: "wpedpc_run"
@@ -41,7 +41,7 @@ jQuery(document).ready(function ($) {
 				jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade">' + response.data.message + '</div>');
 			} else {
 
-				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">' + response.data.message + '</div>');
+				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade"><p>' + response.data.message + '</p></div>');
 			}
 			jQuery('html').css('cursor', 'auto');
 			jQuery('#gosubmit').prop('disabled', false);
@@ -70,14 +70,14 @@ function run_all() {
     let msgdev = `<p><img width="16" src="${wpedpc_object_post_type.img_loading}" /> 
         <span style="vertical-align: top;margin: 10px;">${wpedpc_object_post_type.msg_loading_campaign}</span></p>`;
 
-    jQuery(".subsubsub").before(`<div id="fieldserror" class="updated fade ajaxstop">${msgdev}</div>`);
+    jQuery(".subsubsub").before(`<div id="fieldserror" class="updated fade ajaxstop"><p>${msgdev}</p></div>`);
 
     let requests = selectedItems.map(c_id => {
         return jQuery.post(ajaxurl, { campaign_ID: c_id, action: "wpedpc_run" })
             .done(function (response) {
                 let response_message = response.data.message;
                 let messageClass = response.success ? 'updated' : 'error';
-                jQuery(".subsubsub").before(`<div id="fieldserror" class="${messageClass} fade">${response_message}</div>`);
+                jQuery(".subsubsub").before(`<div id="fieldserror" class="${messageClass} fade"><p>${response_message}</p></div>`);
             });
     });
 

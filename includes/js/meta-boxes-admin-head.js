@@ -30,7 +30,7 @@ jQuery(document).ready(function ($) {
 		$('#wpedpc_logs_tab').html('<p><img width="12" src="' + wpedpc_object_meta_boxes.img_loading + '" class="mt2">' + wpedpc_object_meta_boxes.msg_loading + '</p>');
 		$.post(ajaxurl, data, function (msgdev) {  //si todo ok devuelve LOG sino 0
 			if (msgdev == 'ERROR') {
-				$("#poststuff").prepend('<div id="fieldserror" class="error fade">' + wpedpc_object_meta_boxes.msg_error_has_occurred + '</div>');
+				$("#poststuff").prepend('<div id="fieldserror" class="error fade"><p>' + wpedpc_object_meta_boxes.msg_error_has_occurred + '</p></div>');
 			} else {
 				$('#wpedpc_logs_tab').html(msgdev);
 			}
@@ -44,7 +44,7 @@ jQuery(document).ready(function ($) {
 		$('#fieldserror').remove();
 		msgdev = '<p><img width="12" src="' + wpedpc_object_meta_boxes.img_loading + '" class="mt2">' + wpedpc_object_meta_boxes.msg_loading_campaign + '</p>';
 
-		$("#poststuff").prepend('<div id="fieldserror" class="updated fade ">' + msgdev + '</div>');
+		$("#poststuff").prepend('<div id="fieldserror" class="updated fade "><p>' + msgdev + '</p></div>');
 		var data = {
 			action: jQuery('#quickdo').val(),
 			campaign_ID: jQuery('#post_ID').val(),
@@ -198,9 +198,9 @@ jQuery(document).ready(function ($) {
 function run(response) {
 	jQuery('#fieldserror').remove();
 	if (!response.success) {
-		jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade">' + response.data.message + '</div>');
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade"><p>' + response.data.message + '</p></div>');
 	} else {
-		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade">' + response.data.message + '</div>');
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade"><p>' + response.data.message + '</p></div>');
 	}
 
 	jQuery('html').css('cursor', 'auto');
@@ -209,9 +209,9 @@ function run(response) {
 function erase_logs(response) {
 	jQuery('#fieldserror').remove();
 	if (!response.success) {
-		jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade">' + response.data.message + '</div>');
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade"><p>' + response.data.message + '</p></div>');
 	} else {
-		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade">' + response.data.message + '</div>');
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade"><p>' + response.data.message + '</p></div>');
 	}
 	jQuery('html').css('cursor', 'auto');
 	jQuery('#gosubmit').prop('disabled', false);

@@ -344,7 +344,6 @@ if (!class_exists('wpedpc_run_campaign')) :
 				}
 			}
 			
-			$dupes = apply_filters('wpedpc_after_query', $dupes, $wpedpc_campaign);
 
 			if ($mode == 'show') {
 				//$dupes = $wpdb->get_results($query);
@@ -365,7 +364,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 			</thead>
 			<tbody id="delbox">';
 
-				if (!empty($dupes))
+				if (!empty($dupes)){
 					foreach ($dupes as $dupe) {
 						$postid = $dupe->ID;
 						$title = $dupe->post_title;
@@ -442,6 +441,8 @@ if (!class_exists('wpedpc_run_campaign')) :
 						}
 						$results .= $mensaje;
 					}
+				}
+					
 				$results .= '</tbody><tfoot><tr>
 			<td>' . __('Total', 'etruel-del-post-copies') . ': ' . $dispcount . '</td></tr>
 			</tfoot>
@@ -474,7 +475,9 @@ if (!class_exists('wpedpc_run_campaign')) :
 					}
 				}
 			} else {  //*************************************  mode = DELETE   *********************
-				//$dupes = $wpdb->get_results($query);
+				$query = apply_filters('wpedpc_after_query', $dupes, $wpedpc_campaign);
+
+				$dupes = $wpdb->get_results($query);
 				$dispcount = 0;
 				$statuserr = 0;
 				foreach ($dupes as $dupe) {

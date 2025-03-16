@@ -1,10 +1,10 @@
 === WP Delete Post Copies ===
-Contributors: etruel, vanbom, manuelge
+Contributors: etruel, manuelge, gerarjos14, vanbom
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTNR4BH8XPDR6
-Tags: posts, copies, duplicated, duplicate posts, delete copies, delete, erase, cron, squedule, squedule delete
+Tags: posts, copies, erase duplicated, duplicate posts, delete copies
 Requires at least: 3.1.0
-Tested up to: 6.2.0
-Stable tag: trunk
+Tested up to: 6.7.2
+Stable tag: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

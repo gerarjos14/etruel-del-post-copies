@@ -57,6 +57,17 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The logs are also in a new tab saving time to load the page. Click on title to refresh.
 
 == Changelog ==
+= 6.0 Mar 16, 2025 =
+* Major version. Important release & must update version.
+* **First use should be in a test environment.**
+* Fixes Vulnerabilities report.
+* Many security improvements.
+* Nonce added on erase logs actions.
+* Refactored all Ajax avoiding use of WP_Ajax_Response objects.
+* Refactored all raw SQL queries to use WordPress standard query functions for improved compatibility and security.
+* Many bug fixes.
+* Bump to WP 6.7.2
+
 = 5.5 Mar 20, 2023 =
 * Bug fix for compatibility in php 8.
 * Bump to WP 6.2.0
@@ -99,7 +110,7 @@ You can either install it automatically from the WordPress admin, or do it manua
 = 5.0 =
 * All code was improved from scratch.
 * Added the functionality of deletion of posts by campaigns.
-This allows different filters for campaigns or even use the complement of deletion of old posts in a campaign and in other continue looking for duplicates.
+> This allows different filters for campaigns or even use the complement of deletion of old posts in a campaign and in other continue looking for duplicates.
 * The results and logs are in tabs inside each campaign editing.
 * Fixed the issues reported with the cron malfunctions.
 
@@ -151,4 +162,4 @@ This allows different filters for campaigns or even use the complement of deleti
 Just click for delete.	
 
 == Upgrade Notice ==
-1. 5.4 version. Many fixes and tested with Wordpress 5.8.1
+6.0 Major version. Must update version. Must first be used in a test environment.

@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Get HTML table of logs via AJAX.
  *
  * @since 5.0
- * @return logs in html format
+ * @return  in html format
  */
 class wpedpc_ajax_actions {
 	
@@ -33,6 +33,10 @@ class wpedpc_ajax_actions {
 		
 	}
 	static function show_logs_campaign() {
+		if(!isset( $_POST['nonce'] ) || !wp_verify_nonce($_POST['nonce'], 'etruel-del-post-copies')){
+			return false;
+		}
+
 		if ( isset( $_POST['post_id'] ) ) {
 			$post_id = $_POST['post_id'];
 			do_action('wpedpc_show_logs_campaign', $post_id );
@@ -88,6 +92,9 @@ class wpedpc_ajax_actions {
 
 	}
 	public static function run_campaign() {
+		if(!isset( $_POST['nonce'] ) || !wp_verify_nonce($_POST['nonce'], 'etruel-del-post-copies')){
+			return false;
+		}
 		// Verify campaign_ID exists and sanitize input
 		if (!isset($_POST['campaign_ID'])) {
 			wp_send_json_error(array('message' => __('Campaign ID must exist.', 'etruel-del-post-copies')));
@@ -111,7 +118,7 @@ class wpedpc_ajax_actions {
 	}
 	public static function erase_logs() {
 		// 1. Verify nonce for CSRF protection
-		if (!isset($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce'], 'wpdpc_erase_logs')) {
+		if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'etruel-del-post-copies')) {
 			wp_send_json_error(array('message' => __('Security check failed', 'etruel-del-post-copies')));
 		}
 	
@@ -140,6 +147,9 @@ class wpedpc_ajax_actions {
 	}
 
 	public static function show() {
+		if(!isset( $_POST['nonce'] ) || !wp_verify_nonce($_POST['nonce'], 'etruel-del-post-copies')){
+			return false;
+		}
 		// Verify and sanitize campaign_ID
 		if (!isset($_POST['campaign_ID'])) {
 			wp_send_json_error(array('message' => __('Campaign ID must exist.', 'etruel-del-post-copies')));
@@ -156,6 +166,9 @@ class wpedpc_ajax_actions {
 	}
 	
 	public static function del_post() {
+		if(!isset( $_POST['nonce'] ) || !wp_verify_nonce($_POST['nonce'], 'etruel-del-post-copies')){
+			return false;
+		}
 		// Verify nonce for security
 		if (!isset($_POST['url'], $_POST['post_id'], $_POST['campaign_ID'])) {
 			wp_send_json_error(array('message' => __('Missing required parameters.', 'etruel-del-post-copies')));

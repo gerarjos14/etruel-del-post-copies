@@ -24,6 +24,7 @@ jQuery(document).ready(function ($) {
 	$('#wpedpc_logs_tab').click(function () {
 		c_ID = $('#post_ID').val();
 		var data = {
+			nonce: wpedpc_object_meta_boxes.del_post_cp_nonce,
 			post_id: $('#post_ID').val(),
 			action: "wpedpc_show_logs_campaign"
 		};
@@ -48,7 +49,7 @@ jQuery(document).ready(function ($) {
 		var data = {
 			action: jQuery('#quickdo').val(),
 			campaign_ID: jQuery('#post_ID').val(),
-			_wpnonce: jQuery('#wpdpc_erase_logs').val()
+			nonce: wpedpc_object_meta_boxes.del_post_cp_nonce,
 		};
 
 
@@ -108,6 +109,7 @@ jQuery(document).ready(function ($) {
 		$loading.html(`<img width="12" src="${wpedpc_object_meta_boxes.img_loading}" class="mt2"/>`);
 	
 		let data = {
+			nonce: wpedpc_object_meta_boxes.del_post_cp_nonce,
 			url: url,
 			post_id: post_id,
 			campaign_ID: campaign_ID,

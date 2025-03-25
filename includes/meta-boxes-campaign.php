@@ -88,7 +88,8 @@ class meta_boxes_campaign {
 						'msg_error_has_occurred' => __('An error has occurred while attempting to execute this action', 'etruel-del-post-copies' ),
 						'msg_loading_campaign' => __('Running Campaign...', 'etruel-del-post-copies'),
 						'msg_before_go' => __('You must Save Changes below before "Go"', 'etruel-del-post-copies' ),
-						'msg_before_del' => __('Are you sure you want to delete the post with ID:', 'etruel-del-post-copies' )
+						'msg_before_del' => __('Are you sure you want to delete the post with ID:', 'etruel-del-post-copies' ),
+						'del_post_cp_nonce' => wp_create_nonce('etruel-del-post-copies')
 				) );
 	
 	}

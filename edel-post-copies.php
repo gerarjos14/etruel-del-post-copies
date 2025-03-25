@@ -45,6 +45,7 @@ if (!class_exists('edel_post_copies')) :
 	class edel_post_copies {
 
 		private static $instance = null;
+		public static $prorequired = '2.5';
 
 		public static function get_instance() {
 			if (is_null(self::$instance)) {

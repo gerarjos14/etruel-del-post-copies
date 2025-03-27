@@ -188,15 +188,15 @@ class wpedpc_ajax_actions {
 		}
 	
 		// Validate campaign exists
-		$campaign = get_post_meta($campaign_id, '_campaign_settings', true);
+		$campaign = new WPEDPC_Campaign($campaign_id);
+		
 		if (!$campaign) {
 			wp_send_json_error(array('message' => __('Campaign not found.', 'etruel-del-post-copies')));
 		}
-	
 		// Extract deletion settings
-		$deletemedia = $campaign['deletemedia'] ?? false;
-		$delimgcontent = $campaign['delimgcontent'] ?? false;
-		$force_delete = empty($campaign['movetotrash']);
+		$deletemedia = $campaign->deletemedia ?? false;
+		$delimgcontent = $campaign->delimgcontent ?? false;
+		$force_delete = empty($campaign->movetotrash);
 	
 		// Get post details
 		$post = get_post($post_id);
@@ -241,7 +241,7 @@ class wpedpc_ajax_actions {
 			wp_send_json_error(array('message' => sprintf(__('Error deleting post %1$s - %2$s', 'etruel-del-post-copies'), $post_id, $permalink)));
 		}
 	
-		wp_send_json_success(array('message' => sprintf(__("'%1$s' (ID #%2$s) Deleted!", 'etruel-del-post-copies'), $post_title, $post_id)));
+		wp_send_json_success(array('message' => sprintf(__("'%1s' (ID #%2s) Deleted!", 'etruel-del-post-copies'), $post_title, $post_id)));
 	}
 }
 

@@ -37,6 +37,10 @@ class wpedpc_ajax_actions {
 			return false;
 		}
 
+		if( ! current_user_can( 'manage_options' ) ) {
+			return false;
+		}	
+
 		if ( isset( $_POST['post_id'] ) ) {
 			$post_id = $_POST['post_id'];
 			do_action('wpedpc_show_logs_campaign', $post_id );
@@ -95,6 +99,11 @@ class wpedpc_ajax_actions {
 		if(!isset( $_POST['nonce'] ) || !wp_verify_nonce($_POST['nonce'], 'etruel-del-post-copies')){
 			return false;
 		}
+
+		if( ! current_user_can( 'manage_options' ) ) {
+			return false;
+		}	
+
 		// Verify campaign_ID exists and sanitize input
 		if (!isset($_POST['campaign_ID'])) {
 			wp_send_json_error(array('message' => __('Campaign ID must exist.', 'etruel-del-post-copies')));
@@ -150,6 +159,10 @@ class wpedpc_ajax_actions {
 		if(!isset( $_POST['nonce'] ) || !wp_verify_nonce($_POST['nonce'], 'etruel-del-post-copies')){
 			return false;
 		}
+
+		if (!current_user_can('manage_options')) {
+			return false;
+		}
 		// Verify and sanitize campaign_ID
 		if (!isset($_POST['campaign_ID'])) {
 			wp_send_json_error(array('message' => __('Campaign ID must exist.', 'etruel-del-post-copies')));
@@ -169,6 +182,11 @@ class wpedpc_ajax_actions {
 		if(!isset( $_POST['nonce'] ) || !wp_verify_nonce($_POST['nonce'], 'etruel-del-post-copies')){
 			return false;
 		}
+
+		if( ! current_user_can( 'manage_options' )) {
+			return false;
+		}	
+
 		// Verify nonce for security
 		if (!isset($_POST['url'], $_POST['post_id'], $_POST['campaign_ID'])) {
 			wp_send_json_error(array('message' => __('Missing required parameters.', 'etruel-del-post-copies')));
@@ -181,22 +199,26 @@ class wpedpc_ajax_actions {
 	
 		$post_id = absint($_POST['post_id']);
 		$campaign_id = absint($_POST['campaign_ID']);
-	
+
+		if (!current_user_can('edit_post', $campaign_id)) {
+			wp_send_json_error(array('message' => __('Permission denied', 'etruel-del-post-copies')));
+		}
+
 		// Security check
 		if (!wp_verify_nonce($nonce, 'delete-post_' . $post_id)) {
 			wp_send_json_error(array('message' => __('Security check failed.', 'etruel-del-post-copies')));
 		}
 	
 		// Validate campaign exists
-		$campaign = get_post_meta($campaign_id, '_campaign_settings', true);
+		$campaign = new WPEDPC_Campaign($campaign_id);
+		
 		if (!$campaign) {
 			wp_send_json_error(array('message' => __('Campaign not found.', 'etruel-del-post-copies')));
 		}
-	
 		// Extract deletion settings
-		$deletemedia = $campaign['deletemedia'] ?? false;
-		$delimgcontent = $campaign['delimgcontent'] ?? false;
-		$force_delete = empty($campaign['movetotrash']);
+		$deletemedia = $campaign->deletemedia ?? false;
+		$delimgcontent = $campaign->delimgcontent ?? false;
+		$force_delete = empty($campaign->movetotrash);
 	
 		// Get post details
 		$post = get_post($post_id);
@@ -241,7 +263,7 @@ class wpedpc_ajax_actions {
 			wp_send_json_error(array('message' => sprintf(__('Error deleting post %1$s - %2$s', 'etruel-del-post-copies'), $post_id, $permalink)));
 		}
 	
-		wp_send_json_success(array('message' => sprintf(__("'%1$s' (ID #%2$s) Deleted!", 'etruel-del-post-copies'), $post_title, $post_id)));
+		wp_send_json_success(array('message' => sprintf(__("'%1s' (ID #%2s) Deleted!", 'etruel-del-post-copies'), $post_title, $post_id)));
 	}
 }
 

@@ -1,5 +1,5 @@
 === WP Delete Post Copies ===
-Contributors: etruel, manuelge, gerarjos14, vanbom
+Contributors: etruel, khaztiel, gerarjos14, vanbom
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTNR4BH8XPDR6
 Tags: posts, copies, erase duplicated, duplicate posts, delete copies
 Requires at least: 3.1.0
@@ -8,7 +8,7 @@ Stable tag: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin searches duplicated posts by title or content, filtering by category and can permanently delete them with images or send them to the trash.
+Search for duplicate posts by title or content, filtering by category and can delete them definitively with images or send them to the trash.
 
 == Description ==
 This plugin searches duplicated posts by title or content, filtering by category and can permanently delete them with images or send them to the trash in manual mode or automatic scheduled with Wordpress cron.

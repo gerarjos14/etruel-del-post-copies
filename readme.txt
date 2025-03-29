@@ -57,7 +57,7 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The logs are also in a new tab saving time to load the page. Click on title to refresh.
 
 == Changelog ==
-= 6.0 Mar 25, 2025 =
+= 6.0 Mar 29, 2025 =
 * Major version. Important release & must update version.
 * **First use should be in a test environment.**
 * Fixes Vulnerabilities report.

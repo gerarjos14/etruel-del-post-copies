@@ -260,10 +260,10 @@ class wpedpc_ajax_actions {
 		$result = wp_delete_post($post_id, $force_delete);
 	
 		if (!$result) {
-			wp_send_json_error(array('message' => sprintf(__('Error deleting post %1$s - %2$s', 'etruel-del-post-copies'), $post_id, $permalink)));
+			wp_send_json_error(array('message' => sprintf(__('Error deleting post %s - %s', 'etruel-del-post-copies'), $post_id, $permalink)));
 		}
 	
-		wp_send_json_success(array('message' => sprintf(__("'%1s' (ID #%2s) Deleted!", 'etruel-del-post-copies'), $post_title, $post_id)));
+		wp_send_json_success(array('message' => sprintf(__("'%s' (ID #%s) Deleted!", 'etruel-del-post-copies'), $post_title, $post_id)));
 	}
 }
 

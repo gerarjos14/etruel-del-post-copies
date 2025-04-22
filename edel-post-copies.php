@@ -44,7 +44,7 @@ if (!class_exists('edel_post_copies')) :
 	 */
 	class edel_post_copies {
 
-		private static $instance = null;
+		private static $instance   = null;
 		public static $prorequired = '2.5';
 
 		public static function get_instance() {
@@ -59,7 +59,7 @@ if (!class_exists('edel_post_copies')) :
 			$this->register_autoloader();
 			$this->includes();
 			$this->setup_actions();
-			$this->load_textdomain();
+			//$this->load_textdomain();
 		}
 
 		private function setup_actions() {
@@ -67,6 +67,7 @@ if (!class_exists('edel_post_copies')) :
 			add_action('wpedpc_func_event', array($this, 'wpedpc_cron_callback'));
 			add_filter('cron_schedules', array($this, 'wpedpc_cron_recurrence'));
 			add_action('init', array($this, 'wpedpc_custom_cron'));
+			add_action('init', array($this, 'load_textdomain'));
 			add_filter('wpedpc_env_checks', array($this, 'wpedpc_env_checks'));
 			do_action('wpedpc_setup_actions');
 			add_action('admin_head', array(__CLASS__, 'admin_icon_style'));
@@ -81,7 +82,7 @@ if (!class_exists('edel_post_copies')) :
 			// Unserializing instances of the class is forbidden
 			_doing_it_wrong(__FUNCTION__, esc_html__('Cheatin&#8217; huh?', 'etruel-del-post-copies'), '1.6');
 		}
- 
+
 		private function setup_globals() {
 
 			// Plugin Folder Path
@@ -144,35 +145,17 @@ if (!class_exists('edel_post_copies')) :
 		 */
 		public static function autoloader($class_name) {
 			$class = strtolower(str_replace('_', '-', $class_name));
-			$file = plugin_dir_path(__FILE__) . '/includes/class-' . $class . '.php';
+			$file  = plugin_dir_path(__FILE__) . '/includes/class-' . $class . '.php';
 			if (file_exists($file)) {
 				require_once $file;
 			}
 		}
 
 		public function load_textdomain() {
-			// Set filter for plugin's languages directory
+			// textdomain directory
 			$lang_dir = dirname(plugin_basename(__FILE__)) . '/languages/';
-			$lang_dir = apply_filters('wpedpc_languages_directory', $lang_dir);
-
-			// Traditional WordPress plugin locale filter
-			$locale = apply_filters('plugin_locale', get_locale(), 'etruel-del-post-copies');
-			$mofile = sprintf('%1$s-%2$s.mo', 'etruel-del-post-copies', $locale);
-
-			// Setup paths to current locale file
-			$mofile_local = $lang_dir . $mofile;
-			$mofile_global = WP_LANG_DIR . '/etruel-del-post-copies/' . $mofile;
-
-			if (file_exists($mofile_global)) {
-				// Look in global /wp-content/languages/etruel-del-post-copies/ folder
-				load_textdomain('etruel-del-post-copies', $mofile_global);
-			} elseif (file_exists($mofile_local)) {
-				// Look in local /wp-content/plugins/etruel-del-post-copies/languages/ folder
-				load_textdomain('etruel-del-post-copies', $mofile_local);
-			} else {
-				// Load the default language files
-				load_plugin_textdomain('etruel-del-post-copies', false, $lang_dir);
-			}
+			// Load the default language files
+			load_plugin_textdomain('etruel-del-post-copies', false, $lang_dir);
 		}
 
 		static function admin_icon_style() {
@@ -198,7 +181,7 @@ if (!class_exists('edel_post_copies')) :
 
 		function wpedpc_cron_recurrence($schedules) {
 			$schedules['wpedpc_interval'] = array(
-				'display' => __('Every Five Minutes', 'textdomain'),
+				'display'  => __('Every Five Minutes', 'textdomain'),
 				'interval' => 300,
 			);
 			return $schedules;
@@ -213,7 +196,7 @@ if (!class_exists('edel_post_copies')) :
 
 		function wpedpc_cron_callback() {
 
-			$args = array('post_type' => 'wpedpcampaign', 'orderby' => 'ID', 'order' => 'ASC', 'numberposts' => -1);
+			$args	   = array('post_type' => 'wpedpcampaign', 'orderby' => 'ID', 'order' => 'ASC', 'numberposts' => -1);
 			$campaigns = get_posts($args);
 			foreach ($campaigns as $post) {
 				$campaign = new WPEDPC_Campaign($post->ID);
@@ -239,7 +222,7 @@ if (!class_exists('edel_post_copies')) :
 				$cron[$cronarraykey] = array();
 				foreach ($cronarrayvalue as $key => $value) {
 					//steps
-					$step = 1;
+					$step  = 1;
 					if (strstr($value, '/'))
 						list($value, $step) = explode('/', $value, 2);
 					//replase weekeday 7 with 0 for sundays
@@ -248,7 +231,7 @@ if (!class_exists('edel_post_copies')) :
 					//ranges
 					if (strstr($value, '-')) {
 						list($first, $last) = explode('-', $value, 2);
-						if (!is_numeric($first) or!is_numeric($last) or $last > 60 or $first > 60) //check
+						if (!is_numeric($first) or !is_numeric($last) or $last > 60 or $first > 60) //check
 							return false;
 						if ($cronarraykey == 'minutes' and $step < 5)  //set step ninmum to 5 min.
 							$step = 5;
@@ -284,44 +267,44 @@ if (!class_exists('edel_post_copies')) :
 					} else {
 						//Month names
 						if (strtolower($value) == 'jan')
-							$value = 1;
+							$value				 = 1;
 						if (strtolower($value) == 'feb')
-							$value = 2;
+							$value				 = 2;
 						if (strtolower($value) == 'mar')
-							$value = 3;
+							$value				 = 3;
 						if (strtolower($value) == 'apr')
-							$value = 4;
+							$value				 = 4;
 						if (strtolower($value) == 'may')
-							$value = 5;
+							$value				 = 5;
 						if (strtolower($value) == 'jun')
-							$value = 6;
+							$value				 = 6;
 						if (strtolower($value) == 'jul')
-							$value = 7;
+							$value				 = 7;
 						if (strtolower($value) == 'aug')
-							$value = 8;
+							$value				 = 8;
 						if (strtolower($value) == 'sep')
-							$value = 9;
+							$value				 = 9;
 						if (strtolower($value) == 'oct')
-							$value = 10;
+							$value				 = 10;
 						if (strtolower($value) == 'nov')
-							$value = 11;
+							$value				 = 11;
 						if (strtolower($value) == 'dec')
-							$value = 12;
+							$value				 = 12;
 						//Week Day names
 						if (strtolower($value) == 'sun')
-							$value = 0;
+							$value				 = 0;
 						if (strtolower($value) == 'sat')
-							$value = 6;
+							$value				 = 6;
 						if (strtolower($value) == 'mon')
-							$value = 1;
+							$value				 = 1;
 						if (strtolower($value) == 'tue')
-							$value = 2;
+							$value				 = 2;
 						if (strtolower($value) == 'wed')
-							$value = 3;
+							$value				 = 3;
 						if (strtolower($value) == 'thu')
-							$value = 4;
+							$value				 = 4;
 						if (strtolower($value) == 'fri')
-							$value = 5;
+							$value				 = 5;
 						if (!is_numeric($value) or $value > 60) //check
 							return false;
 						$cron[$cronarraykey] = array_merge($cron[$cronarraykey], array(0 => $value));
@@ -366,11 +349,11 @@ if (!class_exists('edel_post_copies')) :
 			}
 			if (version_compare($wp_version, '3.1', '<')) { // check WP Version
 				$message .= __('- WordPress 3.1 or higher needed!', 'etruel-del-post-copies') . '<br />';
-				$checks = false;
+				$checks	 = false;
 			}
 			if (version_compare(phpversion(), '5.4.0', '<')) { // check PHP Version
 				$message .= __('- PHP 5.4.0 or higher needed!', 'etruel-del-post-copies') . '<br />';
-				$checks = false;
+				$checks	 = false;
 			}
 			//put massage if one
 			if (!empty($message)) {
@@ -382,9 +365,8 @@ if (!class_exists('edel_post_copies')) :
 
 		static function wpedpc_env_checks_notice() {
 			global $wpedpc_admin_message;
-			echo esc_html($wpedpc_admin_message);
+			echo wp_kses_post($wpedpc_admin_message);
 		}
-
 	}
 
 	endif; // End if class_exists check

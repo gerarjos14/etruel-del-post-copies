@@ -6,7 +6,7 @@
  *  and can permanently delete them with images or send them to the trash in manual mode or automatic squeduled with Wordpress cron.
  * Author: Etruel Developments LLC
  * Author URI: https://etruel.com 
- * Version: 6.0
+ * Version: 6.1
  * Text Domain: etruel-del-post-copies
  * Domain Path: languages
  *
@@ -32,7 +32,7 @@ if (!defined('ABSPATH'))
 	exit;
 // Plugin version
 if (!defined('WPEDPC_VERSION'))
-	define('WPEDPC_VERSION', '6.0');
+	define('WPEDPC_VERSION', '6.1');
 
 //require_once 'includes/cron-functions.php';
 

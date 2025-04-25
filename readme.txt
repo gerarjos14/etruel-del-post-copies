@@ -35,12 +35,24 @@ You can run deletions manually with previews or set up scheduled cleanups using 
 * Manually delete single posts from the preview table.
 * Logs stored in tabs for better performance and quick reference.
 
+== Why use WP Delete Post Copies? ==
+
+Cleaning up duplicate content is essential for:
+
+✅ **Improving SEO** — Avoid penalties from search engines due to repeated content.  
+✅ **Optimizing database performance** — Fewer posts = faster queries.  
+✅ **Reducing storage usage** — Delete media files tied to duplicates and save space.  
+✅ **Maintaining editorial quality** — Keep your content clear and consistent.  
+✅ **Saving time** — Automate cleanups and avoid tedious manual checks.
+
+== Why use WP Delete Post Copies? ==
+
 Is probable that if there is a large amount of duplicated posts, for the timeouts on each server, the query can be interrupted when is proceeding manually and therefore the log can't be recorded. To avoid this decreases the "Limit per time" value. A value of 100 or 150 is suitable, but also with 10 at a time, works very well.
 
 **PLEASE MAKE BACKUPs OF YOUR DATABASE AND FILES BEFORE USE.**
 This will avoid you many problems if something goes wrong.
 
-= Add-On =
+== Add-On ==
 🔌 **[WP Delete Post Copies PRO](http://etruel.com/downloads/wp-delete-post-copies-pro/)**  
 Clean your database by removing posts older than a selected date. Useful for setting a content retention period (e.g., automatically delete posts older than 6 months).
 

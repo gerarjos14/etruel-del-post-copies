@@ -25,8 +25,9 @@ You can run deletions manually with previews or set up scheduled cleanups using 
 * Choose to keep the **first** or **last** post among duplicates.
 * Filter by **categories**, **post types**, and **post status** (including revisions and inherit).
 * Supports all post types (public or private).
+* Choose to move **posts to trash** or **delete them permanently**, including attachments and images.
 * Allows limiting queries to avoid server timeouts or heavy loads.
-* Optionally delete:
+* It also deletes:
   - Attachments (media files linked to posts).
   - Locally hosted images found in `<img>` HTML tags in post content.
   - Custom metadata from the `postmeta` table.

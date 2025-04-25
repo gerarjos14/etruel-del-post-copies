@@ -1,51 +1,60 @@
 === WP Delete Post Copies ===
-Contributors: etruel, khaztiel, gerarjos14, vanbom
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTNR4BH8XPDR6
-Tags: posts, copies, erase duplicated, duplicate posts, delete copies
-Requires at least: 3.1.0
-Tested up to: 6.7.2
-Stable tag: 6.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors: etruel, khaztiel, gerarjos14, vanbom  
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTNR4BH8XPDR6  
+Tags: posts, duplicates, delete, duplicated posts, remove copies  
+Requires at least: 3.1.0  
+Tested up to: 6.8.0  
+Stable tag: 6.0  
+License: GPLv2 or later  
+License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
-Search for duplicate posts by title or content, filtering by category and can delete them definitively with images or send them to the trash.
+Delete duplicate posts by title or content, with powerful filters and options for attachments and embedded images. Use manually or schedule automatic cleanups.
 
 == Description ==
-This plugin searches duplicated posts by title or content, filtering by category and can permanently delete them with images or send them to the trash in manual mode or automatic scheduled with Wordpress cron.
 
-And as a special feature, the erasing images by two different manners, images attached to posts can be trash or delete permanently and also can delete images added in posts content by html tag <img>.  
-The images in posts content can be deleted from the folder if they are hosted locally. 
+**WP Delete Post Copies** is a powerful tool to search and delete duplicate posts by comparing their titles or content. You can filter results by category or post status, choose which post to keep, and remove the rest — including their media files.
 
-= Some Features =
+You can run deletions manually with previews or set up scheduled cleanups using WordPress cron jobs. This plugin also offers the unique feature of deleting locally hosted images from post content (`<img>` tags), in addition to attached media.
 
-* Allows limit the query to avoid timeouts or high loads on the server when performing Mysql queries.
-* Allows send to trash or delete permanently the posts or any post type, public or private as well images or attachments of every post.
-* Also deletes custom meta fields values from postmeta table of each deleted post.
-* Allows to delete attachments.
-* Allows to search and permanently delete images in posts content if they are hosted locally.
-* Allows to filter by post status, revisions or also inherit.
-* Allows to filter on one or some categories.  But if ignores categories, the query is very much quicker.
-* You can select if it should be kept as original the first or the last duplicated post, deleting the others. 
-* Allows exclude posts to delete by post IDs.
-* You can preview a table of posts before make the delete in manual mode.
-* You can manually delete any single post from the preview table.
+> ⚠️ **Please backup your database and files before running deletions.**
+
+=== Key Features ===
+
+* Detects duplicates by **title**, **content**, or both.
+* Supports **manual or scheduled** deletion via WordPress cron.
+* Choose to keep the **first** or **last** post among duplicates.
+* Filter by **categories**, **post types**, and **post status** (including revisions and inherit).
+* Supports all post types (public or private).
+* Allows limiting queries to avoid server timeouts or heavy loads.
+* Optionally delete:
+  - Attachments (media files linked to posts).
+  - Locally hosted images found in `<img>` HTML tags in post content.
+  - Custom metadata from the `postmeta` table.
+* Preview posts before deletion.
+* Exclude posts by specific IDs.
+* Manually delete single posts from the preview table.
+* Logs stored in tabs for better performance and quick reference.
 
 Is probable that if there is a large amount of duplicated posts, for the timeouts on each server, the query can be interrupted when is proceeding manually and therefore the log can't be recorded. To avoid this decreases the "Limit per time" value. A value of 100 or 150 is suitable, but also with 10 at a time, works very well.
 
-PLEASE MAKE BACKUPs OF YOUR DATABASE AND FILES BEFORE USE.  This will avoid you many problems if something goes wrong.
+**PLEASE MAKE BACKUPs OF YOUR DATABASE AND FILES BEFORE USE.**
+This will avoid you many problems if something goes wrong.
 
 = Add-On =
-[WP-Delete Oldest Posts](http://etruel.com/downloads/wp-edel-oldest-post/) Allows to select a date to delete all posts published before that date and/or you can establish a period with a cron job to continuously deleting the old posts and just remains that period on database.  Example: I want to keep just the last six months of posts in my blog then the oldest are deleted.
+🔌 **[WP Delete Post Copies PRO](http://etruel.com/downloads/wp-delete-post-copies-pro/)**  
+Clean your database by removing posts older than a selected date. Useful for setting a content retention period (e.g., automatically delete posts older than 6 months).
 
-DISCLAIMER:
-This plugin deletes posts and/or images and other things. Use it with very much caution.
-The use of this plugin and its extensions is at your own risk. I will not be liable of third party for difficulty in use, inaccuracy or incompleteness of information, use of this information or results arising from the use of it, computer viruses, malicious code, loss of data, compatibility issues or otherwise. I will not be liable to you or any third party of any direct, indirect, special incidental, consequential, exemplary or punitive damages ( including lost of profit, lost of data, cost to procure replacement services or business opportunities) arising out of your use of plugin, or any other thing I provide in the site or link to another, or any acts omissions, defect, deficit, security breaches, or delays, regardless of the basis of the claim or if I have been advised of the possibility of such damage or loss.
+**DISCLAIMER:**
+This plugin is designed to permanently delete posts, images, and other data. Use it with extreme caution.
+The use of this plugin and its extensions is entirely at your own risk. We will not be held responsible for any issues arising from its use, including but not limited to: difficulties in operation, inaccuracies or incomplete results, data loss, compatibility problems, computer viruses, malicious code, or any other technical problems.
+We are not liable for any direct, indirect, incidental, special, consequential, or punitive damages (including but not limited to lost profits, lost data, costs of replacement services, or missed business opportunities) resulting from the use of this plugin or any related tools, services, or linked resources — regardless of the cause or legal theory, even if we have been advised of the possibility of such damages.
 
 == Installation ==
 You can either install it automatically from the WordPress admin, or do it manually:
 
-1. Unzip plugin archive and put the folder into your plugins folder (/wp-content/plugins/).
-2. Activate the plugin from the Plugins menu.
+1. Upload the plugin to `/wp-content/plugins/` and unzip it.
+2. Activate it from the **Plugins** menu in WordPress.
+3. Go to **Deletes** on menu to start using it.
 
 == Screenshots ==
 1. Settings Page with Global options.
@@ -57,6 +66,14 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The logs are also in a new tab saving time to load the page. Click on title to refresh.
 
 == Changelog ==
+= 6.1 Apr 25, 2025 =
+* Rebranded the "WP Delete Oldest Post" addon to **WP Delete Post Copies PRO**.
+* Introduced internal **version control** for better upgrade handling and future compatibility.
+* Improved plugin structure and internal architecture for better performance and maintainability.
+* General code cleanup and optimization across all modules.
+* Enhanced compatibility with latest WordPress versions and plugins.
+* Bump to WP 6.8.0
+
 = 6.0 Mar 29, 2025 =
 * Major version. Important release & must update version.
 * **First use should be in a test environment.**

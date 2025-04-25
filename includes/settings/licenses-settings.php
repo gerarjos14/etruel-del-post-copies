@@ -14,9 +14,9 @@ if (!defined('WP_ADMIN')) {
 function wpedpc_extensions() {
 	$extensions = array(
 		'wpedpc-oldest-posts' => (object) array(
-			'url' => 'https://etruel.com/downloads/wp-edel-oldest-post/',
+			'url' => 'https://etruel.com/downloads/etruel-del-post-copies-pro/',
 			'buynowURI' => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id=34&edd_options[price_id]=2',
-			'title' => 'WP Delete Oldest Posts',
+			'title' => 'WP Delete Post Copies PROs',
 			'banner' => WPEDPC_PLUGIN_URL .'includes/images/Delete-Older-Post-500x250.jpg',
 			'desc' => __('Add-On to enabled WP-Delete Post Copies plugin to delete posts by dates instead of duplicates. As prior certain date or prior to certains months ago.', 'etruel-del-post-copies'),
 			'installed' => false,

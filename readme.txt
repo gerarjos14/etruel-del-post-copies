@@ -35,7 +35,7 @@ Is probable that if there is a large amount of duplicated posts, for the timeout
 PLEASE MAKE BACKUPs OF YOUR DATABASE AND FILES BEFORE USE.  This will avoid you many problems if something goes wrong.
 
 = Add-On =
-[WP-Delete Oldest Posts](http://etruel.com/downloads/wp-edel-oldest-post/) Allows to select a date to delete all posts published before that date and/or you can establish a period with a cron job to continuously deleting the old posts and just remains that period on database.  Example: I want to keep just the last six months of posts in my blog then the oldest are deleted.
+[WP Delete Post Copies PRO](http://etruel.com/downloads/etruel-del-post-copies-pro/) Allows to select a date to delete all posts published before that date and/or you can establish a period with a cron job to continuously deleting the old posts and just remains that period on database.  Example: I want to keep just the last six months of posts in my blog then the oldest are deleted.
 
 DISCLAIMER:
 This plugin deletes posts and/or images and other things. Use it with very much caution.

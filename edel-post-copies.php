@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Delete Post Copies
  * Plugin URI: https://etruel.com/downloads/wp-delete-post-copies/
- * Description: Delete duplicate posts by title or content, with powerful filters and options for attachments and embedded images. Use manually or schedule automatic cleanups.
+ * Description: Delete duplicate posts by title or content, including attachments, with powerful filters. Supports manual and scheduled cleanups.
  * Author: Etruel Developments LLC
  * Author URI: https://etruel.com 
  * Version: 6.0.1

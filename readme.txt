@@ -8,7 +8,7 @@ Stable tag: 6.0.1
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
-Delete duplicate posts by title or content, with powerful filters and options for attachments and embedded images. Use manually or schedule automatic cleanups.
+Delete duplicate posts by title or content, including attachments, with powerful filters. Supports manual and scheduled cleanups.
 
 == Description ==
 

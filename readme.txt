@@ -3,7 +3,7 @@ Contributors: etruel, khaztiel, gerarjos14, vanbom
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTNR4BH8XPDR6  
 Tags: posts, duplicates, delete, duplicated posts, remove copies  
 Requires at least: 3.1.0  
-Tested up to: 6.8.0  
+Tested up to: 6.8
 Stable tag: 6.0.1 
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
@@ -15,6 +15,8 @@ Delete duplicate posts by title or content, with powerful filters and options fo
 **WP Delete Post Copies** is a powerful tool to search and delete duplicate posts by comparing their titles or content. You can filter results by category or post status, choose which post to keep, and remove the rest — including their media files.
 
 You can run deletions manually with previews or set up scheduled cleanups using WordPress cron jobs. This plugin also offers the unique feature of deleting locally hosted images from post content (`<img>` tags), in addition to attached media.
+
+Maker of Campaigns of deletes. With every campaign can search and delete duplicated posts (types) by title or content on different categories and can permanently delete them with images or send them to the trash in manual mode or automatic squeduled with Wordpress cron.
 
 > ⚠️ **Please backup your database and files before running deletions.**
 
@@ -53,9 +55,26 @@ Is probable that if there is a large amount of duplicated posts, for the timeout
 **PLEASE MAKE BACKUPs OF YOUR DATABASE AND FILES BEFORE USE.**
 This will avoid you many problems if something goes wrong.
 
-== Add-On ==
-🔌 **[WP Delete Post Copies PRO](http://etruel.com/downloads/wp-delete-post-copies-pro/)**  
-Clean your database by removing posts older than a selected date. Useful for setting a content retention period (e.g., automatically delete posts older than 6 months).
+== Add-On ==  
+🔌 **[WP Delete Post Copies PRO](https://etruel.com/downloads/wp-delete-post-copies-pro/)**
+Take your site cleanup to the next level.  
+With **WP Delete Post Copies PRO**, you can not only remove duplicates — you can also schedule campaigns to automatically delete old posts based on a selected date.
+
+Perfect for:  
+✅ Implementing content retention policies (e.g., automatically delete posts older than 6 months).  
+✅ Keeping your database lean and optimized continuously.  
+✅ Improving SEO by removing outdated content.  
+✅ Saving server space by deleting old media linked to posts.
+
+**Additional PRO Features:**  
+- Scheduled campaigns to delete old posts by selected date.  
+- More filters and advanced configuration options.  
+- Better performance on large sites with big databases.  
+- Priority support and ongoing updates.
+
+> 📢 Many users already trust our tools to keep their sites fast and free of duplicate content!  
+**[Click here to learn more about WP Delete Post Copies PRO](https://etruel.com/downloads/wp-delete-post-copies-pro/)**
+
 
 **DISCLAIMER:**
 This plugin is designed to permanently delete posts, images, and other data. Use it with extreme caution.
@@ -79,13 +98,13 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The logs are also in a new tab saving time to load the page. Click on title to refresh.
 
 == Changelog ==
-= 6.0.1 Apr 25, 2025 =
-* Rebranded the "WP Delete Oldest Post" addon to **WP Delete Post Copies PRO**.
+= 6.0.1 Apr 28, 2025 =
+* Rebranded the "WP Delete Oldest Post" addon to **[WP Delete Post Copies PRO](https://etruel.com/downloads/wp-delete-post-copies-pro/)**.
 * Introduced internal **version control** for better upgrade handling and future compatibility.
 * Improved plugin structure and internal architecture for better performance and maintainability.
 * General code cleanup and optimization across all modules.
 * Enhanced compatibility with latest WordPress versions and plugins.
-* Bump to WP 6.8.0
+* Bump to WP 6.8
 
 = 6.0 Mar 29, 2025 =
 * Major version. Important release & must update version.

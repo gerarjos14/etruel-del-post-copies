@@ -56,7 +56,7 @@ Is probable that if there is a large amount of duplicated posts, for the timeout
 This will avoid you many problems if something goes wrong.
 
 == Add-On ==  
-🔌 **[WP Delete Post Copies PRO](https://etruel.com/downloads/wp-delete-post-copies-pro/)**
+🔌 **[WP Delete Post Copies PRO](https://etruel.com/downloads/etruel-del-post-copies-pro/)**
 Take your site cleanup to the next level.  
 With **WP Delete Post Copies PRO**, you can not only remove duplicates — you can also schedule campaigns to automatically delete old posts based on a selected date.
 
@@ -73,7 +73,7 @@ Perfect for:
 - Priority support and ongoing updates.
 
 > 📢 Many users already trust our tools to keep their sites fast and free of duplicate content!  
-**[Click here to learn more about WP Delete Post Copies PRO](https://etruel.com/downloads/wp-delete-post-copies-pro/)**
+**[Click here to learn more about WP Delete Post Copies PRO](https://etruel.com/downloads/etruel-del-post-copies-pro/)**
 
 
 **DISCLAIMER:**
@@ -99,7 +99,7 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 == Changelog ==
 = 6.0.1 Apr 28, 2025 =
-* Rebranded the "WP Delete Oldest Post" addon to **[WP Delete Post Copies PRO](https://etruel.com/downloads/wp-delete-post-copies-pro/)**.
+* Rebranded the "WP Delete Oldest Post" addon to **[WP Delete Post Copies PRO](https://etruel.com/downloads/etruel-del-post-copies-pro/)**.
 * Introduced internal **version control** for better upgrade handling and future compatibility.
 * Improved plugin structure and internal architecture for better performance and maintainability.
 * General code cleanup and optimization across all modules.

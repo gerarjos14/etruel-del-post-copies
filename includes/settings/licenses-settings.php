@@ -19,6 +19,7 @@ function wpedpc_extensions() {
 			'title' => 'WP Delete Post Copies PROs',
 			'banner' => WPEDPC_PLUGIN_URL .'includes/images/Delete-Older-Post-500x250.jpg',
 			'desc' => __('Add-On to enabled WP-Delete Post Copies plugin to delete posts by dates instead of duplicates. As prior certain date or prior to certains months ago.', 'etruel-del-post-copies'),
+
 			'installed' => false,
 		)
 	);
@@ -123,7 +124,7 @@ function wpedpc_licenses() {
 								$utm = '#utm_source=etruel-del-post-copies-config&utm_medium=banner&utm_campaign=extension-page-banners';
 								?>
 								<div class="postbox" style="width:33%;max-width:500px;">
-									<img loading="lazy" class="aligncenter" style="width: 100%;" src="<?php echo $extension->banner; ?>" alt="Banner Delete Oldest Posts">
+									<img loading="lazy" class="aligncenter" style="width: 100%;" src="<?php echo $extension->banner; ?>" alt="Banner Delete Post Copies PRO">
 									<div class="inside">
 										<div class="extension <?php echo esc_attr($id); ?>">
 											<h4 class="extension-title"><a target="_blank" href="<?php echo esc_url($extension->url . $utm); ?>">

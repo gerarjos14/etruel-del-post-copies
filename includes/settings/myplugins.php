@@ -29,7 +29,7 @@
 						$utm = '#utm_source=etruel-del-post-copies-config&utm_medium=banner&utm_campaign=sidebar-banners';
 						?>
 						<div class="inside">
-							<img loading="lazy" class="aligncenter" style="width: 100%;" src="<?php echo $extension->banner; ?>" alt="Banner Delete Oldest Posts">
+							<img loading="lazy" class="aligncenter" style="width: 100%;" src="<?php echo $extension->banner; ?>" alt="Banner Delete Post Copies PRO">
 							<div class="inside">
 								<div class="extension <?php echo esc_attr($id); ?>">
 									<h4 class="extension-title"><a target="_blank" href="<?php echo esc_url($extension->url . $utm); ?>">

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: posts, duplicates, delete, duplicated posts, remove copies  
 Requires at least: 3.1.0  
 Tested up to: 6.8
-Stable tag: 6.0.1 
+Stable tag: 6.0.2
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -98,6 +98,11 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The logs are also in a new tab saving time to load the page. Click on title to refresh.
 
 == Changelog ==
+
+= 6.0.2 May 5, 2025 =
+* Add new functionality in settings page
+* Do better the version and licensing control
+
 = 6.0.1 Apr 28, 2025 =
 * Rebranded the "WP Delete Oldest Post" addon to **[WP Delete Post Copies PRO](https://etruel.com/downloads/etruel-del-post-copies-pro/)**.
 * Introduced internal **version control** for better upgrade handling and future compatibility.

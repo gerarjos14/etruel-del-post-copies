@@ -5,7 +5,7 @@
  * Description: Delete duplicate posts by title or content, including attachments, with powerful filters. Supports manual and scheduled cleanups.
  * Author: Etruel Developments LLC
  * Author URI: https://etruel.com 
- * Version: 6.0.1
+ * Version: 6.0.2
  * Text Domain: etruel-del-post-copies
  * Domain Path: languages
  *
@@ -31,7 +31,8 @@ if (!defined('ABSPATH'))
 	exit;
 // Plugin version
 if (!defined('WPEDPC_VERSION'))
-	define('WPEDPC_VERSION', '6.0.1');
+
+	define('WPEDPC_VERSION', '6.0.2');
 
 //require_once 'includes/cron-functions.php';
 
@@ -44,7 +45,7 @@ if (!class_exists('edel_post_copies')) :
 	class edel_post_copies {
 
 		private static $instance   = null;
-		public static $prorequired = '3.0';
+		public static $prorequired = '3.1';
 
 		public static function get_instance() {
 			if (is_null(self::$instance)) {

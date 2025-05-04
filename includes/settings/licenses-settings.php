@@ -13,18 +13,19 @@ if (!defined('WP_ADMIN')) {
 
 function wpedpc_extensions() {
 	$extensions = array(
-		'wpedpc-oldest-posts' => (object) array(
+		'etruel-delete-post-copies-pro' => (object) array(
 			'url' => 'https://etruel.com/downloads/etruel-del-post-copies-pro/',
 			'buynowURI' => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id=34&edd_options[price_id]=2',
-			'title' => 'WP Delete Post Copies PRO',
-			'banner' => WPEDPC_PLUGIN_URL .'includes/images/wp-delete-post-copies-pro-512x256.jpg',
-			'desc' => __('Add-On to enabled WP Delete Post Copies plugin to delete posts by dates instead of duplicates. As prior certain date or prior to certains months ago.', 'etruel-del-post-copies'),
+			'title' => 'WP Delete Post Copies PROs',
+			'banner' => WPEDPC_PLUGIN_URL .'includes/images/Delete-Older-Post-500x250.jpg',
+			'desc' => __('Add-On to enabled WP-Delete Post Copies plugin to delete posts by dates instead of duplicates. As prior certain date or prior to certains months ago.', 'etruel-del-post-copies'),
+
 			'installed' => false,
 		)
 	);
 
 	if (class_exists('DPCOldestPosts')) {
-		$extensions['wpedpc-oldest-posts']->installed = true;
+		$extensions['etruel-delete-post-copies-pro']->installed = true;
 	}
 	return apply_filters('wpedpc_extensions', $extensions);
 }
@@ -115,10 +116,8 @@ function wpedpc_licenses() {
 				<div class="wrap wpedpc_table_page">
 					<h2 id="wpedpc-title"><?php _e('WP Delete Post Copies Extensions', 'etruel-del-post-copies'); ?></h2>
 					<div id="licensestabs">
-						<ul class="tabNavigation">
-							<li><a href="#premium"><?php _e('Premium Extensions', 'etruel-del-post-copies'); ?></a></li>
-							<li><a href="#licenses"><?php _e('Licenses', 'etruel-del-post-copies'); ?></a></li>
-						</ul>
+					<?php print_tab_sections(); ?>
+						<?php if(isset($_GET['section']) && $_GET['section'] == 'premium'): ?>
 						<div id="premium">
 							<?php
 							foreach ($extensions as $id => $extension) {
@@ -154,6 +153,8 @@ function wpedpc_licenses() {
 							unset($extensions, $id, $extension, $utm);
 							?>
 						</div>
+						
+						<?php elseif(isset($_GET['section']) && $_GET['section'] == 'licenses'): ?>
 						<div id="licenses">
 							<?php
 							/**
@@ -167,6 +168,7 @@ function wpedpc_licenses() {
 							}
 							?>
 						</div>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>

@@ -24,6 +24,13 @@ function wpedpc_get_settings_tabs() {
 	return apply_filters( 'wpedpc_settings_tabs', $tabs );
 }
 
+function wpedpc_get_settings_licenses_sections() {
+	$sections               = array();
+	$sections['premium']   = __( 'Premium Extensions', 'etruel-del-post-copies'  );
+	$sections['licenses']   = __( 'Licenses', 'etruel-del-post-copies'  );
+	return apply_filters( 'wpedpc_settings_licenses_sections', $sections );
+}
+
 /**
  * Options Page
  *
@@ -35,7 +42,6 @@ function wpedpc_get_settings_tabs() {
 function wpedpc_options_page() {
 	$active_tab = isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], wpedpc_get_settings_tabs() ) ? $_GET['tab'] : 'settings';
 
-	ob_start();
 	?>
 	<div class="wrap">
 		<h2 class="nav-tab-wrapper">
@@ -46,6 +52,10 @@ function wpedpc_options_page() {
 					'settings-updated' => false,
 					'tab' => $tab_id
 				) );
+
+				$tab_url = add_query_arg(array(
+					'section' => 'premium'
+					), $tab_url);
 
 				$active = $active_tab == $tab_id ? ' nav-tab-active' : '';
 
@@ -62,7 +72,38 @@ function wpedpc_options_page() {
 		</div><!-- #tab_container-->
 	</div><!-- .wrap -->
 	<?php
-	echo ob_get_clean();
+}
+function print_tab_sections() {
+	global $pagenow, $wp_roles, $current_user;
+	$current_tab = (isset($_GET['tab']) ) ? sanitize_text_field( $_GET['tab'] ) : 'licenses';
+	$sections = array();
+	
+	$current_section = (isset($_GET['section']) ) ? sanitize_text_field( $_GET['section'] ) : key($sections);
+	?>	
+	<div class="wpe_wrap">
+		<h3 class="nav-section-wrapper">
+			<?php
+			$f = TRUE;
+			foreach(wpedpc_get_settings_licenses_sections() as $section_id => $section_name) {
+				$section_url = add_query_arg(array(
+					'section' => $section_id
+				));
+				if(!$f)
+					echo " | ";
+				else
+					$f		 = FALSE;
+				$active	 = $current_section == $section_id ? ' nav-section-active' : '';
+				echo '<a href="' . esc_url($section_url) . '" title="' . esc_attr($section_name) . '" class="nav-section' . $active . '">' . ( $section_name ) . '</a>';
+			}
+			?>
+		</h3>
+		<div class="metabox-holder">
+			<?php
+			do_action('wpedpc_section_' . $current_section);
+			?>
+		</div><!-- .metabox-holder -->
+	</div><!-- .wrap -->
+	<?php
 }
 
 

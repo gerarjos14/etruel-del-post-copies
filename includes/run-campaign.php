@@ -89,6 +89,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 			if (is_null($MINMAX)) {
 				$MINMAX = "MIN";
 			}
+			
 			if (is_array($wpedpc_campaign->categories)) {
 				$categories = implode(",", $wpedpc_campaign->categories);
 			} else {
@@ -238,10 +239,11 @@ if (!class_exists('wpedpc_run_campaign')) :
 					'orderby' => 'title',
 					'order' => 'ASC'
 				);
-			
+
 				$posts = get_posts($args);
 				$dupes = array();
-				
+				$temp_array = array();
+
 				foreach ($posts as $post) {
 					$compare_key = '';
 					if ($wpedpc_campaign->titledel && $wpedpc_campaign->contentdel) {
@@ -251,30 +253,36 @@ if (!class_exists('wpedpc_run_campaign')) :
 					} else {
 						$compare_key = $post->post_title;
 					}
-					
+
 					if (!isset($temp_array[$compare_key])) {
 						$temp_array[$compare_key] = array(
-							'ok_id' => $post->ID,
-							'ok_date' => $post->post_date,
-							'posts' => array()
+							'posts' => array($post)
 						);
 					} else {
 						$temp_array[$compare_key]['posts'][] = $post;
 					}
 				}
-				
+
 				// Convert to format similar to original query results
 				foreach ($temp_array as $key => $data) {
-					if (!empty($data['posts'])) {
-						foreach ($data['posts'] as $dupe_post) {
-							$dupes[] = (object) array(
-								'ID' => $dupe_post->ID,
-								'post_title' => $dupe_post->post_title,
-								'post_content' => $dupe_post->post_content,
-								'post_date' => $dupe_post->post_date,
-								'ok_id' => $data['ok_id'],
-								'ok_date' => $data['ok_date']
-							);
+					if (count($data['posts']) > 1) {
+						$posts_group = $data['posts'];
+						if ($MINMAX === 'MIN') {
+							$ok_post = $posts_group[0];
+						} else { // MAX
+							$ok_post = $posts_group[count($posts_group) - 1];
+						}
+						foreach ($posts_group as $dupe_post) {
+							if ($dupe_post->ID != $ok_post->ID) {
+								$dupes[] = (object) array(
+									'ID' => $dupe_post->ID,
+									'post_title' => $dupe_post->post_title,
+									'post_content' => $dupe_post->post_content,
+									'post_date' => $dupe_post->post_date,
+									'ok_id' => $ok_post->ID,
+									'ok_date' => $ok_post->post_date
+								);
+							}
 						}
 					}
 				}
@@ -295,14 +303,14 @@ if (!class_exists('wpedpc_run_campaign')) :
 						)
 					)
 				);
-			
+
 				$posts = get_posts($args);
 				$dupes = array();
 				$temp_array = array();
-			
+
 				foreach ($posts as $post) {
 					$post_categories = wp_get_post_categories($post->ID);
-					
+
 					foreach ($post_categories as $cat_id) {
 						$compare_key = '';
 						if ($wpedpc_campaign->titledel && $wpedpc_campaign->contentdel) {
@@ -312,33 +320,39 @@ if (!class_exists('wpedpc_run_campaign')) :
 						} else {
 							$compare_key = $post->post_title . '|' . $cat_id;
 						}
-						
+
 						if (!isset($temp_array[$compare_key])) {
 							$temp_array[$compare_key] = array(
-								'ok_id' => $post->ID,
-								'ok_date' => $post->post_date,
 								'category_id' => $cat_id,
-								'posts' => array()
+								'posts' => array($post)
 							);
 						} else {
 							$temp_array[$compare_key]['posts'][] = $post;
 						}
 					}
 				}
-				
+
 				foreach ($temp_array as $key => $data) {
-					if (!empty($data['posts'])) {
-						foreach ($data['posts'] as $dupe_post) {
-							$dupes[] = (object) array(
-								'ID' => $dupe_post->ID,
-								'post_title' => $dupe_post->post_title,
-								'post_content' => $dupe_post->post_content,
-								'post_date' => $dupe_post->post_date,
-								'term_id' => $data['category_id'],
-								'ok_id' => $data['ok_id'],
-								'ok_date' => $data['ok_date'],
-								'okcateg_id' => $data['category_id']
-							);
+					if (count($data['posts']) > 1) {
+						$posts_group = $data['posts'];
+						if ($MINMAX === 'MIN') {
+							$ok_post = $posts_group[0];
+						} else { // MAX
+							$ok_post = $posts_group[count($posts_group) - 1];
+						}
+						foreach ($posts_group as $dupe_post) {
+							if ($dupe_post->ID != $ok_post->ID) {
+								$dupes[] = (object) array(
+									'ID' => $dupe_post->ID,
+									'post_title' => $dupe_post->post_title,
+									'post_content' => $dupe_post->post_content,
+									'post_date' => $dupe_post->post_date,
+									'term_id' => $data['category_id'],
+									'ok_id' => $ok_post->ID,
+									'ok_date' => $ok_post->post_date,
+									'okcateg_id' => $data['category_id']
+								);
+							}
 						}
 					}
 				}

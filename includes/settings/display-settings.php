@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function wpedpc_get_settings_tabs() {
 	$tabs               = array();
 	$tabs['settings']   = __( 'Settings', 'etruel-del-post-copies'  );
-	$tabs['licenses']   = __( 'Licenses', 'etruel-del-post-copies'  );
+	$tabs['licenses']   = __( 'License', 'etruel-del-post-copies'  );
 	return apply_filters( 'wpedpc_settings_tabs', $tabs );
 }
 

@@ -50,7 +50,7 @@ function wpedpc_admin_notice() {
 	
 /** wpedpc_add_admin_notice
  * 
- * @param type mixed array/string  $new_notice 
+ * @param mixed array/string  $new_notice 
  *	optional   ['user_ID'] to shows the notice default = currentuser
  *	optional   ['error'] true or false to define style. Default = false
  *	optional   ['is-dismissible'] true or false to hideable. Default = true

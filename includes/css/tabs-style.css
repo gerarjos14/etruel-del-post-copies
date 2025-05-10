@@ -55,9 +55,3 @@
 #screen-options-link-wrap {
     z-index: 99;
 }
-.nav-section-active {
-    color: red;
-}
-.nav-section{
-    text-decoration: none;
-}

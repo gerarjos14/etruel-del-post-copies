@@ -116,8 +116,6 @@ function wpedpc_licenses() {
 				<div class="wrap wpedpc_table_page">
 					<h2 id="wpedpc-title"><?php _e('WP Delete Post Copies Extensions', 'etruel-del-post-copies'); ?></h2>
 					<div id="licensestabs">
-					<?php print_tab_sections(); ?>
-						<?php if(isset($_GET['section']) && $_GET['section'] == 'premium'): ?>
 						<div id="premium">
 							<?php
 							foreach ($extensions as $id => $extension) {
@@ -148,27 +146,26 @@ function wpedpc_licenses() {
 										</div>
 									</div>
 								</div>
+								<?php if ($extension->installed) : ?>
+									<div id="">
+										<?php
+										/**
+										 * Display license page
+										 */
+										settings_errors();
+										if (!has_action('wpedpc_licenses_forms')) {
+											echo '<div class="msg extension-message"><p>', esc_html__('This is where you would enter the license keys for one of our premium plugins, should you activate one.', 'etruel-del-post-copies'), '</p></div>';
+										} else {
+											do_action('wpedpc_licenses_forms');
+										}
+										?>
+									</div>
+									<?php endif; ?>
 								<?php
 							}
 							unset($extensions, $id, $extension, $utm);
 							?>
 						</div>
-						
-						<?php elseif(isset($_GET['section']) && $_GET['section'] == 'licenses'): ?>
-						<div id="licenses">
-							<?php
-							/**
-							 * Display license page
-							 */
-							settings_errors();
-							if (!has_action('wpedpc_licenses_forms')) {
-								echo '<div class="msg extension-message"><p>', esc_html__('This is where you would enter the license keys for one of our premium plugins, should you activate one.', 'etruel-del-post-copies'), '</p></div>';
-							} else {
-								do_action('wpedpc_licenses_forms');
-							}
-							?>
-						</div>
-						<?php endif; ?>
 					</div>
 				</div>
 			</div>

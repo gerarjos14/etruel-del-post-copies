@@ -63,7 +63,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 				$wpedpc_campaign->doingcron = true;
 			}
 
-			$limite = (intval($wpedpc_campaign->wpedpc_limit) > 0 && $mode <> 'counter') ? " LIMIT 0, " . strval(intval($wpedpc_campaign->wpedpc_limit)) : "";
+			$limite =  strval(intval($wpedpc_campaign->wpedpc_limit));
 
 			$cpostypes = $wpedpc_campaign->cpostypes;
 			$aposttypes = array();
@@ -234,7 +234,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 				$args = array(
 					'post_type' => explode(',', str_replace("'", "", $cpostypes)),
 					'post_status' => explode(',', str_replace("'", "", $cposstatuses)),
-					'posts_per_page' => -1,
+					'posts_per_page' => $limite,
 					'post__not_in' => explode(',', $excluded_ids),
 					'orderby' => 'title',
 					'order' => 'ASC'
@@ -291,7 +291,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 				$args = array(
 					'post_type' => explode(',', str_replace("'", "", $cpostypes)),
 					'post_status' => explode(',', str_replace("'", "", $cposstatuses)),
-					'posts_per_page' => -1,
+					'posts_per_page' => $limite,
 					'post__not_in' => explode(',', $excluded_ids),
 					'orderby' => 'title',
 					'order' => 'ASC',

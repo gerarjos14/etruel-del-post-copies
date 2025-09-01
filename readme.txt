@@ -100,6 +100,9 @@ You can either install it automatically from the WordPress admin, or do it manua
 == Changelog ==
 
 = 6.0.2 May 19, 2025 =
+*Fixes a bug with cron on certain campaigns.
+
+= 6.0.2 May 19, 2025 =
 * Refreshed the Settings screen to better highlight the PRO features and license field — now cleaner and easier to use.
 * Added improved version compatibility checks to prevent any mismatch between the free and PRO versions.
 * Fixed an issue where the MIN/MAX Post ID filters weren’t working as expected in the last update.

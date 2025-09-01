@@ -48,12 +48,15 @@ if (!class_exists('wpedpc_run_campaign')) :
 			global $wpdb, $wp_locale, $current_blog, $wpedpc_options;
 
 			$wpedpc_campaign = new WPEDPC_Campaign($post_id);
-			if (!$wpedpc_campaign->active AND $mode == 'auto') {
+			
+			if (!$wpedpc_campaign->active && $mode == 'auto') {
 				return false;
 			}
-			if ($wpedpc_campaign->doingcron) {
+
+			if (get_post_meta($wpedpc_campaign->ID, 'doingcron', true)) {
 				return false;
 			}
+			
 			if (!$wpedpc_options) {
 				$wpedpc_options = wpedpc_get_settings();
 			}
@@ -63,8 +66,8 @@ if (!class_exists('wpedpc_run_campaign')) :
 				$wpedpc_campaign->doingcron = true;
 			}
 
-			$limite =  strval(intval($wpedpc_campaign->wpedpc_limit));
 
+			$limite =  strval(intval($wpedpc_campaign->wpedpc_limit));
 			$cpostypes = $wpedpc_campaign->cpostypes;
 			$aposttypes = array();
 			foreach ($cpostypes as $postype => $value) {
@@ -230,6 +233,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 				ORDER BY post_title ASC " . $limite;
 			}
 			$query = apply_filters('wpedpc_after_query', $query, $wpedpc_campaign);*/
+
 			if ($wpedpc_campaign->allcat) {
 				$args = array(
 					'post_type' => explode(',', str_replace("'", "", $cpostypes)),
@@ -569,6 +573,7 @@ if (!class_exists('wpedpc_run_campaign')) :
 				$wpedpc_campaign->schedule = edel_post_copies::wpedpc_cron_next($wpedpc_campaign->period);
 
 				if ($mode == 'auto') {
+					// update_post_meta($wpedpc_campaign->ID, 'doingcron', false);
 					$wpedpc_campaign->doingcron = false;
 				}
 

@@ -99,6 +99,9 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 == Changelog ==
 
+= 6.0.4 Nov 11, 2025 =
+*Fixes Vulnerabilities in the settings page to prevent SQL inyection 
+
 = 6.0.2 May 19, 2025 =
 *Fixes a bug with cron on certain campaigns.
 

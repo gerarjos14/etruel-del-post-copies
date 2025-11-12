@@ -59,14 +59,26 @@ function wpedpc_admin_notice() {
  * 
  */
 function wpedpc_add_admin_notice($new_notice) {
-	if(is_string($new_notice)) $adm_notice['text'] = $new_notice;
-		else $adm_notice['text'] = (!isset($new_notice['text'])) ? '' : $new_notice['text'];
-	$adm_notice['error'] = (!isset($new_notice['error'])) ? false : $new_notice['error'];
-	$adm_notice['below-h2'] = (!isset($new_notice['below-h2'])) ? true : $new_notice['below-h2'];
-	$adm_notice['is-dismissible'] = (!isset($new_notice['is-dismissible'])) ? true : $new_notice['is-dismissible'];
-	$adm_notice['user_ID'] = (!isset($new_notice['user_ID'])) ? get_current_user_id() : $new_notice['user_ID'];
+	// Normalize input
+	if (is_string($new_notice)) {
+		$adm_notice['text'] = $new_notice;
+	} else {
+		$adm_notice['text'] = isset($new_notice['text']) ? $new_notice['text'] : '';
+	}
+	$adm_notice['error']          = isset($new_notice['error']) ? (bool) $new_notice['error'] : false;
+	$adm_notice['below-h2']       = isset($new_notice['below-h2']) ? (bool) $new_notice['below-h2'] : true;
+	$adm_notice['is-dismissible'] = isset($new_notice['is-dismissible']) ? (bool) $new_notice['is-dismissible'] : true;
+	$adm_notice['user_ID']        = isset($new_notice['user_ID']) ? (int) $new_notice['user_ID'] : get_current_user_id();
 
-	$notice = get_option('wpedpc_notices');
+	// Fetch current notices and ensure it's an array
+	$notice = get_option('wpedpc_notices', array());
+	if ( ! is_array($notice) ) {
+		$notice = array();
+	}
+
+	// Append new notice
 	$notice[] = $adm_notice;
-	update_option('wpedpc_notices',$notice);
+
+	// Save updated array
+	update_option('wpedpc_notices', $notice);
 }

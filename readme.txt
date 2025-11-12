@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: posts, duplicates, delete, duplicated posts, remove copies  
 Requires at least: 3.1.0  
 Tested up to: 6.8.1
-Stable tag: 6.0.2
+Stable tag: 6.0.3
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -98,6 +98,10 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The logs are also in a new tab saving time to load the page. Click on title to refresh.
 
 == Changelog ==
+
+= 6.0.3 Nov 11, 2025 =
+*Fixes a bug with cron on certain campaigns.
+*Fixes Vulnerabilities in the settings page to prevent SQL inyection 
 
 = 6.0.2 May 19, 2025 =
 * Refreshed the Settings screen to better highlight the PRO features and license field — now cleaner and easier to use.

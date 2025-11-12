@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: posts, duplicates, delete, duplicated posts, remove copies  
 Requires at least: 3.1.0  
 Tested up to: 6.8.1
-Stable tag: 6.0.2
+Stable tag: 6.0.4
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 

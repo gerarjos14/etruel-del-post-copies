@@ -100,8 +100,9 @@ You can either install it automatically from the WordPress admin, or do it manua
 == Changelog ==
 
 = 6.0.3 Nov 11, 2025 =
-*Fixes a bug with cron on certain campaigns.
-*Fixes Vulnerabilities in the settings page to prevent SQL inyection 
+* Improvements to the CSS styles used for tabs on screens.
+* Fixes a bug with cron on certain campaigns.
+* Fixes Vulnerabilities in the settings page. Thanks to WordFence!
 
 = 6.0.2 May 19, 2025 =
 * Refreshed the Settings screen to better highlight the PRO features and license field — now cleaner and easier to use.
@@ -222,4 +223,4 @@ You can either install it automatically from the WordPress admin, or do it manua
 Just click for delete.	
 
 == Upgrade Notice ==
-6.0 Major version. Must update version. Must first be used in a test environment.
+6.0.3 Fixes vulnerabilities. Must update version.
